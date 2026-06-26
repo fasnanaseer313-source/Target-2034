@@ -10,7 +10,7 @@ const Footer = () => {
         <div className="footer-grid">
           <div className="footer-col">
             <div className="footer-logo">
-              <img src={logoImg} alt="Target 2034" style={{ height: '64px', background: 'white', padding: '6px 12px', borderRadius: '6px' }} />
+              <img src={logoImg} alt="Target 2034" style={{ height: '88px', background: 'white', padding: '6px 12px', borderRadius: '6px' }} />
             </div>
             <p style={{ color: 'rgba(255,255,255,0.6)', marginTop: '16px', maxWidth: '280px' }}>
               Your personalized journey to long-term wealth creation, backed by intelligent models and professional research.

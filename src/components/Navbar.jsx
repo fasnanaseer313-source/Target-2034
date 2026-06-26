@@ -20,7 +20,7 @@ const Navbar = () => {
     <nav className={`navbar ${scrolled ? 'scrolled' : ''}`}>
       <div className="container navbar-container">
         <Link to="/" className="navbar-logo" style={{ textDecoration: 'none' }}>
-          <img src={logoImg} alt="Target 2034" style={{ height: '56px' }} />
+          <img src={logoImg} alt="Target 2034" style={{ height: '80px' }} />
         </Link>
         
         <div className="navbar-links">
