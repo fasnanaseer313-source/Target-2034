@@ -1,6 +1,7 @@
 import React from 'react';
 import { Mail } from 'lucide-react';
 import './components.css';
+import logoImg from '../assets/logo.png';
 
 const Footer = () => {
   return (
@@ -9,8 +10,7 @@ const Footer = () => {
         <div className="footer-grid">
           <div className="footer-col">
             <div className="footer-logo">
-              <span>TARGET</span>
-              <span className="text-gold">2034</span>
+              <img src={logoImg} alt="Target 2034" style={{ height: '40px', background: 'white', padding: '4px 8px', borderRadius: '4px' }} />
             </div>
             <p style={{ color: 'rgba(255,255,255,0.6)', marginTop: '16px', maxWidth: '280px' }}>
               Your personalized journey to long-term wealth creation, backed by intelligent models and professional research.

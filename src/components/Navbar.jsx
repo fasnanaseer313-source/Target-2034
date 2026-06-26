@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import Button from './Button';
 import './components.css';
+import logoImg from '../assets/logo.png';
 
 const Navbar = () => {
   const [scrolled, setScrolled] = useState(false);
@@ -19,8 +20,7 @@ const Navbar = () => {
     <nav className={`navbar ${scrolled ? 'scrolled' : ''}`}>
       <div className="container navbar-container">
         <Link to="/" className="navbar-logo" style={{ textDecoration: 'none' }}>
-          <span className="text-navy">TARGET</span>
-          <span className="text-gold">2034</span>
+          <img src={logoImg} alt="Target 2034" style={{ height: '36px' }} />
         </Link>
         
         <div className="navbar-links">
