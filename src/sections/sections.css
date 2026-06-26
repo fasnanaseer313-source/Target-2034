@@ -1,0 +1,271 @@
+/* Sections CSS */
+
+/* Hero Section */
+.hero-section {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  padding-top: 80px;
+  background: var(--gradient-soft);
+  overflow: hidden;
+}
+
+.hero-bg-particles {
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background-image: radial-gradient(circle at 15% 50%, rgba(203, 161, 83, 0.08), transparent 25%),
+                    radial-gradient(circle at 85% 30%, rgba(11, 19, 43, 0.05), transparent 25%);
+  z-index: 0;
+}
+
+.hero-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 40px;
+  position: relative;
+  z-index: 1;
+}
+
+.hero-content {
+  flex: 1;
+  max-width: 600px;
+}
+
+.hero-badge {
+  display: inline-block;
+  padding: 8px 16px;
+  background: rgba(203, 161, 83, 0.1);
+  color: var(--color-gold);
+  border-radius: var(--radius-full);
+  font-weight: 600;
+  font-size: 0.9rem;
+  margin-bottom: 24px;
+}
+
+.hero-content h1 {
+  margin-bottom: 24px;
+}
+
+.hero-subtitle {
+  font-size: 1.25rem;
+  color: var(--color-grey-text);
+  margin-bottom: 32px;
+}
+
+.hero-features {
+  list-style: none;
+  margin-bottom: 40px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.hero-features li {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-weight: 500;
+  color: var(--color-dark-navy);
+}
+
+.hero-features li::before {
+  content: '✓';
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  background: var(--color-gold);
+  color: white;
+  border-radius: 50%;
+  font-size: 12px;
+}
+
+.hero-actions {
+  display: flex;
+  gap: 16px;
+}
+
+/* Hero Visual */
+.hero-visual {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  perspective: 1000px;
+}
+
+.floating-phone-container {
+  position: relative;
+  width: 320px;
+  height: 650px;
+}
+
+.phone-mockup {
+  width: 100%;
+  height: 100%;
+  background: var(--color-white);
+  border-radius: 40px;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+  border: 8px solid var(--color-dark-navy);
+  padding: 16px;
+  position: relative;
+  overflow: hidden;
+  z-index: 2;
+}
+
+.phone-screen {
+  width: 100%;
+  height: 100%;
+  background: var(--color-soft-grey);
+  border-radius: 24px;
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+}
+
+.app-header {
+  font-weight: 700;
+  color: var(--color-dark-navy);
+  margin-bottom: 24px;
+  text-align: center;
+}
+
+.app-portfolio-val {
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--color-gold);
+  margin-bottom: 40px;
+  text-align: center;
+}
+
+.app-chart {
+  flex: 1;
+  background: white;
+  border-radius: 16px;
+  padding: 16px;
+  box-shadow: var(--shadow-sm);
+  display: flex;
+  align-items: center;
+}
+
+.float-icon {
+  position: absolute;
+  width: 56px;
+  height: 56px;
+  background: var(--glass-bg);
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
+  border: 1px solid var(--glass-border);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 24px;
+  box-shadow: var(--shadow-md);
+  z-index: 3;
+}
+
+.icon-1 { top: 10%; left: -10%; }
+.icon-2 { top: 40%; right: -15%; }
+.icon-3 { bottom: 20%; left: -5%; }
+.icon-4 { bottom: 10%; right: 10%; }
+
+/* Parent Company Section */
+.parent-company-section {
+  background: var(--color-white);
+  text-align: center;
+}
+
+.parent-company-header {
+  margin-bottom: 64px;
+}
+
+.parent-company-header h2 {
+  font-size: 2.5rem;
+  margin-bottom: 16px;
+}
+
+.parent-company-header p {
+  font-size: 1.25rem;
+  color: var(--color-grey-text);
+}
+
+.diagram-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 40px;
+  position: relative;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.diagram-top {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  gap: 40px;
+  position: relative;
+}
+
+.company-card {
+  flex: 1;
+  text-align: center;
+  padding: 40px 20px;
+}
+
+.company-card h3 {
+  font-size: 1.5rem;
+  margin-bottom: 8px;
+}
+
+.handshake-icon {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 80px;
+  height: 80px;
+  background: white;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: var(--shadow-md);
+  z-index: 10;
+  border: 2px solid var(--color-gold);
+}
+
+.connection-line {
+  width: 2px;
+  height: 100px;
+  background: linear-gradient(to bottom, var(--color-dark-navy), var(--color-gold));
+  position: relative;
+}
+
+.connection-arrow {
+  position: absolute;
+  bottom: -10px;
+  left: -9px;
+  width: 20px;
+  height: 20px;
+  border-left: 2px solid var(--color-gold);
+  border-bottom: 2px solid var(--color-gold);
+  transform: rotate(-45deg);
+}
+
+.target-card {
+  width: 100%;
+  max-width: 600px;
+  padding: 48px;
+  border: 2px solid var(--color-dark-navy);
+}
+
+.target-card h3 {
+  font-size: 2.5rem;
+  color: var(--color-dark-navy);
+  margin-bottom: 16px;
+}
