@@ -5,6 +5,8 @@ import Footer from './components/Footer';
 import Home from './pages/Home';
 import Products from './pages/Products';
 
+import FloatingWhatsApp from './components/FloatingWhatsApp';
+
 function App() {
   return (
     <Router>
@@ -15,8 +17,8 @@ function App() {
             <Route path="/" element={<Home />} />
             <Route path="/products" element={<Products />} />
           </Routes>
-
         </main>
+        <FloatingWhatsApp />
         <Footer />
       </div>
     </Router>

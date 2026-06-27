@@ -1,49 +1,52 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
 
 :root {
-  /* Premium Dark Theme Colors */
+  /* InvestEQ Premium Dark Theme Colors */
   --color-bg-dark: #050505;
-  --color-bg-card: #111111;
-  --color-bg-card-hover: #1a1a1a;
+  --color-bg-card: #0B1120;
+  --color-blue-accent: #111827;
   
   --color-white: #ffffff;
   --color-black: #000000;
   
   /* Accents */
-  --color-orange: #f97316; /* InvestEQ style orange */
-  --color-orange-glow: rgba(249, 115, 22, 0.4);
-  --color-blue-accent: #0f172a; /* Dark blue for specific cards */
+  --color-orange: #FF7A00;
+  --color-orange-hover: #FF9333;
+  --color-orange-glow: rgba(255, 122, 0, 0.25);
+  --color-green: #22C55E;
+  --color-red: #EF4444;
+  --color-gold: #FF7A00; /* Unified gold into orange */
   
-  /* Text */
-  --color-text-main: #f8fafc;
-  --color-text-muted: #94a3b8;
+  /* Typography Colors */
+  --color-text-main: #FFFFFF;
+  --color-text-secondary: #D1D5DB;
+  --color-text-muted: #9CA3AF;
+  --color-text-caption: #6B7280;
 
-  /* Legacy Variables for Older Components */
-  --color-dark-navy: #f8fafc; /* Map dark text/bg to white */
-  --color-gold: #f97316; /* Map gold to orange */
-  --color-soft-grey: #0a0a0a; /* Map light backgrounds to very dark grey */
-  --color-grey-text: #94a3b8; /* Map grey text to muted text */
-  --gradient-gold: linear-gradient(135deg, #f97316 0%, #ea580c 100%);
-  --gradient-soft: linear-gradient(135deg, #111111 0%, #050505 100%);
-
+  /* Legacy Variables for Older Components (mapping to new system) */
+  --color-dark-navy: #111827; 
+  --color-soft-grey: #0B1120;
+  --color-grey-text: #9CA3AF; 
+  
   /* Gradients */
-  --gradient-orange: linear-gradient(135deg, #f97316 0%, #ea580c 100%);
-  --gradient-dark: linear-gradient(180deg, #111111 0%, #050505 100%);
+  --gradient-orange: linear-gradient(135deg, #FF7A00 0%, #FF9333 100%);
+  --gradient-gold: linear-gradient(135deg, #FF7A00 0%, #FF9333 100%);
+  --gradient-dark: linear-gradient(180deg, #050505 0%, #0B1120 100%);
   --gradient-glass: linear-gradient(180deg, rgba(255, 255, 255, 0.03) 0%, rgba(255, 255, 255, 0.01) 100%);
 
   /* Glassmorphism */
-  --glass-bg: rgba(17, 17, 17, 0.6);
+  --glass-bg: rgba(11, 17, 32, 0.6);
   --glass-border: rgba(255, 255, 255, 0.08);
   --glass-blur: blur(20px);
 
   /* Effects */
   --shadow-sm: 0 4px 6px -1px rgba(0, 0, 0, 0.3);
-  --shadow-md: 0 10px 15px -3px rgba(0, 0, 0, 0.5);
+  --shadow-md: 0 10px 40px rgba(0, 0, 0, 0.35); /* Soft premium shadow */
   --shadow-glow: 0 0 30px var(--color-orange-glow);
   
   /* Spacing & Layout */
   --radius-sm: 8px;
-  --radius-md: 16px;
+  --radius-md: 18px; /* InvestEQ style */
   --radius-lg: 24px;
   --radius-full: 9999px;
   --spacing-section: 120px;
@@ -106,8 +109,8 @@ button {
 .text-white { color: var(--color-white); }
 .text-muted { color: var(--color-text-muted); }
 
-.heading-xl { font-size: clamp(2.5rem, 6vw, 4.5rem); letter-spacing: -0.03em; line-height: 1.1; }
-.heading-lg { font-size: clamp(2rem, 4vw, 3.5rem); letter-spacing: -0.02em; }
+.heading-xl { font-size: clamp(2.5rem, 5vw, 4.5rem); font-weight: 700; letter-spacing: -0.03em; line-height: 1.1; }
+.heading-lg { font-size: clamp(1.8rem, 4vw, 3.2rem); font-weight: 700; letter-spacing: -0.02em; line-height: 1.1; }
 .heading-md { font-size: clamp(1.5rem, 3vw, 2.5rem); }
 
 /* Layout */
@@ -120,6 +123,14 @@ button {
 .section {
   padding: var(--spacing-section) 0;
   position: relative;
+}
+
+.bg-dark {
+  background-color: var(--color-bg-dark);
+}
+
+.bg-navy {
+  background-color: var(--color-blue-accent);
 }
 
 /* Premium Glass Card */

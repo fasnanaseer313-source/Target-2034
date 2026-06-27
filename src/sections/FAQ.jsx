@@ -13,7 +13,7 @@ const FAQ = () => {
   ];
 
   return (
-    <section className="section" id="faq">
+    <section className="section bg-dark" id="faq">
       <div className="container" style={{ maxWidth: '800px' }}>
         <div style={{ textAlign: 'center', marginBottom: '64px' }}>
           <h2>Frequently Asked Questions</h2>

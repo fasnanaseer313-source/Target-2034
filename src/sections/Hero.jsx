@@ -9,7 +9,7 @@ const Hero = () => {
   const y2 = useTransform(scrollY, [0, 500], [0, -50]);
 
   return (
-    <section className="hero-section">
+    <section className="hero-section bg-dark">
       <div className="hero-bg-particles bg-grid-pattern"></div>
       <div className="ambient-light-orange" style={{ top: '10%', right: '5%' }}></div>
       <div className="container hero-container">
@@ -20,22 +20,27 @@ const Hero = () => {
           initial={{ opacity: 0, x: -50 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.8, ease: "easeOut" }}
+          style={{ paddingRight: '20px' }}
         >
-          <h1 className="heading-xl">
-            Engineered For Serious <br />
-            <span className="text-orange highlight-underline">Trader</span> <br />
-            Empowered By a High-Performance Trading Community.
+          <h1 className="heading-xl" style={{ marginBottom: '32px', whiteSpace: 'nowrap' }}>
+            Engineered For<br />
+            Serious<br />
+            <span className="text-orange highlight-underline">Trader</span><br />
+            Empowered By a<br />
+            High-Performance<br />
+            Trading Community.
           </h1>
           
-          <p className="hero-subtitle text-muted">
+          <p className="hero-subtitle text-muted" style={{ fontSize: '1.15rem', maxWidth: '500px', marginBottom: '40px' }}>
             Empowering investors with real-time intelligence, market structure clarity and expert-guided execution.
           </p>
           
           <div className="hero-actions">
             <motion.a 
               href="#platform" 
-              className="btn-discover"
-              whileHover={{ scale: 1.05 }}
+              className="btn-secondary"
+              style={{ display: 'inline-block', padding: '16px 32px', borderRadius: '8px', fontWeight: '600', border: '1px solid var(--color-orange)', color: 'var(--color-white)', textTransform: 'uppercase', letterSpacing: '1px' }}
+              whileHover={{ scale: 1.05, backgroundColor: 'rgba(255, 122, 0, 0.1)' }}
               whileTap={{ scale: 0.95 }}
             >
               DISCOVER PLATFORM

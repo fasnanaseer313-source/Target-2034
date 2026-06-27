@@ -21,7 +21,7 @@ const TargetTimeline = () => {
   ];
 
   return (
-    <section className="section" id="timeline">
+    <section className="section bg-navy" id="timeline">
       <div className="container">
         <div style={{ textAlign: 'center', marginBottom: '64px' }}>
           <h2>The Path to 2034</h2>

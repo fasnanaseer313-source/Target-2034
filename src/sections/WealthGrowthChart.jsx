@@ -52,7 +52,7 @@ const WealthGrowthChart = () => {
   };
 
   return (
-    <section className="section wealth-chart-section" id="wealth-chart">
+    <section className="section wealth-chart-section bg-navy" id="wealth-chart">
       <div className="container">
         
         <div className="wealth-chart-container" ref={ref}>

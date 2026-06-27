@@ -10,6 +10,7 @@ import GrowthCalculator from '../sections/GrowthCalculator';
 import TargetTimeline from '../sections/TargetTimeline';
 import InvestmentJourney from '../sections/InvestmentJourney';
 import WhyChooseUs from '../sections/WhyChooseUs';
+import Testimonials from '../sections/Testimonials';
 import FAQ from '../sections/FAQ';
 import Contact from '../sections/Contact';
 
@@ -25,6 +26,7 @@ const Home = () => {
       <InvestmentJourney />
       <GrowthCalculator />
       <WhyChooseUs />
+      <Testimonials />
       <FAQ />
       <Contact />
     </div>

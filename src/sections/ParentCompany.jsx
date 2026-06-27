@@ -4,6 +4,11 @@ import { useInView } from 'react-intersection-observer';
 import { Handshake, Target, Eye, ShieldCheck, Flag } from 'lucide-react';
 import './sections.css';
 
+import missionTargetImg from '../assets/mission_target_3d.png';
+import visionFutureImg from '../assets/vision_future_3d.png';
+import valuesDiamondImg from '../assets/values_diamond_3d.png';
+import goalMountainImg from '../assets/goal_mountain_3d.png';
+
 const ParentCompany = () => {
   const controls = useAnimation();
   const [ref, inView] = useInView({ threshold: 0.1, triggerOnce: true });
@@ -25,7 +30,7 @@ const ParentCompany = () => {
   };
 
   return (
-    <section className="section ecosystem-section" id="about">
+    <section className="section ecosystem-section bg-dark" id="about">
       <div className="container">
         
         {/* Header */}
@@ -112,41 +117,45 @@ const ParentCompany = () => {
 
         {/* Core Values Cards */}
         <motion.div 
-          className="core-values-grid mt-24"
+          className="dashboard-grid bottom-grid mt-24"
           variants={staggerContainer}
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: "-100px" }}
         >
           
-          <motion.div className="glass-card core-card" variants={fadeUp} whileHover={{ y: -10, boxShadow: "0 10px 30px rgba(16,185,129,0.2)" }}>
-            <div className="core-icon text-green-500 mb-6"><Target size={40} /></div>
-            <h3 className="text-xl font-bold text-green-500 mb-4">OUR MISSION</h3>
-            <p className="text-muted">To empower traders and investors with innovative tools, insights and opportunities for financial growth.</p>
+          <motion.div className="glass-card premium-card-hover card-accent-green" variants={fadeUp} style={{ height: '100%' }}>
+            <div className="card-image-container small-img">
+              <img src={missionTargetImg} alt="Mission Target" className="premium-3d-img" />
+            </div>
+            <h3 className="card-title text-green-500">OUR MISSION</h3>
+            <p className="text-muted" style={{ fontSize: '0.9rem' }}>To empower traders and investors with innovative tools, insights and opportunities for financial growth.</p>
           </motion.div>
 
-          <motion.div className="glass-card core-card" variants={fadeUp} whileHover={{ y: -10, boxShadow: "0 10px 30px rgba(239,68,68,0.2)" }}>
-            <div className="core-icon text-red-500 mb-6"><Eye size={40} /></div>
-            <h3 className="text-xl font-bold text-red-500 mb-4">OUR VISION</h3>
-            <p className="text-muted">To become a global leader in trading excellence and financial empowerment.</p>
+          <motion.div className="glass-card premium-card-hover card-accent-red" variants={fadeUp} style={{ height: '100%' }}>
+            <div className="card-image-container small-img">
+              <img src={visionFutureImg} alt="Vision Future" className="premium-3d-img" />
+            </div>
+            <h3 className="card-title text-red-500">OUR VISION</h3>
+            <p className="text-muted" style={{ fontSize: '0.9rem' }}>To become a global leader in trading excellence and financial empowerment.</p>
           </motion.div>
 
-          <motion.div className="glass-card core-card" variants={fadeUp} whileHover={{ y: -10, boxShadow: "0 10px 30px rgba(249,115,22,0.2)" }}>
-            <div className="core-icon text-orange mb-6"><ShieldCheck size={40} /></div>
-            <h3 className="text-xl font-bold text-orange mb-4">OUR VALUES</h3>
-            <ul className="text-muted text-left list-disc list-inside">
-              <li>Integrity</li>
-              <li>Transparency</li>
-              <li>Innovation</li>
-              <li>Commitment</li>
-              <li>Excellence</li>
-            </ul>
+          <motion.div className="glass-card premium-card-hover card-accent-gold" variants={fadeUp} style={{ height: '100%' }}>
+            <div className="card-image-container small-img">
+              <img src={valuesDiamondImg} alt="Values Diamond" className="premium-3d-img" />
+            </div>
+            <h3 className="card-title text-orange">OUR VALUES</h3>
+            <div className="text-muted text-center" style={{ fontSize: '0.9rem' }}>
+              Integrity • Transparency<br/>Innovation • Commitment<br/>Excellence
+            </div>
           </motion.div>
 
-          <motion.div className="glass-card core-card" variants={fadeUp} whileHover={{ y: -10, boxShadow: "0 10px 30px rgba(59,130,246,0.2)" }}>
-            <div className="core-icon text-blue-500 mb-6"><Flag size={40} /></div>
-            <h3 className="text-xl font-bold text-blue-500 mb-4">OUR GOAL</h3>
-            <p className="text-muted">To help clients achieve financial freedom and long-term success.</p>
+          <motion.div className="glass-card premium-card-hover card-accent-green" variants={fadeUp} style={{ height: '100%' }}>
+            <div className="card-image-container small-img">
+              <img src={goalMountainImg} alt="Goal Mountain" className="premium-3d-img" />
+            </div>
+            <h3 className="card-title text-blue-500">OUR GOAL</h3>
+            <p className="text-muted" style={{ fontSize: '0.9rem' }}>To help clients achieve financial freedom and long-term success.</p>
           </motion.div>
 
         </motion.div>

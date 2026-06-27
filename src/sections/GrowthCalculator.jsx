@@ -19,7 +19,7 @@ const GrowthCalculator = () => {
   };
 
   return (
-    <section className="section" id="calculator">
+    <section className="section bg-navy" id="calculator">
       <div className="container">
         <div style={{ textAlign: 'center', marginBottom: '64px' }}>
           <h2>Plan Your 2034 Target</h2>

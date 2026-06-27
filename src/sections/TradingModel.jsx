@@ -27,7 +27,7 @@ const TradingModel = () => {
   };
 
   return (
-    <section className="section trading-model-section" id="platform">
+    <section className="section trading-model-section bg-navy" id="platform">
       <div className="container">
         
         {/* Top Section: Power of 1% Rule - The 3 Main Cards */}

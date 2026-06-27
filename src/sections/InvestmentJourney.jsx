@@ -24,7 +24,7 @@ const InvestmentJourney = () => {
   ];
 
   return (
-    <section className="section" id="journey">
+    <section className="section bg-dark" id="journey">
       <div className="container">
         <div style={{ textAlign: 'center', marginBottom: '64px' }}>
           <h2>Your Investment Journey</h2>
