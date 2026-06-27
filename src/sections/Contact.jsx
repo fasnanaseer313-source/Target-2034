@@ -11,7 +11,7 @@ const Contact = () => {
   };
 
   return (
-    <section className="section" style={{ background: 'var(--color-white)' }}>
+    <section className="section">
       <div className="container">
         <div style={{ background: 'var(--gradient-primary)', borderRadius: '24px', padding: '64px', textAlign: 'center', color: 'white', position: 'relative', overflow: 'hidden', boxShadow: 'var(--shadow-lg)' }}>
           {/* Background Elements */}

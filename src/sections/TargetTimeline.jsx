@@ -21,7 +21,7 @@ const TargetTimeline = () => {
   ];
 
   return (
-    <section className="section" id="timeline" style={{ background: 'var(--color-white)' }}>
+    <section className="section" id="timeline">
       <div className="container">
         <div style={{ textAlign: 'center', marginBottom: '64px' }}>
           <h2>The Path to 2034</h2>
@@ -46,12 +46,12 @@ const TargetTimeline = () => {
               variants={{ visible: { opacity: 1, x: 0, transition: { duration: 0.6, delay: idx * 0.3 } } }}
             >
               {/* Timeline Dot */}
-              <div style={{ position: 'relative', zIndex: 2, display: 'flex', alignItems: 'center', justifyContent: 'center', width: '24px', height: '24px', background: 'var(--color-gold)', borderRadius: '50%', border: '4px solid white', marginLeft: '40px', marginTop: '6px' }}>
+              <div style={{ position: 'relative', zIndex: 2, display: 'flex', alignItems: 'center', justifyContent: 'center', width: '24px', height: '24px', background: 'var(--color-gold)', borderRadius: '50%', border: '4px solid var(--color-bg-dark)', marginLeft: '40px', marginTop: '6px' }}>
               </div>
               
               <div style={{ flex: 1 }}>
                 <div style={{ display: 'flex', alignItems: 'baseline', gap: '16px', marginBottom: '8px' }}>
-                  <h3 style={{ fontSize: '2rem', color: 'var(--color-dark-navy)', margin: 0 }}>{item.year}</h3>
+                  <h3 style={{ fontSize: '2rem', margin: 0 }}>{item.year}</h3>
                   <span style={{ padding: '4px 12px', background: 'rgba(203,161,83,0.1)', color: 'var(--color-gold)', borderRadius: '16px', fontSize: '0.85rem', fontWeight: '600' }}>
                     {item.growth}
                   </span>

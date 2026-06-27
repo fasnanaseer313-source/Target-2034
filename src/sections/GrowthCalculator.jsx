@@ -19,10 +19,10 @@ const GrowthCalculator = () => {
   };
 
   return (
-    <section className="section" id="calculator" style={{ background: 'var(--color-dark-navy)', color: 'var(--color-white)' }}>
+    <section className="section" id="calculator">
       <div className="container">
         <div style={{ textAlign: 'center', marginBottom: '64px' }}>
-          <h2 style={{ color: 'var(--color-white)' }}>Plan Your 2034 Target</h2>
+          <h2>Plan Your 2034 Target</h2>
           <p style={{ color: 'rgba(255,255,255,0.7)', fontSize: '1.2rem' }}>Interactive Growth Calculator</p>
         </div>
 

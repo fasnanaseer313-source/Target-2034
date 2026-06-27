@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { motion } from 'framer-motion';
-import Button from './Button';
+import { MessageCircle } from 'lucide-react';
 import './components.css';
 import logoImg from '../assets/logo.png';
 
@@ -20,18 +19,14 @@ const Navbar = () => {
     <nav className={`navbar ${scrolled ? 'scrolled' : ''}`}>
       <div className="container navbar-container">
         <Link to="/" className="navbar-logo" style={{ textDecoration: 'none' }}>
-          <img src={logoImg} alt="Target 2034" style={{ height: '80px' }} />
+          <img src={logoImg} alt="Target 2034" style={{ height: '50px', objectFit: 'contain' }} />
         </Link>
         
-        <div className="navbar-links">
-          <a href="/#philosophy" className="nav-link">Philosophy</a>
-          <Link to="/products" className="nav-link">Products</Link>
-          <a href="/#journey" className="nav-link">Journey</a>
-          <a href="/#about" className="nav-link">About Us</a>
-        </div>
-
-        <div className="navbar-cta">
-          <Button variant="primary">Start Investing</Button>
+        <div className="navbar-right">
+          <Link to="/" className="nav-home-btn">HOME</Link>
+          <a href="https://wa.me/" target="_blank" rel="noopener noreferrer" className="nav-whatsapp-btn" aria-label="WhatsApp">
+            <MessageCircle size={20} />
+          </a>
         </div>
       </div>
     </nav>

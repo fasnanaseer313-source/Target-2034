@@ -24,7 +24,7 @@ const InvestmentJourney = () => {
   ];
 
   return (
-    <section className="section" id="journey" style={{ background: 'var(--color-soft-grey)' }}>
+    <section className="section" id="journey">
       <div className="container">
         <div style={{ textAlign: 'center', marginBottom: '64px' }}>
           <h2>Your Investment Journey</h2>
@@ -52,7 +52,7 @@ const InvestmentJourney = () => {
               }}>
                 {step.icon}
               </div>
-              <p style={{ fontWeight: '600', fontSize: '0.9rem', color: 'var(--color-dark-navy)' }}>Step {idx + 1}</p>
+              <p style={{ fontWeight: '600', fontSize: '0.9rem' }}>Step {idx + 1}</p>
               <h4 style={{ fontSize: '1rem' }}>{step.title}</h4>
             </motion.div>
           ))}

@@ -48,7 +48,7 @@ const Philosophy = () => {
   ];
 
   return (
-    <section className="section" id="philosophy" style={{ background: 'var(--color-soft-grey)' }}>
+    <section className="section" id="philosophy">
       <div className="container">
         <div style={{ textAlign: 'center', marginBottom: '64px' }}>
           <h2>How We Build Wealth</h2>

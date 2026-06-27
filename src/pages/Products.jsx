@@ -33,7 +33,7 @@ const Products = () => {
   ];
 
   return (
-    <div style={{ paddingTop: '100px', minHeight: '100vh', background: 'var(--color-soft-grey)' }}>
+    <div style={{ paddingTop: '100px', minHeight: '100vh' }}>
       <div className="container" style={{ paddingBottom: '100px' }}>
         <div style={{ textAlign: 'center', marginBottom: '64px' }}>
           <h1>Our Investment <span className="text-gold">Products</span></h1>
@@ -55,7 +55,7 @@ const Products = () => {
                   <div style={{ padding: '12px', background: 'rgba(0,0,0,0.03)', borderRadius: '12px' }}>
                     {product.icon}
                   </div>
-                  <span style={{ fontSize: '0.8rem', fontWeight: '600', padding: '4px 12px', background: 'var(--color-dark-navy)', color: 'white', borderRadius: '16px' }}>
+                  <span style={{ fontSize: '0.8rem', fontWeight: '600', padding: '4px 12px', background: 'var(--color-orange)', color: 'white', borderRadius: '16px' }}>
                     {product.category}
                   </span>
                 </div>

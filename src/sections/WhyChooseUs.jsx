@@ -14,7 +14,7 @@ const WhyChooseUs = () => {
   ];
 
   return (
-    <section className="section" style={{ background: 'var(--color-white)' }}>
+    <section className="section">
       <div className="container">
         <div style={{ textAlign: 'center', marginBottom: '64px' }}>
           <h2>Why Choose Target 2034</h2>

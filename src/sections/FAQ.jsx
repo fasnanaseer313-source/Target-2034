@@ -13,7 +13,7 @@ const FAQ = () => {
   ];
 
   return (
-    <section className="section" id="faq" style={{ background: 'var(--color-soft-grey)' }}>
+    <section className="section" id="faq">
       <div className="container" style={{ maxWidth: '800px' }}>
         <div style={{ textAlign: 'center', marginBottom: '64px' }}>
           <h2>Frequently Asked Questions</h2>
@@ -21,10 +21,10 @@ const FAQ = () => {
 
         <div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
           {faqs.map((faq, idx) => (
-            <div key={idx} style={{ background: 'white', borderRadius: '12px', overflow: 'hidden', boxShadow: 'var(--shadow-sm)' }}>
+            <div key={idx} style={{ background: 'var(--color-bg-card)', borderRadius: '12px', overflow: 'hidden', boxShadow: 'var(--shadow-sm)' }}>
               <button 
                 onClick={() => setActiveIndex(activeIndex === idx ? null : idx)}
-                style={{ width: '100%', display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '24px', background: 'transparent', border: 'none', cursor: 'pointer', textAlign: 'left', fontWeight: '600', fontSize: '1.1rem', color: 'var(--color-dark-navy)' }}
+                style={{ width: '100%', display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '24px', background: 'transparent', border: 'none', cursor: 'pointer', textAlign: 'left', fontWeight: '600', fontSize: '1.1rem', color: 'var(--color-text-main)' }}
               >
                 {faq.q}
                 <motion.div animate={{ rotate: activeIndex === idx ? 180 : 0 }} transition={{ duration: 0.2 }}>
