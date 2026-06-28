@@ -48,14 +48,14 @@ const ParentCompany = () => {
           <div className="diagram-top">
             
             <motion.div 
-              className="glass-card company-node" 
+              className="company-node" 
+              style={{ background: '#ffffff', borderRadius: '16px', border: '2px solid #fbbf24', padding: '24px', boxShadow: '0 4px 20px rgba(0,0,0,0.15)', aspectRatio: '1 / 1', display: 'flex', alignItems: 'center', justifyContent: 'center' }}
               initial={{ opacity: 0, x: -50 }}
               animate={controls}
               variants={{ visible: { opacity: 1, x: 0, transition: { duration: 0.8 } } }}
-              whileHover={{ y: -5, borderColor: '#f97316' }}
+              whileHover={{ y: -5, boxShadow: '0 8px 30px rgba(251,191,36,0.3)' }}
             >
-              <div className="node-icon">🐝</div>
-              <h3 className="mb-2">Candle Bee Pvt Ltd</h3>
+              <img src="/logo1.jpeg" alt="Candle Bee Pvt Ltd Logo" style={{ width: '100%', height: '100%', objectFit: 'contain' }} />
             </motion.div>
 
             <motion.div 
@@ -68,14 +68,14 @@ const ParentCompany = () => {
             </motion.div>
 
             <motion.div 
-              className="glass-card company-node" 
+              className="company-node" 
+              style={{ background: '#ffffff', borderRadius: '16px', border: '2px solid #10b981', padding: '24px', boxShadow: '0 4px 20px rgba(0,0,0,0.15)', aspectRatio: '1 / 1', display: 'flex', alignItems: 'center', justifyContent: 'center' }}
               initial={{ opacity: 0, x: 50 }}
               animate={controls}
               variants={{ visible: { opacity: 1, x: 0, transition: { duration: 0.8, delay: 0.3 } } }}
-              whileHover={{ y: -5, borderColor: '#10b981' }}
+              whileHover={{ y: -5, boxShadow: '0 8px 30px rgba(16,185,129,0.3)' }}
             >
-              <div className="node-icon">🇦🇪</div>
-              <h3 className="mb-2">Candle Bee Trading FZE</h3>
+              <img src="/logo2.jpeg" alt="Candle Bee Trading FZE Logo" style={{ width: '100%', height: '100%', objectFit: 'contain' }} />
             </motion.div>
           </div>
 
@@ -100,17 +100,22 @@ const ParentCompany = () => {
             animate={controls}
             variants={{ visible: { opacity: 1, y: 0, transition: { delay: 1.2, duration: 0.8 } } }}
           >
-            <div className="target-card-content text-center">
-              <h3 className="text-2xl text-muted mb-2">Our New Company</h3>
-              <h2 className="text-5xl font-bold mb-6">Target <span className="text-orange">2034</span></h2>
-              
-              <div className="target-vision-strip mb-6 text-xl">
-                One <span className="text-green-500">Vision</span>. One <span className="text-red-500">Mission</span>. One Target.
+            <div className="target-card-content" style={{ display: 'flex', flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', gap: '40px' }}>
+              <div style={{ flex: '1', display: 'flex', justifyContent: 'center' }}>
+                <img src="/target2034-logo.jpeg" alt="Target 2034 Logo" style={{ width: '100%', maxWidth: '350px', height: 'auto', objectFit: 'contain', borderRadius: '12px' }} />
               </div>
-              
-              <p className="text-muted text-lg">
-                Building a Future of Growth, Innovation & Success.
-              </p>
+              <div style={{ flex: '1', textAlign: 'left' }}>
+                <h3 className="text-2xl text-muted mb-2">Our New Company</h3>
+                <h2 className="text-5xl font-bold mb-6">Target <span className="text-orange">2034</span></h2>
+                
+                <div className="target-vision-strip mb-6 text-xl">
+                  One <span className="text-green-500">Vision</span>. One <span className="text-red-500">Mission</span>. One Target.
+                </div>
+                
+                <p className="text-muted text-lg">
+                  Building a Future of Growth, Innovation & Success.
+                </p>
+              </div>
             </div>
           </motion.div>
         </div>

@@ -27,12 +27,12 @@ const TradingModel = () => {
   };
 
   return (
-    <section className="section trading-model-section bg-navy" id="platform">
+    <section className="section trading-model-section bg-offwhite" id="platform">
       <div className="container">
         
         {/* Top Section: Power of 1% Rule - The 3 Main Cards */}
         <div className="model-header" style={{ marginBottom: '40px' }}>
-          <h2 className="heading-lg">The Power of <span className="text-orange highlight-underline">"1% Rule"</span></h2>
+          <h2 className="heading-lg text-dark">The Power of <span className="text-orange highlight-underline">"1% Rule"</span></h2>
         </div>
 
         <motion.div 
@@ -43,7 +43,7 @@ const TradingModel = () => {
           viewport={{ once: true, margin: "-100px" }}
         >
           {/* Card 1: Capital */}
-          <motion.div className="glass-card premium-card-hover card-accent-green" variants={itemVariants} whileHover={{ y: -8 }}>
+          <motion.div className="glass-card solid-dark-card premium-card-hover card-accent-green" variants={itemVariants} whileHover={{ y: -8 }}>
             <div className="card-top-icon"><Wallet className="text-white" size={20} /></div>
             <div className="card-image-container">
               <img src={cashStackImg} alt="Capital Cash Stack" className="premium-3d-img" />
@@ -53,7 +53,7 @@ const TradingModel = () => {
           </motion.div>
           
           {/* Card 2: Risk Per Trade */}
-          <motion.div className="glass-card premium-card-hover card-accent-red" variants={itemVariants} whileHover={{ y: -8 }}>
+          <motion.div className="glass-card solid-dark-card premium-card-hover card-accent-red" variants={itemVariants} whileHover={{ y: -8 }}>
             <div className="card-top-icon">
               <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-white"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"></path><line x1="12" y1="9" x2="12" y2="13"></line><line x1="12" y1="17" x2="12.01" y2="17"></line></svg>
             </div>
@@ -66,7 +66,7 @@ const TradingModel = () => {
           </motion.div>
 
           {/* Card 3: Reward Per Trade */}
-          <motion.div className="glass-card premium-card-hover card-accent-green" variants={itemVariants} whileHover={{ y: -8 }}>
+          <motion.div className="glass-card solid-dark-card premium-card-hover card-accent-green" variants={itemVariants} whileHover={{ y: -8 }}>
             <div className="card-top-icon">
               <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-white"><circle cx="12" cy="12" r="10"></circle><circle cx="12" cy="12" r="6"></circle><circle cx="12" cy="12" r="2"></circle></svg>
             </div>
@@ -82,7 +82,7 @@ const TradingModel = () => {
         {/* Income Overview Section */}
         <div className="income-overview-section" style={{ marginTop: '80px' }}>
           <div style={{ textAlign: 'center', marginBottom: '40px' }}>
-            <h3 className="income-heading glow-text">INCOME OVERVIEW</h3>
+            <h3 className="income-heading text-dark">INCOME OVERVIEW</h3>
           </div>
           
           <motion.div 
@@ -93,7 +93,7 @@ const TradingModel = () => {
             viewport={{ once: true, margin: "-100px" }}
           >
             {/* Working Days */}
-            <motion.div className="glass-card premium-card-hover card-accent-green" variants={itemVariants} whileHover={{ y: -8 }}>
+            <motion.div className="glass-card solid-dark-card premium-card-hover card-accent-green" variants={itemVariants} whileHover={{ y: -8 }}>
               <div className="card-image-container small-img">
                 <img src={calendarDaysImg} alt="Working Days Calendar" className="premium-3d-img" />
               </div>
@@ -102,7 +102,7 @@ const TradingModel = () => {
             </motion.div>
             
             {/* Monthly Approximate */}
-            <motion.div className="glass-card premium-card-hover card-accent-green" variants={itemVariants} whileHover={{ y: -8 }}>
+            <motion.div className="glass-card solid-dark-card premium-card-hover card-accent-green" variants={itemVariants} whileHover={{ y: -8 }}>
               <div className="card-image-container small-img">
                 <img src={moneyBagGraphImg} alt="Monthly Income Graph" className="premium-3d-img" />
               </div>
@@ -111,7 +111,7 @@ const TradingModel = () => {
             </motion.div>
 
             {/* Yearly Approximate */}
-            <motion.div className="glass-card premium-card-hover card-accent-green" variants={itemVariants} whileHover={{ y: -8 }}>
+            <motion.div className="glass-card solid-dark-card premium-card-hover card-accent-green" variants={itemVariants} whileHover={{ y: -8 }}>
               <div className="card-image-container small-img">
                 <img src={yearlyCalendarWealthImg} alt="Yearly Growth" className="premium-3d-img" />
               </div>
@@ -120,7 +120,7 @@ const TradingModel = () => {
             </motion.div>
 
             {/* By 2034 */}
-            <motion.div className="glass-card premium-card-hover card-accent-gold" variants={itemVariants} whileHover={{ y: -8 }}>
+            <motion.div className="glass-card solid-dark-card premium-card-hover card-accent-gold" variants={itemVariants} whileHover={{ y: -8 }}>
               <div className="card-image-container small-img">
                 <img src={futuristicCityGoldImg} alt="Future Wealth City" className="premium-3d-img" />
               </div>
@@ -145,7 +145,7 @@ const TradingModel = () => {
               { icon: <Droplets size={24} />, text: "100% Liquid" },
               { icon: <Calendar size={24} />, text: "Monthly cashouts" }
             ].map((benefit, idx) => (
-              <motion.div key={idx} className="benefit-item glass-card" variants={itemVariants}>
+              <motion.div key={idx} className="benefit-item glass-card solid-dark-card" variants={itemVariants}>
                 <div className="benefit-icon text-orange">{benefit.icon}</div>
                 <div className="benefit-text">{benefit.text}</div>
               </motion.div>
@@ -164,7 +164,7 @@ const TradingModel = () => {
               viewport={{ once: true }}
               transition={{ duration: 0.6 }}
             >
-              <div className="glass-card content-card">
+              <div className="glass-card solid-dark-card content-card">
                 <h3 className="mb-4">How It Works</h3>
                 <p className="text-muted mb-4">Our trading models are built with strict risk management principles, designed to preserve capital while maximizing upside potential.</p>
                 <div className="animated-arrow desktop-only">
@@ -184,19 +184,19 @@ const TradingModel = () => {
               transition={{ duration: 0.6, delay: 0.2 }}
             >
               <ul className="premium-list">
-                <li>
+                <li className="text-dark">
                   <CheckCircle className="text-orange list-icon" size={20} />
                   <span><strong>Total Control:</strong> You maintain 100% control of your funds in your own brokerage account.</span>
                 </li>
-                <li>
+                <li className="text-dark">
                   <CheckCircle className="text-orange list-icon" size={20} />
                   <span><strong>Transparency:</strong> Real-time visibility of every trade and position.</span>
                 </li>
-                <li>
+                <li className="text-dark">
                   <CheckCircle className="text-orange list-icon" size={20} />
                   <span><strong>Risk Managed:</strong> 0.5% max risk per trade means a losing streak won't blow up your account.</span>
                 </li>
-                <li>
+                <li className="text-dark">
                   <CheckCircle className="text-orange list-icon" size={20} />
                   <span><strong>Consistent Yields:</strong> Targeted strategies for steady, compounding growth over time.</span>
                 </li>

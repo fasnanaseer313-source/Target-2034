@@ -133,6 +133,14 @@ button {
   background-color: var(--color-blue-accent);
 }
 
+.bg-offwhite {
+  background-color: #f8f9fa;
+}
+
+.text-dark {
+  color: #111827 !important;
+}
+
 /* Premium Glass Card */
 .glass-card {
   background: var(--glass-bg);
@@ -142,6 +150,10 @@ button {
   border-radius: var(--radius-md);
   box-shadow: var(--shadow-md);
   transition: all 0.3s ease;
+}
+
+.solid-dark-card {
+  background-color: #0B1120 !important;
 }
 
 .glass-card:hover {

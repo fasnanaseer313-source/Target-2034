@@ -862,3 +862,43 @@
     min-width: 85vw;
   }
 }
+/* Light Theme Overrides for Trading Model */
+.bg-off-white {
+  background-color: #f8f9fa !important;
+}
+.bg-off-white .heading-lg {
+  color: #111827;
+}
+.bg-off-white .glass-card {
+  background: #ffffff;
+  border-color: #e5e7eb;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+}
+.bg-off-white .card-title,
+.bg-off-white .card-label {
+  color: #4b5563 !important;
+}
+.bg-off-white .card-value,
+.bg-off-white .card-big-value,
+.bg-off-white .income-heading {
+  color: #111827 !important;
+}
+.bg-off-white .card-subtitle,
+.bg-off-white .text-muted {
+  color: #6b7280 !important;
+}
+.bg-off-white .card-top-icon {
+  background: #f3f4f6;
+  border-color: #e5e7eb;
+}
+.bg-off-white .card-top-icon svg {
+  color: #111827 !important;
+}
+.bg-off-white .glow-text {
+  text-shadow: none;
+}
+.bg-off-white .card-accent-green,
+.bg-off-white .card-accent-red,
+.bg-off-white .card-accent-gold {
+  border-top-width: 4px;
+}

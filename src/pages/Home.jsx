@@ -4,15 +4,11 @@ import TradingModel from '../sections/TradingModel';
 import ParentCompany from '../sections/ParentCompany';
 
 // Import other sections as we build them
-import Philosophy from '../sections/Philosophy';
 import WealthGrowthChart from '../sections/WealthGrowthChart';
 import GrowthCalculator from '../sections/GrowthCalculator';
-import TargetTimeline from '../sections/TargetTimeline';
 import InvestmentJourney from '../sections/InvestmentJourney';
 import WhyChooseUs from '../sections/WhyChooseUs';
-import Testimonials from '../sections/Testimonials';
 import FAQ from '../sections/FAQ';
-import Contact from '../sections/Contact';
 
 const Home = () => {
   return (
@@ -21,14 +17,10 @@ const Home = () => {
       <TradingModel />
       <ParentCompany />
       <WealthGrowthChart />
-      <Philosophy />
-      <TargetTimeline />
       <InvestmentJourney />
       <GrowthCalculator />
       <WhyChooseUs />
-      <Testimonials />
       <FAQ />
-      <Contact />
     </div>
   );
 };
