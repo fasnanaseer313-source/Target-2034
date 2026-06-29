@@ -122,7 +122,8 @@ const ParentCompany = () => {
 
         {/* Core Values Cards */}
         <motion.div 
-          className="dashboard-grid bottom-grid mt-24"
+          className="dashboard-grid bottom-grid"
+          style={{ marginTop: '40px', gap: '24px' }}
           variants={staggerContainer}
           initial="hidden"
           whileInView="visible"

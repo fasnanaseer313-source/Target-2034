@@ -12,7 +12,43 @@ import moneyBagGraphImg from '../assets/money_bag_graph_3d.png';
 import yearlyCalendarWealthImg from '../assets/yearly_calendar_wealth_3d.png';
 import futuristicCityGoldImg from '../assets/futuristic_city_gold_3d.png';
 
+const benefitsList = [
+  { icon: <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>, text: "No Third party deposits required" },
+  { icon: <ArrowRight size={24} />, text: "100% Direct" },
+  { icon: <Droplets size={24} />, text: "100% Liquid" },
+  { icon: <Calendar size={24} />, text: "Monthly cashouts" }
+];
+// Duplicate for continuous infinite scroll
+const repeatedBenefits = [...benefitsList, ...benefitsList, ...benefitsList, ...benefitsList];
+
 const TradingModel = () => {
+  const scrollRef = React.useRef(null);
+  const [isInteracting, setIsInteracting] = React.useState(false);
+
+  React.useEffect(() => {
+    const container = scrollRef.current;
+    if (!container) return;
+
+    let animationFrameId;
+    const scrollSpeed = 1; 
+
+    const scrollLoop = () => {
+      if (!isInteracting) {
+        container.scrollLeft += scrollSpeed;
+        
+        // Reset scroll when we reach the middle to create an infinite loop
+        if (container.scrollLeft >= container.scrollWidth / 2) {
+          container.scrollLeft = 0;
+        }
+      }
+      animationFrameId = requestAnimationFrame(scrollLoop);
+    };
+
+    animationFrameId = requestAnimationFrame(scrollLoop);
+
+    return () => cancelAnimationFrame(animationFrameId);
+  }, [isInteracting]);
+
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
@@ -26,13 +62,40 @@ const TradingModel = () => {
     visible: { opacity: 1, y: 0, transition: { duration: 0.6 } }
   };
 
+  const incomeContainerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: { staggerChildren: 0.2 }
+    }
+  };
+
+  const incomeCardVariants = {
+    hidden: { 
+      opacity: 0, 
+      y: 40, 
+      scale: 0.95, 
+      filter: 'blur(10px)' 
+    },
+    visible: { 
+      opacity: 1, 
+      y: 0, 
+      scale: 1, 
+      filter: 'blur(0px)',
+      transition: { 
+        duration: 0.8, 
+        ease: [0.25, 1, 0.5, 1] 
+      } 
+    }
+  };
+
   return (
-    <section className="section trading-model-section bg-offwhite" id="platform">
+    <section className="section trading-model-section" id="platform">
       <div className="container">
         
         {/* Top Section: Power of 1% Rule - The 3 Main Cards */}
         <div className="model-header" style={{ marginBottom: '40px' }}>
-          <h2 className="heading-lg text-dark">The Power of <span className="text-orange highlight-underline">"1% Rule"</span></h2>
+          <h2 className="heading-lg">The Power of <span className="text-orange highlight-underline">"1% Rule"</span></h2>
         </div>
 
         <motion.div 
@@ -82,18 +145,18 @@ const TradingModel = () => {
         {/* Income Overview Section */}
         <div className="income-overview-section" style={{ marginTop: '80px' }}>
           <div style={{ textAlign: 'center', marginBottom: '40px' }}>
-            <h3 className="income-heading text-dark">INCOME OVERVIEW</h3>
+            <h3 className="income-heading">INCOME OVERVIEW</h3>
           </div>
           
           <motion.div 
             className="dashboard-grid bottom-grid"
-            variants={containerVariants}
+            variants={incomeContainerVariants}
             initial="hidden"
             whileInView="visible"
-            viewport={{ once: true, margin: "-100px" }}
+            viewport={{ once: false, amount: 0.2 }}
           >
             {/* Working Days */}
-            <motion.div className="glass-card solid-dark-card premium-card-hover card-accent-green" variants={itemVariants} whileHover={{ y: -8 }}>
+            <motion.div className="glass-card solid-dark-card premium-card-hover card-accent-green" variants={incomeCardVariants} whileHover={{ y: -8, scale: 1.02 }}>
               <div className="card-image-container small-img">
                 <img src={calendarDaysImg} alt="Working Days Calendar" className="premium-3d-img" />
               </div>
@@ -102,7 +165,7 @@ const TradingModel = () => {
             </motion.div>
             
             {/* Monthly Approximate */}
-            <motion.div className="glass-card solid-dark-card premium-card-hover card-accent-green" variants={itemVariants} whileHover={{ y: -8 }}>
+            <motion.div className="glass-card solid-dark-card premium-card-hover card-accent-green" variants={incomeCardVariants} whileHover={{ y: -8, scale: 1.02 }}>
               <div className="card-image-container small-img">
                 <img src={moneyBagGraphImg} alt="Monthly Income Graph" className="premium-3d-img" />
               </div>
@@ -111,7 +174,7 @@ const TradingModel = () => {
             </motion.div>
 
             {/* Yearly Approximate */}
-            <motion.div className="glass-card solid-dark-card premium-card-hover card-accent-green" variants={itemVariants} whileHover={{ y: -8 }}>
+            <motion.div className="glass-card solid-dark-card premium-card-hover card-accent-green" variants={incomeCardVariants} whileHover={{ y: -8, scale: 1.02 }}>
               <div className="card-image-container small-img">
                 <img src={yearlyCalendarWealthImg} alt="Yearly Growth" className="premium-3d-img" />
               </div>
@@ -120,7 +183,7 @@ const TradingModel = () => {
             </motion.div>
 
             {/* By 2034 */}
-            <motion.div className="glass-card solid-dark-card premium-card-hover card-accent-gold" variants={itemVariants} whileHover={{ y: -8 }}>
+            <motion.div className="glass-card solid-dark-card premium-card-hover card-accent-gold" variants={incomeCardVariants} whileHover={{ y: -8, scale: 1.02 }}>
               <div className="card-image-container small-img">
                 <img src={futuristicCityGoldImg} alt="Future Wealth City" className="premium-3d-img" />
               </div>
@@ -138,13 +201,13 @@ const TradingModel = () => {
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true, margin: "-50px" }}
+            ref={scrollRef}
+            onMouseEnter={() => setIsInteracting(true)}
+            onMouseLeave={() => setIsInteracting(false)}
+            onTouchStart={() => setIsInteracting(true)}
+            onTouchEnd={() => setIsInteracting(false)}
           >
-            {[
-              { icon: <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>, text: "No Third party deposits required" },
-              { icon: <ArrowRight size={24} />, text: "100% Direct" },
-              { icon: <Droplets size={24} />, text: "100% Liquid" },
-              { icon: <Calendar size={24} />, text: "Monthly cashouts" }
-            ].map((benefit, idx) => (
+            {repeatedBenefits.map((benefit, idx) => (
               <motion.div key={idx} className="benefit-item glass-card solid-dark-card" variants={itemVariants}>
                 <div className="benefit-icon text-orange">{benefit.icon}</div>
                 <div className="benefit-text">{benefit.text}</div>
@@ -184,19 +247,19 @@ const TradingModel = () => {
               transition={{ duration: 0.6, delay: 0.2 }}
             >
               <ul className="premium-list">
-                <li className="text-dark">
+                <li>
                   <CheckCircle className="text-orange list-icon" size={20} />
                   <span><strong>Total Control:</strong> You maintain 100% control of your funds in your own brokerage account.</span>
                 </li>
-                <li className="text-dark">
+                <li>
                   <CheckCircle className="text-orange list-icon" size={20} />
                   <span><strong>Transparency:</strong> Real-time visibility of every trade and position.</span>
                 </li>
-                <li className="text-dark">
+                <li>
                   <CheckCircle className="text-orange list-icon" size={20} />
                   <span><strong>Risk Managed:</strong> 0.5% max risk per trade means a losing streak won't blow up your account.</span>
                 </li>
-                <li className="text-dark">
+                <li>
                   <CheckCircle className="text-orange list-icon" size={20} />
                   <span><strong>Consistent Yields:</strong> Targeted strategies for steady, compounding growth over time.</span>
                 </li>

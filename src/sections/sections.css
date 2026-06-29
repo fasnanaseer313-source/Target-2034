@@ -289,7 +289,16 @@
 .trading-model-section {
   position: relative;
   z-index: 2;
-  background: var(--color-bg-dark);
+  background: #f8f9fa; /* Offwhite background */
+}
+
+.trading-model-section .heading-lg,
+.trading-model-section .income-heading {
+  color: #111827;
+}
+
+.trading-model-section .premium-list li {
+  color: #374151;
 }
 
 .model-header {
@@ -388,9 +397,19 @@
 }
 
 .benefits-strip {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  display: flex;
   gap: 20px;
+  overflow-x: auto;
+  padding-bottom: 20px;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+  cursor: grab;
+}
+.benefits-strip::-webkit-scrollbar {
+  display: none;
+}
+.benefits-strip:active {
+  cursor: grabbing;
 }
 
 .benefit-item {
@@ -401,6 +420,8 @@
   padding: 24px;
   text-align: center;
   gap: 16px;
+  flex: 0 0 auto;
+  min-width: 280px;
 }
 
 .benefit-icon {
