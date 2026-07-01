@@ -95,7 +95,10 @@ const TradingModel = () => {
         
         {/* Top Section: Power of 1% Rule - The 3 Main Cards */}
         <div className="model-header" style={{ marginBottom: '40px' }}>
-          <h2 className="heading-lg">The Power of <span className="text-orange highlight-underline">"1% Rule"</span></h2>
+          <h2 className="heading-lg" style={{ textTransform: 'uppercase', letterSpacing: '2px' }}>THE POWER OF <br />
+            <span style={{ fontSize: '1.5em', fontWeight: 'bold', background: 'linear-gradient(to right, #ffffff, #f0d58b, #cca33c)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', textShadow: '0 0 20px rgba(204, 163, 60, 0.5)' }}>1% RULE</span>
+            <span style={{ color: '#f0d58b', fontSize: '1.5em', verticalAlign: 'super', marginLeft: '10px', textShadow: '0 0 15px rgba(240, 213, 139, 0.8)' }}>↗</span>
+          </h2>
         </div>
 
         <motion.div 
@@ -106,37 +109,30 @@ const TradingModel = () => {
           viewport={{ once: true, margin: "-100px" }}
         >
           {/* Card 1: Capital */}
-          <motion.div className="glass-card solid-dark-card premium-card-hover card-accent-green" variants={itemVariants} whileHover={{ y: -8 }}>
-            <div className="card-top-icon"><Wallet className="text-white" size={20} /></div>
+          <motion.div className="pedestal-item" style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', textAlign: 'center' }} variants={itemVariants} whileHover={{ y: -8 }}>
             <div className="card-image-container">
               <img src={cashStackImg} alt="Capital Cash Stack" className="premium-3d-img" />
             </div>
-            <h3 className="card-title">CAPITAL</h3>
+            <h3 className="card-title text-green-accent">CAPITAL</h3>
             <div className="card-value">₹10,00,000</div>
           </motion.div>
           
           {/* Card 2: Risk Per Trade */}
-          <motion.div className="glass-card solid-dark-card premium-card-hover card-accent-red" variants={itemVariants} whileHover={{ y: -8 }}>
-            <div className="card-top-icon">
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-white"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"></path><line x1="12" y1="9" x2="12" y2="13"></line><line x1="12" y1="17" x2="12.01" y2="17"></line></svg>
-            </div>
+          <motion.div className="pedestal-item" style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', textAlign: 'center' }} variants={itemVariants} whileHover={{ y: -8 }}>
             <div className="card-image-container">
               <img src={redShieldImg} alt="Risk Shield" className="premium-3d-img" />
             </div>
-            <h3 className="card-title">RISK PER TRADE</h3>
+            <h3 className="card-title text-red-accent">RISK PER TRADE</h3>
             <div className="card-value">0.5% = ₹5,000</div>
             <p className="card-subtitle">Maximum loss per trade</p>
           </motion.div>
 
           {/* Card 3: Reward Per Trade */}
-          <motion.div className="glass-card solid-dark-card premium-card-hover card-accent-green" variants={itemVariants} whileHover={{ y: -8 }}>
-            <div className="card-top-icon">
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-white"><circle cx="12" cy="12" r="10"></circle><circle cx="12" cy="12" r="6"></circle><circle cx="12" cy="12" r="2"></circle></svg>
-            </div>
+          <motion.div className="pedestal-item" style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', textAlign: 'center' }} variants={itemVariants} whileHover={{ y: -8 }}>
             <div className="card-image-container">
               <img src={targetArrowImg} alt="Target Reward" className="premium-3d-img" />
             </div>
-            <h3 className="card-title">REWARD PER TRADE</h3>
+            <h3 className="card-title text-green-accent">REWARD PER TRADE</h3>
             <div className="card-value">1% = ₹10,000</div>
             <p className="card-subtitle">Target profit per trade</p>
           </motion.div>
@@ -156,7 +152,7 @@ const TradingModel = () => {
             viewport={{ once: false, amount: 0.2 }}
           >
             {/* Working Days */}
-            <motion.div className="glass-card solid-dark-card premium-card-hover card-accent-green" variants={incomeCardVariants} whileHover={{ y: -8, scale: 1.02 }}>
+            <motion.div className="glass-card solid-dark-card premium-card-hover" style={{ border: '1px solid var(--color-gold)' }} variants={incomeCardVariants} whileHover={{ y: -8, scale: 1.02 }}>
               <div className="card-image-container small-img">
                 <img src={calendarDaysImg} alt="Working Days Calendar" className="premium-3d-img" />
               </div>
@@ -165,7 +161,7 @@ const TradingModel = () => {
             </motion.div>
             
             {/* Monthly Approximate */}
-            <motion.div className="glass-card solid-dark-card premium-card-hover card-accent-green" variants={incomeCardVariants} whileHover={{ y: -8, scale: 1.02 }}>
+            <motion.div className="glass-card solid-dark-card premium-card-hover" style={{ border: '1px solid var(--color-gold)' }} variants={incomeCardVariants} whileHover={{ y: -8, scale: 1.02 }}>
               <div className="card-image-container small-img">
                 <img src={moneyBagGraphImg} alt="Monthly Income Graph" className="premium-3d-img" />
               </div>
@@ -174,7 +170,7 @@ const TradingModel = () => {
             </motion.div>
 
             {/* Yearly Approximate */}
-            <motion.div className="glass-card solid-dark-card premium-card-hover card-accent-green" variants={incomeCardVariants} whileHover={{ y: -8, scale: 1.02 }}>
+            <motion.div className="glass-card solid-dark-card premium-card-hover" style={{ border: '1px solid var(--color-gold)' }} variants={incomeCardVariants} whileHover={{ y: -8, scale: 1.02 }}>
               <div className="card-image-container small-img">
                 <img src={yearlyCalendarWealthImg} alt="Yearly Growth" className="premium-3d-img" />
               </div>
@@ -183,14 +179,18 @@ const TradingModel = () => {
             </motion.div>
 
             {/* By 2034 */}
-            <motion.div className="glass-card solid-dark-card premium-card-hover card-accent-gold" variants={incomeCardVariants} whileHover={{ y: -8, scale: 1.02 }}>
+            <motion.div className="glass-card solid-dark-card premium-card-hover" style={{ border: '1px solid var(--color-gold)' }} variants={incomeCardVariants} whileHover={{ y: -8, scale: 1.02 }}>
               <div className="card-image-container small-img">
                 <img src={futuristicCityGoldImg} alt="Future Wealth City" className="premium-3d-img" />
               </div>
               <div className="card-label">BY 2034</div>
-              <div className="card-big-value text-white">= 1.2 CR</div>
+              <div className="card-big-value text-orange">= 1.2 CR</div>
             </motion.div>
           </motion.div>
+          
+          <div style={{ textAlign: 'center', marginTop: '40px' }}>
+            <p style={{ color: 'var(--color-gold)', letterSpacing: '2px', fontWeight: '600', textTransform: 'uppercase', fontSize: '0.9rem' }}>CONSISTENT RISK. DISCIPLINED EXECUTION. POWERFUL RESULTS.</p>
+          </div>
         </div>
 
         {/* Section 2: Key Benefits Strip */}

@@ -289,16 +289,55 @@
 .trading-model-section {
   position: relative;
   z-index: 2;
-  background: #f8f9fa; /* Offwhite background */
+  background-color: #050505; /* Deep cinematic black */
+  background-image: url('../assets/cinematic_trading_bg.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  padding: 100px 0;
+  overflow: hidden;
+}
+
+.trading-model-section::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: linear-gradient(180deg, rgba(5,5,5,0) 0%, rgba(5,5,5,0.8) 100%);
+  z-index: 1;
+  pointer-events: none;
+}
+
+.trading-model-section .container {
+  position: relative;
+  z-index: 2;
 }
 
 .trading-model-section .heading-lg,
 .trading-model-section .income-heading {
-  color: #111827;
+  color: var(--color-white);
+}
+
+.income-heading {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  letter-spacing: 2px;
+  color: var(--color-gold) !important;
+}
+
+.income-heading::before,
+.income-heading::after {
+  content: '';
+  height: 1px;
+  background: var(--color-gold);
+  flex: 1;
+  max-width: 150px;
+  margin: 0 20px;
 }
 
 .trading-model-section .premium-list li {
-  color: #374151;
+  color: var(--color-text-secondary);
 }
 
 .model-header {
@@ -642,13 +681,71 @@
   flex-direction: column;
   align-items: center;
   text-align: center;
-  padding: 40px 24px;
+  padding: 30px 24px;
   border-radius: var(--radius-lg);
-  background: var(--color-bg-card);
-  border: 1px solid rgba(255, 255, 255, 0.05);
+  background: linear-gradient(180deg, rgba(11, 17, 32, 0.8) 0%, rgba(5, 5, 5, 0.9) 100%);
+  border: 1px solid rgba(255, 215, 0, 0.3) !important;
   transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.4s ease;
   position: relative;
   overflow: hidden;
+  backdrop-filter: blur(16px);
+  box-shadow: 0 15px 35px rgba(0,0,0,0.5), inset 0 1px 0 rgba(255,255,255,0.1);
+}
+
+.premium-card-hover:hover {
+  transform: translateY(-8px) scale(1.02);
+  box-shadow: 0 25px 50px rgba(0,0,0,0.7), inset 0 1px 0 rgba(255,255,255,0.2), 0 0 30px rgba(255, 215, 0, 0.15);
+}
+
+.premium-card-hover::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: radial-gradient(circle at 50% 0%, rgba(255, 215, 0, 0.1) 0%, transparent 60%);
+  z-index: 0;
+  pointer-events: none;
+}
+
+.transparent-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 30px 20px;
+  background: linear-gradient(180deg, rgba(255,255,255,0.02) 0%, rgba(255,255,255,0.05) 100%);
+  border: 1px solid rgba(255, 215, 0, 0.15); /* Thin golden border */
+  border-radius: 24px;
+  position: relative;
+  transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.4s ease;
+  backdrop-filter: blur(12px);
+  box-shadow: 0 20px 40px rgba(0,0,0,0.6), inset 0 1px 0 rgba(255,255,255,0.1);
+}
+
+.transparent-card::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 10%;
+  width: 80%;
+  height: 20px;
+  background: radial-gradient(ellipse at center, rgba(34, 197, 94, 0.4) 0%, transparent 70%);
+  filter: blur(10px);
+  z-index: 0;
+  transition: all 0.4s ease;
+}
+
+.transparent-card.risk-card::after {
+  background: radial-gradient(ellipse at center, rgba(239, 68, 68, 0.4) 0%, transparent 70%);
+}
+
+.transparent-card:hover {
+  transform: translateY(-8px) scale(1.02);
+  box-shadow: 0 30px 60px rgba(0,0,0,0.8), inset 0 1px 0 rgba(255,255,255,0.2), 0 0 20px rgba(255, 215, 0, 0.1);
+}
+
+.transparent-card:hover::after {
+  opacity: 0.8;
+  transform: scale(1.1);
 }
 
 .card-top-icon {
@@ -666,12 +763,13 @@
 
 /* Image container and 3D image styles */
 .card-image-container {
-  height: 140px;
+  height: 200px; /* Increased height for pedestals */
   display: flex;
   align-items: center;
   justify-content: center;
   margin-bottom: 24px;
   z-index: 2;
+  position: relative;
 }
 
 .card-image-container.small-img {
@@ -692,27 +790,29 @@
 
 /* Card Typography */
 .card-title, .card-label {
-  font-size: 0.9rem;
-  font-weight: 600;
+  font-size: 1rem;
+  font-weight: 700;
   letter-spacing: 2px;
-  color: var(--color-text-muted);
+  color: var(--color-white);
   margin-bottom: 12px;
   text-transform: uppercase;
   z-index: 2;
 }
 
 .card-value {
-  font-size: 2.2rem;
-  font-weight: 700;
+  font-size: 2.5rem;
+  font-weight: 800;
   color: var(--color-white);
   margin-bottom: 8px;
   z-index: 2;
+  text-shadow: 0 2px 10px rgba(0,0,0,0.5);
 }
 
 .card-big-value {
   font-size: 1.8rem;
-  font-weight: 700;
+  font-weight: 800;
   z-index: 2;
+  text-shadow: 0 2px 10px rgba(0,0,0,0.5);
 }
 
 .card-subtitle {
@@ -741,6 +841,20 @@
 }
 .card-accent-gold:hover {
   box-shadow: 0 15px 40px rgba(249, 115, 22, 0.15), 0 0 20px rgba(249, 115, 22, 0.1);
+}
+
+.text-green-accent {
+  color: #22c55e;
+  font-size: 1.1rem;
+  letter-spacing: 2px;
+  text-shadow: 0 0 10px rgba(34, 197, 94, 0.5);
+}
+
+.text-red-accent {
+  color: #ef4444;
+  font-size: 1.1rem;
+  letter-spacing: 2px;
+  text-shadow: 0 0 10px rgba(239, 68, 68, 0.5);
 }
 
 .glow-text {
