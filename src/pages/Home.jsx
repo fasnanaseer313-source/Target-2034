@@ -1,6 +1,7 @@
 import React from 'react';
 import Hero from '../sections/Hero';
 import TradingModel from '../sections/TradingModel';
+import WealthGrowthProjection from '../sections/WealthGrowthProjection';
 import ParentCompany from '../sections/ParentCompany';
 
 // Import other sections as we build them
@@ -15,6 +16,7 @@ const Home = () => {
     <div className="home-page">
       <Hero />
       <TradingModel />
+      <WealthGrowthProjection />
       <ParentCompany />
       <WealthGrowthChart />
       <InvestmentJourney />

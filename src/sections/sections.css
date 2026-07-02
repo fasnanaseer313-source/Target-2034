@@ -997,43 +997,509 @@
     min-width: 85vw;
   }
 }
-/* Light Theme Overrides for Trading Model */
-.bg-off-white {
-  background-color: #f8f9fa !important;
+/* --- New Light Theme for Trading Model --- */
+.trading-model-light-section {
+  background: #fdfdfd;
+  padding: 100px 0;
+  color: #1a1a1a;
+  position: relative;
+  z-index: 2;
 }
-.bg-off-white .heading-lg {
-  color: #111827;
+
+.trading-model-light-section .container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
 }
-.bg-off-white .glass-card {
+
+.model-header {
+  text-align: center;
+  margin-bottom: 60px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+}
+
+.pill-badge {
+  font-size: 0.85rem;
+  font-weight: 600;
+  padding: 6px 16px;
+  border-radius: 40px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.framework-badge {
+  background-color: #e6f4ea;
+  color: #166534;
+}
+
+.numbers-badge {
+  background-color: #fef3c7;
+  color: #b45309;
+}
+
+.dark-heading {
+  color: #111827 !important;
+  font-size: 2.5rem;
+  font-weight: 800;
+  margin: 0;
+}
+
+.highlight-green {
+  color: #22c55e;
+}
+
+.subtitle-gray {
+  color: #6b7280;
+  font-size: 1.1rem;
+}
+
+/* Three Pillars Grid */
+.pillars-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 30px;
+  margin-bottom: 80px;
+}
+
+.pillar-card {
   background: #ffffff;
-  border-color: #e5e7eb;
-  box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+  border-radius: 20px;
+  padding: 40px 30px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.05);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
-.bg-off-white .card-title,
-.bg-off-white .card-label {
-  color: #4b5563 !important;
+
+.pillar-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 15px 50px rgba(0, 0, 0, 0.08);
 }
-.bg-off-white .card-value,
-.bg-off-white .card-big-value,
-.bg-off-white .income-heading {
-  color: #111827 !important;
+
+.pillar-capital {
+  background: linear-gradient(180deg, rgba(220, 252, 231, 0.5) 0%, rgba(255,255,255,1) 100%);
 }
-.bg-off-white .card-subtitle,
-.bg-off-white .text-muted {
-  color: #6b7280 !important;
+.pillar-risk {
+  background: linear-gradient(180deg, rgba(254, 226, 226, 0.5) 0%, rgba(255,255,255,1) 100%);
 }
-.bg-off-white .card-top-icon {
-  background: #f3f4f6;
-  border-color: #e5e7eb;
+.pillar-reward {
+  background: linear-gradient(180deg, rgba(254, 243, 199, 0.5) 0%, rgba(255,255,255,1) 100%);
 }
-.bg-off-white .card-top-icon svg {
-  color: #111827 !important;
+
+.pillar-icon-wrapper {
+  width: 64px;
+  height: 64px;
+  border-radius: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 24px;
 }
-.bg-off-white .glow-text {
-  text-shadow: none;
+
+.green-bg { background: #dcfce7; }
+.red-bg { background: #fee2e2; }
+.yellow-bg { background: #fef3c7; }
+
+.pillar-label {
+  font-size: 0.85rem;
+  font-weight: 700;
+  letter-spacing: 2px;
+  margin-bottom: 8px;
 }
-.bg-off-white .card-accent-green,
-.bg-off-white .card-accent-red,
-.bg-off-white .card-accent-gold {
-  border-top-width: 4px;
+.green-text { color: #16a34a; }
+.red-text { color: #dc2626; }
+.yellow-text { color: #ca8a04; }
+
+.pillar-title {
+  font-size: 1.25rem;
+  color: #1f2937;
+  margin-bottom: 16px;
+  font-weight: 800;
 }
+
+.pillar-value {
+  font-size: 2rem;
+  font-weight: 800;
+  color: #111827;
+  margin-bottom: 8px;
+}
+
+.pillar-subtitle {
+  color: #6b7280;
+  font-size: 0.95rem;
+  margin-bottom: 20px;
+}
+
+.pillar-bottom-line {
+  position: absolute;
+  bottom: 30px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 60%;
+  height: 4px;
+  border-radius: 2px;
+}
+.bg-green { background: #22c55e; }
+.bg-red { background: #ef4444; }
+.bg-yellow { background: #eab308; }
+
+/* Income Cards Grid */
+.income-cards-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 20px;
+}
+
+.income-card {
+  border-radius: 24px;
+  padding: 30px 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.03);
+  transition: transform 0.3s ease;
+}
+
+.income-card:hover {
+  transform: translateY(-5px);
+}
+
+.card-blue { background: #eff6ff; }
+.card-green { background: #f0fdf4; }
+.card-purple { background: #faf5ff; }
+.card-yellow { background: #fefce8; }
+
+.income-icon-wrapper {
+  margin-bottom: 16px;
+}
+
+.income-big-value {
+  font-size: 2.5rem;
+  font-weight: 800;
+  line-height: 1.1;
+  margin-bottom: 4px;
+}
+
+.text-blue { color: #3b82f6; }
+.text-purple { color: #a855f7; }
+.text-yellow { color: #eab308; }
+.text-green { color: #22c55e; }
+
+.income-unit {
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: #6b7280;
+  margin-bottom: 12px;
+  letter-spacing: 1px;
+}
+
+.income-label {
+  font-size: 1rem;
+  color: #9ca3af;
+  font-weight: 500;
+}
+
+/* --- Wealth Growth Projection Section --- */
+.wealth-projection-section {
+  background: #fdfdfd;
+  padding: 80px 0;
+  position: relative;
+  z-index: 2;
+}
+
+.projection-container {
+  background: #f4fdf4;
+  border: 1px solid #dcfce7;
+  border-radius: 24px;
+  padding: 40px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.02);
+}
+
+.projection-header {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.highlight-purple-green {
+  background: linear-gradient(90deg, #8b5cf6, #22c55e);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.projection-pills {
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+  margin-bottom: 40px;
+  flex-wrap: wrap;
+}
+
+.proj-pill {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 16px;
+  border-radius: 40px;
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+
+.proj-pill .dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+}
+
+.pill-green { background: #dcfce7; color: #166534; }
+.pill-green .dot { background: #166534; }
+
+.pill-purple { background: #f3e8ff; color: #6b21a8; }
+.pill-purple .dot { background: #6b21a8; }
+
+.pill-blue { background: #e0f2fe; color: #0369a1; }
+.pill-blue .dot { background: #0369a1; }
+
+.pill-yellow { background: #fef3c7; color: #b45309; }
+.pill-yellow .dot { background: #b45309; }
+
+/* Chart Area */
+.chart-wrapper {
+  display: flex;
+  gap: 16px;
+  margin-bottom: 40px;
+  height: 300px;
+  position: relative;
+}
+
+.y-axis {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  color: #9ca3af;
+  font-size: 0.8rem;
+  text-align: right;
+  padding-bottom: 30px; /* offset for x-axis */
+}
+
+.chart-main {
+  flex: 1;
+  position: relative;
+  border-left: 1px dashed #e5e7eb;
+  border-bottom: 1px dashed #e5e7eb;
+}
+
+.grid-lines {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 30px; /* offset for x-axis */
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  pointer-events: none;
+}
+
+.grid-line {
+  height: 1px;
+  border-bottom: 1px dashed #e5e7eb;
+  width: 100%;
+}
+
+.svg-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 30px; /* offset for x-axis */
+}
+
+.svg-container svg {
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+}
+
+.x-axis {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: space-between;
+  color: #9ca3af;
+  font-size: 0.8rem;
+  padding-top: 10px;
+  transform: translateX(-10px);
+}
+
+/* Bottom Cards */
+.projection-bottom-cards {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+.proj-bottom-card {
+  flex: 1;
+  background: #ffffff;
+  border-radius: 16px;
+  padding: 20px;
+  text-align: center;
+  border: 1px solid #e5e7eb;
+}
+
+.card-green-light { border-bottom: 4px solid #22c55e; }
+.card-purple-light { border-bottom: 4px solid #a855f7; }
+.card-yellow-light { border-bottom: 4px solid #eab308; }
+
+.proj-card-label {
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: #6b7280;
+  margin-bottom: 8px;
+  letter-spacing: 1px;
+}
+
+.proj-card-value {
+  font-size: 1.5rem;
+  font-weight: 800;
+}
+
+
+/* --- Power of 1% Rule Section --- */
+.power-rule-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  margin-bottom: 80px;
+  padding-top: 40px;
+}
+
+.strategy-badge {
+  background-color: #f5eedf;
+  color: #78350f;
+  border: 1px solid #d4c5b0;
+  margin-bottom: 40px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.03);
+}
+
+.power-rule-heading-container {
+  margin-bottom: 40px;
+}
+
+.power-rule-subtitle {
+  color: #78350f;
+  font-size: 2rem;
+  font-weight: 800;
+  letter-spacing: 1px;
+  margin-bottom: -10px;
+}
+
+.power-rule-title {
+  font-size: 5.5rem;
+  font-weight: 900;
+  color: #eab308;
+  line-height: 1;
+  margin: 0;
+  text-shadow: 2px 2px 0px rgba(234, 179, 8, 0.2);
+}
+
+.e-chart-wrapper {
+  position: relative;
+  display: inline-block;
+}
+
+.tiny-chart {
+  position: absolute;
+  top: 15%;
+  right: -5%;
+  background: rgba(255, 255, 255, 0.8);
+  border: 1px solid #e5e7eb;
+  padding: 4px;
+  border-radius: 4px;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
+
+.power-rule-desc {
+  color: #4b5563;
+  font-size: 1.2rem;
+  font-weight: 600;
+  margin-top: 20px;
+}
+
+.capital-base-card {
+  background-color: #fdfaf2;
+  border: 2px solid #e7d3b0;
+  border-radius: 16px;
+  padding: 20px 40px;
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.04);
+}
+
+.capital-base-label {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  color: #78350f;
+  font-size: 0.85rem;
+  font-weight: 800;
+  letter-spacing: 1px;
+  margin-bottom: 8px;
+}
+
+.capital-base-value {
+  font-size: 3rem;
+  font-weight: 800;
+  color: #78350f;
+  line-height: 1.1;
+  margin-bottom: 4px;
+}
+
+.capital-base-desc {
+  color: #92400e;
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+
+
+.framework-badge-gold {
+  background-color: #f8f1e7;
+  color: #9a3412;
+  border: 1px solid #e7d3b0;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.highlight-gold-gradient {
+  background: linear-gradient(90deg, #d97706, #eab308);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+
+.income-overview-badge {
+  background-color: #eaf3ed;
+  color: #065f46;
+  border: 1px solid #d1eada;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.highlight-green-gradient {
+  background: linear-gradient(90deg, #10b981, #34d399);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
