@@ -59,24 +59,15 @@ const Hero = () => {
             className="hero-image-wrapper"
             style={{ y: y1 }}
           >
-            <motion.img 
-              src={heroImg} 
-              alt="Target 2034 Platform" 
-              className="hero-main-img"
-              animate={{ y: [0, -15, 0] }}
-              transition={{ repeat: Infinity, duration: 6, ease: "easeInOut" }}
+            <motion.video 
+              src="/animation.mp4" 
+              className="hero-main-video"
+              autoPlay
+              loop
+              muted
+              playsInline
+              style={{ width: '100%', height: 'auto', borderRadius: '16px', boxShadow: '0 20px 50px rgba(0,0,0,0.5)' }}
             />
-            
-            {/* Floating Mutual Fund Logos (Placeholders / CSS styled) */}
-            <motion.div className="float-logo logo-1" style={{ y: y2 }} animate={{ rotate: [0, 10, 0] }} transition={{ repeat: Infinity, duration: 4 }}>
-              <div className="logo-placeholder blue"></div>
-            </motion.div>
-            <motion.div className="float-logo logo-2" style={{ y: y1 }} animate={{ rotate: [0, -15, 0] }} transition={{ repeat: Infinity, duration: 5 }}>
-              <div className="logo-placeholder red"></div>
-            </motion.div>
-            <motion.div className="float-logo logo-3" style={{ y: y2 }} animate={{ rotate: [0, 8, 0] }} transition={{ repeat: Infinity, duration: 3.5 }}>
-              <div className="logo-placeholder orange"></div>
-            </motion.div>
             
             <div className="image-glow-behind"></div>
           </motion.div>

@@ -1,8 +1,9 @@
 import React, { useEffect } from 'react';
 import { motion, useAnimation } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
-import { Handshake, Target, Eye, ShieldCheck, Flag } from 'lucide-react';
+import { Handshake, Target, Eye, ShieldCheck, Flag, Star, BarChart, Check, Trophy } from 'lucide-react';
 import './sections.css';
+import LogoOrbitAnimation from '../components/LogoOrbitAnimation';
 
 import missionTargetImg from '../assets/mission_target_3d.png';
 import visionFutureImg from '../assets/vision_future_3d.png';
@@ -34,11 +35,31 @@ const ParentCompany = () => {
       <div className="container">
         
         {/* Header */}
-        <div className="ecosystem-header text-center">
-          <motion.h2 className="heading-lg mb-4" initial={{opacity:0}} whileInView={{opacity:1}} viewport={{once:true}}>
-            TOGETHER, BUILDING TOMORROW
+        <div className="ecosystem-header text-center announcement-section">
+          {/* Floating Icons */}
+          <motion.div className="floating-icon icon-star" animate={{ y: [0, -10, 0] }} transition={{ repeat: Infinity, duration: 4, ease: "easeInOut" }}>
+            <Star size={24} fill="#fbbf24" stroke="none" />
+          </motion.div>
+          <motion.div className="floating-icon icon-chart" animate={{ y: [0, 15, 0] }} transition={{ repeat: Infinity, duration: 5, ease: "easeInOut" }}>
+            <BarChart size={24} color="#94a3b8" />
+          </motion.div>
+          <motion.div className="floating-icon icon-trophy" animate={{ y: [0, 10, 0] }} transition={{ repeat: Infinity, duration: 4.5, ease: "easeInOut" }}>
+            <Trophy size={28} fill="#9a3412" stroke="none" />
+          </motion.div>
+
+          <div className="pill-badge announcement-badge">
+            <span className="dot" style={{ width: '6px', height: '6px', backgroundColor: '#fbbf24', borderRadius: '50%', display: 'inline-block' }}></span> Partnership Announcement · 2024
+          </div>
+          
+          <motion.h2 className="announcement-title" initial={{opacity:0}} whileInView={{opacity:1}} viewport={{once:true}}>
+            <div className="text-white">TOGETHER,</div>
+            <div className="text-gold">BUILDING</div>
+            <div className="text-white">TOMORROW</div>
           </motion.h2>
-          <motion.p className="text-muted text-lg mb-16" initial={{opacity:0}} whileInView={{opacity:1}} viewport={{once:true}} transition={{delay:0.2}}>
+          
+          <div className="announcement-divider"></div>
+
+          <motion.p className="announcement-subtitle" initial={{opacity:0}} whileInView={{opacity:1}} viewport={{once:true}} transition={{delay:0.2}}>
             Two Strong Foundations. One Shared Vision.
           </motion.p>
         </div>
@@ -48,34 +69,62 @@ const ParentCompany = () => {
           <div className="diagram-top">
             
             <motion.div 
-              className="company-node" 
-              style={{ background: '#ffffff', borderRadius: '16px', border: '2px solid #fbbf24', padding: '24px', boxShadow: '0 4px 20px rgba(0,0,0,0.15)', aspectRatio: '1 / 1', display: 'flex', alignItems: 'center', justifyContent: 'center' }}
+              className="company-node card-dark" 
+              style={{ borderColor: 'rgba(251,191,36,0.4)', boxShadow: '0 4px 20px rgba(0,0,0,0.3)' }}
               initial={{ opacity: 0, x: -50 }}
               animate={controls}
               variants={{ visible: { opacity: 1, x: 0, transition: { duration: 0.8 } } }}
-              whileHover={{ y: -5, boxShadow: '0 8px 30px rgba(251,191,36,0.3)' }}
+              whileHover={{ y: -5, boxShadow: '0 10px 40px rgba(251,191,36,0.15)' }}
             >
-              <img src="/logo1.jpeg" alt="Candle Bee Pvt Ltd Logo" style={{ width: '100%', height: '100%', objectFit: 'contain' }} />
+              <div className="country-pill pill-gold">INDIA</div>
+              <LogoOrbitAnimation>
+                <div className="company-logo-wrapper">
+                  <img src="/logo1.jpeg" alt="Candle Bee Pvt Ltd Logo" />
+                </div>
+              </LogoOrbitAnimation>
+              <div className="company-info text-center mt-4">
+                <h3 className="text-white font-bold text-xl mb-1">CandleBee</h3>
+                <p className="text-gold font-bold text-sm tracking-wider">PVT LTD</p>
+              </div>
             </motion.div>
 
             <motion.div 
-              className="handshake-center"
-              initial={{ scale: 0, rotate: -45 }}
+              className="handshake-animated-container"
+              initial={{ scale: 0 }}
               animate={controls}
-              variants={{ visible: { scale: 1, rotate: 0, transition: { delay: 0.6, type: 'spring' } } }}
+              variants={{ visible: { scale: 1, transition: { delay: 0.6, type: 'spring' } } }}
             >
-              <Handshake size={32} className="text-orange" />
+              <div className="pulse-ring pulse-ring-1"></div>
+              <div className="pulse-ring pulse-ring-2"></div>
+              <div className="pulse-ring pulse-ring-3"></div>
+              <span className="handshake-emoji">🤝</span>
             </motion.div>
 
             <motion.div 
-              className="company-node" 
-              style={{ background: '#ffffff', borderRadius: '16px', border: '2px solid #10b981', padding: '24px', boxShadow: '0 4px 20px rgba(0,0,0,0.15)', aspectRatio: '1 / 1', display: 'flex', alignItems: 'center', justifyContent: 'center' }}
+              className="company-node card-dark" 
+              style={{ borderColor: 'rgba(16,185,129,0.4)', boxShadow: '0 4px 20px rgba(0,0,0,0.3)' }}
               initial={{ opacity: 0, x: 50 }}
               animate={controls}
               variants={{ visible: { opacity: 1, x: 0, transition: { duration: 0.8, delay: 0.3 } } }}
-              whileHover={{ y: -5, boxShadow: '0 8px 30px rgba(16,185,129,0.3)' }}
+              whileHover={{ y: -5, boxShadow: '0 10px 40px rgba(16,185,129,0.15)' }}
             >
-              <img src="/logo2.jpeg" alt="Candle Bee Trading FZE Logo" style={{ width: '100%', height: '100%', objectFit: 'contain' }} />
+              <div className="country-pill pill-green-dark">UAE</div>
+              <LogoOrbitAnimation
+                icons={[
+                  { icon: '🌿', angleOffset: 45, duration: 9, direction: -1, floatOffset: 7 },
+                  { icon: '🍯', angleOffset: 160, duration: 11, direction: 1, floatOffset: -6 },
+                  { icon: '✨', angleOffset: 280, duration: 8, direction: 1, floatOffset: 5 },
+                  { icon: '💛', angleOffset: 340, duration: 10, direction: -1, floatOffset: -5 },
+                ]}
+              >
+                <div className="company-logo-wrapper">
+                  <img src="/logo2.jpeg" alt="Candle Bee Trading FZE Logo" />
+                </div>
+              </LogoOrbitAnimation>
+              <div className="company-info text-center mt-4">
+                <h3 className="text-white font-bold text-xl mb-1">CandleBee</h3>
+                <p className="text-green font-bold text-sm tracking-wider uppercase">Trading FZE</p>
+              </div>
             </motion.div>
           </div>
 
@@ -105,7 +154,7 @@ const ParentCompany = () => {
                 <img src="/target2034-logo.jpeg" alt="Target 2034 Logo" style={{ width: '100%', maxWidth: '350px', height: 'auto', objectFit: 'contain', borderRadius: '12px' }} />
               </div>
               <div style={{ flex: '1', textAlign: 'left' }}>
-                <h3 className="text-2xl text-muted mb-2">Our New Company</h3>
+                <h3 className="text-2xl text-muted mb-2">Our New Product</h3>
                 <h2 className="text-5xl font-bold mb-6">Target <span className="text-orange">2034</span></h2>
                 
                 <div className="target-vision-strip mb-6 text-xl">

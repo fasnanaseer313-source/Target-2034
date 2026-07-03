@@ -2,6 +2,7 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { Landmark, Shield, Target, Calendar, Wallet, BarChart3, Building2, ArrowRight, Droplets } from 'lucide-react';
 import './sections.css';
+import FloatingIconsBackground from '../components/FloatingIconsBackground';
 
 const benefitsList = [
   { icon: <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>, text: "No Third party deposits required" },
@@ -67,8 +68,9 @@ const TradingModel = () => {
   };
 
   return (
-    <section className="section trading-model-light-section" id="platform">
-      <div className="container">
+    <section className="section trading-model-light-section" id="platform" style={{ position: 'relative' }}>
+      <FloatingIconsBackground />
+      <div className="container" style={{ position: 'relative', zIndex: 2 }}>
 
         {/* Power of 1% Rule Section */}
         <div className="power-rule-section">
@@ -79,7 +81,9 @@ const TradingModel = () => {
             <h1 className="power-rule-title">
               1% RULE
             </h1>
-            <p className="power-rule-desc">Consistent Risk. Disciplined Execution. Powerful Results.</p>
+            <div className="pill-badge framework-badge-gold" style={{ marginTop: '24px', letterSpacing: '2px', fontSize: '0.85rem', fontWeight: '700' }}>
+              CONSISTENT RISK &middot; DISCIPLINED EXECUTION &middot; POWERFUL RESULTS
+            </div>
           </div>
 
           <div className="capital-base-card">
@@ -96,7 +100,7 @@ const TradingModel = () => {
           <div className="pill-badge framework-badge-gold">
             <span className="dot" style={{ width: '6px', height: '6px', backgroundColor: '#eab308', borderRadius: '50%', display: 'inline-block' }}></span> THE 1% FRAMEWORK
           </div>
-          <h2 className="heading-lg dark-heading" style={{ textTransform: 'uppercase', letterSpacing: '1px' }}>
+          <h2 className="heading-lg text-white" style={{ textTransform: 'uppercase', letterSpacing: '1px' }}>
             THREE PILLARS OF <span className="highlight-gold-gradient">DISCIPLINE</span>
           </h2>
         </div>
@@ -157,7 +161,7 @@ const TradingModel = () => {
             <div className="pill-badge income-overview-badge">
               <span className="dot" style={{ width: '6px', height: '6px', backgroundColor: '#10b981', borderRadius: '50%', display: 'inline-block' }}></span> INCOME OVERVIEW
             </div>
-            <h2 className="heading-lg dark-heading" style={{ textTransform: 'uppercase', letterSpacing: '1px' }}>
+            <h2 className="heading-lg text-white" style={{ textTransform: 'uppercase', letterSpacing: '1px' }}>
               WHAT YOU CAN <span className="highlight-green-gradient">EARN</span>
             </h2>
           </div>
@@ -176,7 +180,7 @@ const TradingModel = () => {
               </div>
               <div className="income-big-value text-blue">15</div>
               <div className="income-unit">DAYS/MONTH</div>
-              <div className="income-label">Working Days</div>
+              <div className="income-label" style={{ color: '#93c5fd' }}>Working Days</div>
             </motion.div>
             
             {/* Monthly Approximate */}
@@ -184,9 +188,9 @@ const TradingModel = () => {
               <div className="income-icon-wrapper">
                 <Wallet size={28} color="#22c55e" />
               </div>
-              <div className="income-big-value text-green">1.5</div>
-              <div className="income-unit">LAKH ≈</div>
-              <div className="income-label">Monthly Income</div>
+              <div className="income-big-value" style={{ color: '#3b82f6' }}>1.3-1.5 lkh</div>
+              <div className="income-unit">≈</div>
+              <div className="income-label" style={{ color: '#86efac' }}>Monthly Income</div>
             </motion.div>
 
             {/* Yearly Approximate */}
@@ -196,7 +200,7 @@ const TradingModel = () => {
               </div>
               <div className="income-big-value text-purple">16</div>
               <div className="income-unit">LAKH ≈</div>
-              <div className="income-label">Yearly Income</div>
+              <div className="income-label" style={{ color: '#d8b4fe' }}>Yearly Income</div>
             </motion.div>
 
             {/* By 2034 */}
@@ -206,7 +210,7 @@ const TradingModel = () => {
               </div>
               <div className="income-big-value text-yellow">1.2</div>
               <div className="income-unit">CRORE</div>
-              <div className="income-label">By 2034</div>
+              <div className="income-label" style={{ color: '#fde047' }}>By 2034</div>
             </motion.div>
           </motion.div>
         </div>
