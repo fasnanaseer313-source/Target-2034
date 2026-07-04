@@ -274,6 +274,29 @@
     font-size: clamp(2.5rem, 12vw, 5.5rem) !important;
   }
 
+  /* Target 2034 Projection Pills */
+  .projection-pills {
+    gap: 8px !important;
+  }
+  .proj-pill {
+    padding: 6px 10px !important;
+    font-size: 0.8rem !important;
+  }
+
+  /* Tooltips on edges */
+  .chart-tooltip.tooltip-right-edge {
+    transform: translateX(-85%) !important;
+  }
+  .chart-tooltip.tooltip-right-edge::after {
+    left: 85% !important;
+  }
+  .chart-tooltip.tooltip-left-edge {
+    transform: translateX(-15%) !important;
+  }
+  .chart-tooltip.tooltip-left-edge::after {
+    left: 15% !important;
+  }
+
   /* 8. Footer */
   .footer-col {
     text-align: center;

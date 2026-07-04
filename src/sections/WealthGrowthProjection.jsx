@@ -147,7 +147,7 @@ const WealthGrowthProjection = () => {
                   animate={{ opacity: 1, y: 0, scale: 1 }}
                   exit={{ opacity: 0, y: 5, scale: 0.95 }}
                   transition={{ duration: 0.2 }}
-                  className="chart-tooltip"
+                  className={`chart-tooltip ${hoveredPoint.x >= 60 ? 'tooltip-right-edge' : hoveredPoint.x <= 30 ? 'tooltip-left-edge' : ''}`}
                   style={{
                     position: 'absolute',
                     left: `${hoveredPoint.x}%`,
