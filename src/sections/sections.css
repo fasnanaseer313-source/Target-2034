@@ -2068,3 +2068,28 @@
 .desktop-year {
   display: inline;
 }
+
+@media (max-width: 768px) {
+  .company-logo-wrapper {
+    width: 90px;
+    height: 90px;
+    padding: 8px;
+  }
+  .company-node {
+    padding: 16px 10px;
+    min-width: 130px;
+    max-width: 45%;
+    height: auto !important;
+  }
+  .company-info {
+    margin-top: 12px;
+    padding-bottom: 4px;
+  }
+  .company-info h3 {
+    font-size: 1.1rem;
+    margin-bottom: 4px;
+  }
+  .company-info p {
+    font-size: 0.75rem;
+  }
+}

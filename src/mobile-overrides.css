@@ -220,19 +220,31 @@
     transform: scale(0.6) translate(-80%, -80%) !important;
   }
   .target-main-card {
-    padding: 24px !important;
+    padding: 20px 16px !important;
   }
   .target-card-content {
     flex-direction: column !important;
-    gap: 20px !important;
+    gap: 16px !important;
     text-align: center !important;
   }
+  .target-card-content img {
+    max-width: 110px !important;
+  }
+  .target-card-content h3 {
+    font-size: 1rem !important;
+    margin-bottom: 4px !important;
+  }
   .target-card-content h2 {
-    font-size: 2.5rem !important;
+    font-size: 1.8rem !important;
+    margin-bottom: 12px !important;
   }
   .target-vision-strip {
     justify-content: center;
-    font-size: 1rem !important;
+    font-size: 0.85rem !important;
+    margin-bottom: 12px !important;
+  }
+  .target-card-content p {
+    font-size: 0.85rem !important;
   }
 
   /* Timeline */
