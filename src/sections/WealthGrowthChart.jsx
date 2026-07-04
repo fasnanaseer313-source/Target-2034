@@ -10,71 +10,49 @@ const WealthGrowthChart = () => {
 
   useEffect(() => {
     if (inView) {
-      const sequence = async () => {
-        // Step 1: Initial Growth Animation
-        await controls.start('visible');
-        // Step 2: Continuous Floating Motion
-        controls.start('floating');
-      };
-      sequence();
+      controls.start('continuous');
     }
   }, [controls, inView]);
 
   const barVariants = {
     hidden: { opacity: 0, scaleY: 0, transformOrigin: 'bottom', boxShadow: '0 0px 0px rgba(163, 177, 96, 0), inset 0 0px 0px rgba(255, 255, 255, 0)' },
-    visible: (custom) => ({
+    continuous: (custom) => ({
       opacity: 1,
-      scaleY: [0, 1.03, 1],
+      scaleY: [0, 1.03, 1, 0],
       boxShadow: [
         '0 0px 0px rgba(163, 177, 96, 0), inset 0 0px 0px rgba(255, 255, 255, 0)',
         '0 -20px 50px rgba(163, 177, 96, 0.9), inset 0 3px 15px rgba(255, 255, 255, 0.9)',
-        '0 -10px 30px rgba(163, 177, 96, 0.4), inset 0 2px 10px rgba(255, 255, 255, 0.4)'
-      ],
-      transition: {
-        duration: 0.9,
-        delay: custom.delay,
-        ease: [0.16, 1, 0.3, 1], // easeOutExpo curve
-      }
-    }),
-    floating: (custom) => ({
-      scaleY: [1, 1.03, 1],
-      boxShadow: [
         '0 -10px 30px rgba(163, 177, 96, 0.4), inset 0 2px 10px rgba(255, 255, 255, 0.4)',
-        '0 -12px 35px rgba(163, 177, 96, 0.55), inset 0 2px 12px rgba(255, 255, 255, 0.5)',
-        '0 -10px 30px rgba(163, 177, 96, 0.4), inset 0 2px 10px rgba(255, 255, 255, 0.4)'
+        '0 0px 0px rgba(163, 177, 96, 0), inset 0 0px 0px rgba(255, 255, 255, 0)'
       ],
       transition: {
-        duration: 4 + custom.index * 0.8,
+        duration: 4,
+        delay: custom.delay,
+        ease: "easeInOut",
         repeat: Infinity,
-        ease: 'easeInOut'
+        repeatDelay: 0.5
       }
     })
   };
 
   const tooltipVariants = {
     hidden: { opacity: 0, y: 20 },
-    visible: (custom) => ({
-      opacity: 1,
-      y: 0,
+    continuous: (custom) => ({
+      opacity: [0, 1, 1, 0],
+      y: [20, 0, -5, 20],
       transition: {
-        duration: 0.9,
+        duration: 4,
         delay: custom.delay,
-        ease: [0.16, 1, 0.3, 1],
-      }
-    }),
-    floating: (custom) => ({
-      y: [0, -8, 0],
-      transition: {
-        duration: 4 + custom.index * 0.8,
+        ease: "easeInOut",
         repeat: Infinity,
-        ease: 'easeInOut'
+        repeatDelay: 0.5
       }
     })
   };
 
   const labelVariants = {
     hidden: { opacity: 0 },
-    visible: (custom) => ({
+    continuous: (custom) => ({
       opacity: 1,
       transition: {
         duration: 0.6,

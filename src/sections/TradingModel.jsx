@@ -1,6 +1,6 @@
 import React from 'react';
-import { motion, useScroll, useTransform } from 'framer-motion';
-import { Landmark, Shield, Target, Calendar, Wallet, BarChart3, Building2, ArrowRight, Droplets } from 'lucide-react';
+import { motion, useScroll, useMotionValue, useTransform, animate, useInView } from 'framer-motion';
+import { Landmark, Shield, Target, Calendar, ArrowRight, Droplets } from 'lucide-react';
 import './sections.css';
 import FloatingIconsBackground from '../components/FloatingIconsBackground';
 import PremiumHighlightText from '../components/PremiumHighlightText';
@@ -16,55 +16,28 @@ const repeatedBenefits = [...benefitsList, ...benefitsList, ...benefitsList, ...
 
 // Data for stacking cards
 const incomeCards = [
-  { icon: '🗓️', unit: 'WORKING DAYS', value: '15 DAYS', label: 'Per Month', colorTheme: 'dark-blue', borderColor: 'rgba(59, 130, 246, 0.3)', unitColor: '#60a5fa' },
-  { icon: '💰', unit: 'MONTHLY APPROX', value: '₹1,50,000', label: '1.3-1.5 Lakh', colorTheme: 'dark-green', borderColor: 'rgba(74, 222, 128, 0.3)', unitColor: '#4ade80' },
-  { icon: '📊', unit: 'YEARLY APPROX', value: '₹16,00,000', label: '≈ 16 Lakh', colorTheme: 'dark-yellow', borderColor: 'rgba(250, 204, 21, 0.3)', unitColor: '#facc15' },
-  { icon: '🏙️', unit: 'BY 2034', value: '₹1,20,00,000', label: '= 1.2 Crore', colorTheme: 'dark-red', borderColor: 'rgba(248, 113, 113, 0.3)', unitColor: '#f87171' }
+  { icon: '🗓️', unit: 'WORKING DAYS', numericValue: 15, suffix: ' DAYS', label: 'Per Month', colorTheme: 'dark-blue', borderColor: 'rgba(59, 130, 246, 0.3)', unitColor: '#60a5fa' },
+  { icon: '💰', unit: 'MONTHLY APPROX', numericValue: 150000, prefix: '₹', label: '1.3-1.5 Lakh', colorTheme: 'dark-green', borderColor: 'rgba(74, 222, 128, 0.3)', unitColor: '#4ade80' },
+  { icon: '📊', unit: 'YEARLY APPROX', numericValue: 1600000, prefix: '₹', label: '≈ 16 Lakh', colorTheme: 'dark-yellow', borderColor: 'rgba(250, 204, 21, 0.3)', unitColor: '#facc15' },
+  { icon: '🏙️', unit: 'BY 2034', numericValue: 12000000, prefix: '₹', label: '= 1.2 Crore', colorTheme: 'dark-red', borderColor: 'rgba(248, 113, 113, 0.3)', unitColor: '#f87171' }
 ];
 
-const StackingCard = ({ card, index, progress, totalCards }) => {
-  const startSlideIn = index * (1 / totalCards);
+const AnimatedCounter = ({ from = 0, to, duration = 2.5, prefix = '', suffix = '' }) => {
+  const ref = React.useRef(null);
+  const inView = useInView(ref, { once: true, margin: "-10px" });
+  const count = useMotionValue(from);
   
-  const scale = useTransform(
-    progress,
-    [startSlideIn, 1],
-    [1, 1 - (totalCards - index - 1) * 0.05]
-  );
+  React.useEffect(() => {
+    if (inView) {
+      animate(count, to, { duration, ease: "easeOut" });
+    }
+  }, [inView, count, to, duration]);
 
-  const yRange = [Math.max(0, startSlideIn - (1/totalCards)), startSlideIn];
-  const y = useTransform(
-    progress,
-    yRange,
-    index === 0 ? ['0vh', '0vh'] : ['100vh', '0vh']
-  );
-  
-  return (
-    <motion.div
-      className="stacking-card-wrapper"
-      style={{ y, scale, zIndex: index, top: 0 }}
-    >
-      <div className={`income-card card-${card.colorTheme}`} style={{ 
-        width: '100%', 
-        maxWidth: '450px',
-        padding: '40px',
-        background: 'linear-gradient(180deg, #0f172a 0%, #020617 100%)',
-        border: `1px solid ${card.borderColor}`, 
-        boxShadow: `0 30px 60px rgba(0,0,0,0.8), inset 0 2px 10px rgba(255,255,255,0.05), inset 0 0 20px ${card.borderColor}`,
-        borderRadius: '24px',
-        display: 'flex',
-        flexDirection: 'column',
-        alignItems: 'center',
-        textAlign: 'center',
-        position: 'relative',
-        top: `calc(${index * 15}px)`
-      }}>
-        <div className="income-icon-wrapper" style={{ fontSize: '3rem', marginBottom: '16px', background: 'rgba(255,255,255,0.05)', padding: '16px', borderRadius: '50%' }}>{card.icon}</div>
-        <div className="income-unit" style={{ color: card.unitColor, marginBottom: '16px', fontWeight: '700', letterSpacing: '2px', fontSize: '0.9rem' }}>{card.unit}</div>
-        <div className="income-big-value text-white" style={{ fontSize: '2.8rem', fontWeight: '800', lineHeight: '1.2' }}>{card.value}</div>
-        <div className="income-label" style={{ color: '#9ca3af', fontSize: '1rem', marginTop: '12px', fontWeight: '500' }}>{card.label}</div>
-      </div>
-    </motion.div>
-  );
+  const display = useTransform(count, (latest) => {
+    return prefix + Intl.NumberFormat('en-IN').format(Math.round(latest)) + suffix;
+  });
+
+  return <motion.span ref={ref}>{display}</motion.span>;
 };
 
 const TradingModel = () => {
@@ -215,30 +188,43 @@ const TradingModel = () => {
           </motion.div>
         </motion.div>
 
-        {/* Income Overview Section - Stacking Cards */}
-        <div className="stacking-section-wrapper" ref={containerRef}>
-          <div className="sticky-container">
-            <div className="model-header" style={{ marginBottom: '40px' }}>
-              <div className="pill-badge income-overview-badge" style={{ backgroundColor: '#021a10', borderColor: '#064e3b', color: '#34d399' }}>
-                <span className="dot" style={{ width: '8px', height: '8px', backgroundColor: '#34d399', borderRadius: '50%', display: 'inline-block' }}></span> THE NUMBERS
-              </div>
-              <h2 className="heading-lg text-white" style={{ textTransform: 'uppercase', letterSpacing: '1px' }}>
-                INCOME <PremiumHighlightText colorTheme="teal">OVERVIEW</PremiumHighlightText>
-              </h2>
+        {/* Income Overview Section */}
+        <div className="income-overview-light">
+          <div className="model-header" style={{ marginTop: '80px', marginBottom: '40px' }}>
+            <div className="pill-badge income-overview-badge" style={{ backgroundColor: '#021a10', borderColor: '#064e3b', color: '#34d399' }}>
+              <span className="dot" style={{ width: '8px', height: '8px', backgroundColor: '#34d399', borderRadius: '50%', display: 'inline-block' }}></span> THE NUMBERS
             </div>
-            
-            <div style={{ position: 'relative', width: '100%', height: '450px', display: 'flex', justifyContent: 'center' }}>
-              {incomeCards.map((card, i) => (
-                <StackingCard 
-                  key={i}
-                  index={i}
-                  card={card}
-                  progress={scrollYProgress}
-                  totalCards={incomeCards.length}
-                />
-              ))}
-            </div>
+            <h2 className="heading-lg text-white" style={{ textTransform: 'uppercase', letterSpacing: '1px' }}>
+              INCOME <PremiumHighlightText colorTheme="teal">OVERVIEW</PremiumHighlightText>
+            </h2>
           </div>
+          
+          <motion.div 
+            className="income-cards-grid"
+            variants={incomeContainerVariants}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: "-50px" }}
+          >
+            {incomeCards.map((card, i) => (
+              <motion.div 
+                key={i}
+                className={`income-card card-${card.colorTheme}`}
+                variants={incomeCardVariants}
+              >
+                <div className="income-icon-wrapper" style={{ fontSize: '3rem', marginBottom: '16px', background: 'rgba(255,255,255,0.05)', padding: '16px', borderRadius: '50%' }}>{card.icon}</div>
+                <div className="income-unit" style={{ color: card.unitColor, marginBottom: '16px', fontWeight: '700', letterSpacing: '2px', fontSize: '0.9rem' }}>{card.unit}</div>
+                <div className="income-big-value text-white" style={{ fontSize: 'clamp(1.5rem, 2vw + 1rem, 2.2rem)', fontWeight: '800', lineHeight: '1.2', whiteSpace: 'nowrap' }}>
+                  <AnimatedCounter
+                    to={card.numericValue}
+                    prefix={card.prefix}
+                    suffix={card.suffix}
+                  />
+                </div>
+                <div className="income-label" style={{ color: '#9ca3af', fontSize: '1rem', marginTop: '12px', fontWeight: '500' }}>{card.label}</div>
+              </motion.div>
+            ))}
+          </motion.div>
         </div>
 
         {/* Section 2: Key Benefits Strip */}

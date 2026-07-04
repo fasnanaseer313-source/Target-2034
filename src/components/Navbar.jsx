@@ -52,7 +52,7 @@ const Navbar = () => {
             HOME
           </Link>
           <a href="https://wa.me/" target="_blank" rel="noopener noreferrer" className="nav-whatsapp-btn" aria-label="WhatsApp">
-            <WhatsAppIcon size={20} />
+            <WhatsAppIcon size={26} />
           </a>
         </div>
       </div>

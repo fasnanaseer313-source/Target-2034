@@ -10,6 +10,8 @@ import missionTargetImg from '../assets/mission_target_3d.png';
 import visionFutureImg from '../assets/vision_future_3d.png';
 import valuesDiamondImg from '../assets/values_diamond_3d.png';
 import goalMountainImg from '../assets/goal_mountain_3d.png';
+import stockMarketVisual from '../assets/stock_market_visual.png';
+
 
 const PremiumMissionCard = ({ title, desc, img, delayIndex, titleColor, activePulse }) => {
   const controls = useAnimation();
@@ -173,13 +175,33 @@ const ParentCompany = () => {
             <span className="dot" style={{ width: '6px', height: '6px', backgroundColor: '#fbbf24', borderRadius: '50%', display: 'inline-block' }}></span> Partnership Announcement · 2024
           </div>
           
-          <motion.h2 className="announcement-title" initial={{opacity:0}} whileInView={{opacity:1}} viewport={{once:true}}>
-            <div className="text-white">TOGETHER,</div>
-            <div className="text-gold">
-              <PremiumHighlightText>BUILDING</PremiumHighlightText>
-            </div>
-            <div className="text-white">TOMORROW</div>
-          </motion.h2>
+          <div style={{ display: 'flex', width: '100%', alignItems: 'flex-end', justifyContent: 'flex-start', gap: '40px', flexWrap: 'wrap' }}>
+            <motion.h2 className="announcement-title" style={{ textAlign: 'left', margin: 0 }} initial={{opacity:0}} whileInView={{opacity:1}} viewport={{once:true}}>
+              <div className="text-white">TOGETHER,</div>
+              <div className="text-gold">
+                <PremiumHighlightText>BUILDING</PremiumHighlightText>
+              </div>
+              <div className="text-white">TOMORROW</div>
+            </motion.h2>
+
+            <motion.div 
+              initial={{opacity:0, scale: 0.5, rotateY: -180}} 
+              whileInView={{opacity:1, scale: 1, rotateY: 0}} 
+              viewport={{once:true}} 
+              transition={{delay: 0.2, duration: 1.2, type: "spring", bounce: 0.4}}
+              className="stock-market-visual-wrapper"
+              style={{ 
+                width: '260px', 
+                borderRadius: '16px', 
+                overflow: 'hidden', 
+                boxShadow: '0 20px 40px rgba(0,0,0,0.5), 0 0 30px rgba(251,191,36,0.15)',
+                border: '1px solid rgba(255,255,255,0.05)',
+                zIndex: 10
+              }}
+            >
+              <img src={stockMarketVisual} alt="Stock Market Visualization" style={{ width: '100%', height: 'auto', display: 'block' }} />
+            </motion.div>
+          </div>
           
           <div className="announcement-divider"></div>
 
@@ -285,7 +307,7 @@ const ParentCompany = () => {
               </div>
               <div style={{ flex: '1', textAlign: 'left' }}>
                 <h3 className="text-2xl text-muted mb-2">Our New Product</h3>
-                <h2 className="text-5xl font-bold mb-6 text-white uppercase tracking-wider">TARGET <span style={{ color: '#ea580c' }}>2034</span></h2>
+                <h2 className="text-5xl font-bold mb-6 text-white uppercase tracking-wider">TARGET <motion.span style={{ color: '#ea580c', display: 'inline-block' }} animate={{ textShadow: ["0px 0px 5px #ea580c, 0px 0px 10px #ea580c", "0px 0px 20px #ea580c, 0px 0px 30px #ea580c", "0px 0px 5px #ea580c, 0px 0px 10px #ea580c"] }} transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}>2034</motion.span></h2>
                 
                 <div className="target-vision-strip mb-6 text-xl font-bold" style={{ display: 'flex', gap: '8px', alignItems: 'center', flexWrap: 'wrap', background: 'none', padding: 0 }}>
                   <span style={{ color: '#22c55e' }}>One Vision</span> 
@@ -299,11 +321,7 @@ const ParentCompany = () => {
                   Building a Future of <span style={{ color: '#22c55e', fontWeight: 'bold' }}>Growth</span>, <span style={{ color: '#3b82f6', fontWeight: 'bold' }}>Innovation</span> & <span style={{ color: '#eab308', fontWeight: 'bold' }}>Success</span>.
                 </p>
                 
-                <div style={{ display: 'flex', gap: '12px', marginTop: '24px', flexWrap: 'wrap' }}>
-                  <span style={{ border: '1px solid rgba(34, 197, 94, 0.3)', background: 'rgba(34, 197, 94, 0.08)', color: '#22c55e', padding: '6px 20px', borderRadius: '30px', fontSize: '0.9rem', fontWeight: '800' }}>Vision</span>
-                  <span style={{ border: '1px solid rgba(239, 68, 68, 0.3)', background: 'rgba(239, 68, 68, 0.08)', color: '#ef4444', padding: '6px 20px', borderRadius: '30px', fontSize: '0.9rem', fontWeight: '800' }}>Mission</span>
-                  <span style={{ border: '1px solid rgba(234, 179, 8, 0.3)', background: 'rgba(234, 179, 8, 0.08)', color: '#eab308', padding: '6px 20px', borderRadius: '30px', fontSize: '0.9rem', fontWeight: '800' }}>Target</span>
-                </div>
+
               </div>
             </div>
           </motion.div>

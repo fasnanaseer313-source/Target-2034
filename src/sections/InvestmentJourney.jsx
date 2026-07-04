@@ -1,61 +1,117 @@
-import React, { useEffect } from 'react';
-import { motion, useAnimation } from 'framer-motion';
-import { useInView } from 'react-intersection-observer';
-import { UserPlus, ClipboardList, Target, TrendingUp, BarChart3, Trophy } from 'lucide-react';
-import PremiumCard from '../components/PremiumCard';
+import React, { useRef } from 'react';
+import { motion, useScroll, useTransform } from 'framer-motion';
+import { Wallet, FileText, UserCheck, Activity, Trophy } from 'lucide-react';
+import PremiumHighlightText from '../components/PremiumHighlightText';
+import './sections.css';
+import './journey.css';
+
+const steps = [
+  {
+    icon: Wallet,
+    title: 'Add Funds to Your Demat Account',
+    description: 'Securely transfer funds to your Demat account to begin your mutual fund investment journey.',
+    animationDelay: 0,
+    iconClass: 'step-icon-wallet'
+  },
+  {
+    icon: FileText,
+    title: 'Share Your Demat Account Details',
+    description: 'Provide your Demat account information so our investment team can begin the onboarding process.',
+    animationDelay: 0.15,
+    iconClass: 'step-icon-doc'
+  },
+  {
+    icon: UserCheck,
+    title: 'Account Handled by Our Team',
+    description: 'Our experienced investment professionals manage your portfolio using carefully planned mutual fund strategies.',
+    animationDelay: 0.30,
+    iconClass: 'step-icon-team'
+  },
+  {
+    icon: Activity,
+    title: 'Regular Portfolio Updates',
+    description: 'Receive consistent updates and complete transparency about your investment performance.',
+    animationDelay: 0.45,
+    iconClass: 'step-icon-chart'
+  },
+  {
+    icon: Trophy,
+    title: 'Monthly Cashouts',
+    description: 'Enjoy regular monthly returns while your investments continue to grow with disciplined management.',
+    animationDelay: 0.60,
+    iconClass: 'step-icon-trophy'
+  }
+];
 
 const InvestmentJourney = () => {
-  const controls = useAnimation();
-  const [ref, inView] = useInView({ threshold: 0.1 });
+  const containerRef = useRef(null);
+  const { scrollYProgress } = useScroll({
+    target: containerRef,
+    offset: ["start 80%", "end center"]
+  });
 
-  useEffect(() => {
-    if (inView) {
-      controls.start('visible');
-    }
-  }, [controls, inView]);
-
-  const steps = [
-    { icon: <UserPlus size={24} />, title: 'Register' },
-    { icon: <ClipboardList size={24} />, title: 'Financial Assessment' },
-    { icon: <Target size={24} />, title: 'Investment Planning' },
-    { icon: <TrendingUp size={24} />, title: 'Fund Allocation' },
-    { icon: <BarChart3 size={24} />, title: 'Portfolio Growth' },
-    { icon: <Trophy size={24} />, title: 'Target 2034 Achievement' },
-  ];
+  const lineHeight = useTransform(scrollYProgress, [0, 1], ["0%", "100%"]);
 
   return (
-    <section className="section bg-dark" id="journey">
-      <div className="container">
-        <div style={{ textAlign: 'center', marginBottom: '64px' }}>
-          <h2>Your Investment Journey</h2>
-          <p className="text-grey" style={{ fontSize: '1.2rem' }}>A simple, transparent process to secure your future.</p>
+    <section className="section bg-dark" id="journey" style={{ position: 'relative', overflow: 'hidden', padding: '120px 0' }}>
+      {/* Background Ambient Effects */}
+      <div className="ambient-particles"></div>
+      <div className="bg-grid-lines"></div>
+      
+      <div className="container" ref={containerRef}>
+        <div style={{ textAlign: 'center', marginBottom: '100px', position: 'relative', zIndex: 10 }}>
+          <h2 style={{ fontSize: 'clamp(2.5rem, 5vw, 4rem)', fontWeight: 'bold', color: 'white', letterSpacing: '1px', marginBottom: '24px', textTransform: 'uppercase' }}>
+            Empowering Your <PremiumHighlightText>Journey</PremiumHighlightText> Forward to <PremiumHighlightText>Success</PremiumHighlightText>
+          </h2>
+          <p className="text-grey" style={{ fontSize: '1.25rem', maxWidth: '800px', margin: '0 auto', color: '#9ca3af', lineHeight: '1.6' }}>
+            A simple, transparent process that guides your mutual fund investment from start to finish.
+          </p>
         </div>
 
-        <div className="journey-track" ref={ref} style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: '24px', position: 'relative' }}>
-          
-          {/* Horizontal Line for Desktop */}
-          <div style={{ position: 'absolute', top: '50%', left: '0', right: '0', height: '2px', background: 'rgba(203,161,83,0.3)', zIndex: 0, transform: 'translateY(-50%)' }} className="hidden-mobile"></div>
-
-          {steps.map((step, idx) => (
-            <motion.div 
-              key={idx}
-              style={{ position: 'relative', zIndex: 1, flex: '1 1 150px', textAlign: 'center', display: 'flex', flexDirection: 'column', alignItems: 'center' }}
-              initial={{ opacity: 0, y: 30 }}
-              animate={controls}
-              variants={{ visible: { opacity: 1, y: 0, transition: { duration: 0.5, delay: idx * 0.2 } } }}
-            >
-              <div style={{ 
-                width: '64px', height: '64px', borderRadius: '50%', background: 'var(--color-white)', 
-                display: 'flex', alignItems: 'center', justifyContent: 'center', 
-                boxShadow: 'var(--shadow-md)', marginBottom: '16px', color: 'var(--color-gold)',
-                border: '2px solid var(--color-gold)'
-              }}>
-                {step.icon}
-              </div>
-              <p style={{ fontWeight: '600', fontSize: '0.9rem' }}>Step {idx + 1}</p>
-              <h4 style={{ fontSize: '1rem' }}>{step.title}</h4>
+        <div className="journey-process-container">
+          {/* Animated Connecting Line */}
+          <div className="journey-line-container">
+            <div className="journey-line-track"></div>
+            <motion.div className="journey-line-progress" style={{ height: lineHeight }}>
+              <div className="journey-line-glow"></div>
             </motion.div>
-          ))}
+          </div>
+
+          <div className="journey-steps-wrapper">
+            {steps.map((step, idx) => {
+              const Icon = step.icon;
+              const isEven = idx % 2 !== 0; // 0-indexed: 1st item (idx 0) is odd row (left side), 2nd (idx 1) is even row (right side)
+              
+              return (
+                <motion.div 
+                  key={idx}
+                  className={`journey-step-row ${isEven ? 'row-right' : 'row-left'}`}
+                  initial={{ opacity: 0, y: 50, scale: 0.95, rotate: isEven ? 1 : -1 }}
+                  whileInView={{ opacity: 1, y: 0, scale: 1, rotate: 0 }}
+                  viewport={{ once: true, margin: "-100px" }}
+                  transition={{ duration: 0.8, delay: step.animationDelay, ease: [0.16, 1, 0.3, 1] }}
+                >
+                  <div className="journey-step-card glass-card">
+                    <div className="journey-step-header">
+                      <div className={`journey-step-icon-wrapper ${step.iconClass}`}>
+                        <Icon className="journey-step-icon" size={32} />
+                        <div className="journey-step-glow"></div>
+                        <div className="floating-particles"></div>
+                      </div>
+                      <div className="journey-step-number">Step {idx + 1}</div>
+                    </div>
+                    <div className="journey-step-content">
+                      <h4 className="journey-step-title">{step.title}</h4>
+                    </div>
+                  </div>
+                  {/* Timeline dot */}
+                  <div className="journey-step-dot">
+                    <div className="dot-inner"></div>
+                  </div>
+                </motion.div>
+              );
+            })}
+          </div>
         </div>
       </div>
     </section>
