@@ -71,7 +71,7 @@ const Footer = () => {
               <li>Phone: <a href="tel:+918848288806" className="contact-link-orange">+91 88482 88806</a></li>
               <li>WhatsApp: <a href="https://wa.me/918848288806" target="_blank" rel="noopener noreferrer" className="contact-link-orange">+91 88482 88806</a></li>
             </ul>
-            <div style={{ display: 'flex', gap: '16px', marginTop: '24px' }}>
+            <div className="footer-socials" style={{ display: 'flex', gap: '16px', marginTop: '24px' }}>
               <a href="#li" style={{ color: 'white' }}>LinkedIn</a>
               <a href="#tw" style={{ color: 'white' }}>Twitter</a>
               <a href="#fb" style={{ color: 'white' }}>Facebook</a>

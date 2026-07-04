@@ -1,0 +1,286 @@
+/* 
+  MOBILE RESPONSIVENESS OVERRIDES 
+  These rules only apply to screens 768px and smaller. 
+  The desktop layout remains entirely untouched.
+*/
+
+@media (max-width: 768px) {
+  /* 1. Global Typography & Spacing */
+  .heading-xl {
+    font-size: clamp(2rem, 8vw, 3.5rem) !important;
+  }
+  .heading-lg {
+    font-size: clamp(1.75rem, 6vw, 2.5rem) !important;
+  }
+  .heading-md {
+    font-size: clamp(1.25rem, 5vw, 1.75rem) !important;
+  }
+  
+  html, body {
+    overflow-x: hidden;
+    width: 100%;
+    position: relative;
+  }
+  
+  .section, .hero-section {
+    padding-top: 60px !important;
+    padding-bottom: 60px !important;
+  }
+  
+  .container {
+    padding-left: 16px !important;
+    padding-right: 16px !important;
+  }
+  
+  /* Touch Targets */
+  button, a.btn-primary, a.btn-secondary, a.btn-discover {
+    min-height: 44px;
+  }
+
+  /* 2. Hero Section */
+  .hero-container {
+    flex-direction: column !important;
+    text-align: center !important;
+    padding-top: 20px !important;
+  }
+  
+  .hero-content h1 {
+    text-align: center !important;
+    font-size: clamp(2rem, 10vw, 5.5rem) !important;
+    line-height: 1.1 !important;
+  }
+
+  /* Removed inline span overrides to preserve PremiumHighlightText functionality */
+  .strategy-badge {
+    white-space: normal !important;
+    text-align: center;
+    font-size: 0.8rem !important;
+    padding: 8px 16px !important;
+  }
+  
+  .hero-actions a {
+    box-sizing: border-box !important;
+  }
+
+  .hero-content {
+    padding-right: 0 !important;
+  }
+  
+  .hero-subtitle {
+    margin: 16px auto 32px !important;
+    font-size: 1rem !important;
+  }
+  
+  .hero-actions {
+    flex-direction: column !important;
+    align-items: center !important;
+    gap: 16px !important;
+  }
+
+  .hero-actions a {
+    width: 100%;
+    max-width: 300px;
+  }
+  
+  /* 3. Navbar */
+  .navbar-container {
+    padding: 0 16px !important;
+  }
+  .navbar-logo img {
+    height: 50px !important;
+    transform: scale(1.2) !important;
+  }
+
+  /* 4. Component Grids */
+  .features-grid,
+  .products-grid,
+  .testimonials-grid,
+  .stats-grid,
+  .footer-grid,
+  .contact-grid {
+    grid-template-columns: 1fr !important;
+    gap: 24px !important;
+  }
+
+  /* 5. Contact Section Forms */
+  .contact-form {
+    padding: 24px !important;
+  }
+  
+  .contact-info {
+    padding: 24px !important;
+    text-align: center;
+  }
+
+  .contact-info ul {
+    align-items: center;
+  }
+
+  .contact-info li {
+    justify-content: center;
+  }
+
+  /* 6. Charts & Graphs */
+  /* Add a horizontal scrolling wrapper for Recharts */
+  .chart-wrapper {
+    width: 100%;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    padding-bottom: 10px; /* space for scrollbar */
+  }
+
+  .chart-inner {
+    min-width: 500px; /* minimum width before it scrolls */
+  }
+
+  .wealth-chart-container {
+    overflow-x: auto !important;
+    -webkit-overflow-scrolling: touch;
+    padding-bottom: 20px;
+  }
+  
+  .chart-column {
+    min-width: 80px !important;
+  }
+
+  .projection-pills {
+    flex-wrap: wrap !important;
+    justify-content: center !important;
+  }
+
+  .projection-bottom-cards {
+    flex-direction: column !important;
+    gap: 16px !important;
+  }
+
+  /* Shorten X-axis years on mobile */
+  .desktop-year {
+    display: none !important;
+  }
+  .mobile-year {
+    display: inline !important;
+  }
+
+  /* Journey Timeline */
+  .journey-process-container {
+    padding: 16px 0 !important;
+    overflow: hidden;
+  }
+  .journey-line-container {
+    left: 24px !important;
+  }
+  .journey-step-dot {
+    left: 24px !important;
+  }
+  .row-left .journey-step-card,
+  .row-right .journey-step-card {
+    margin: 0 0 0 54px !important;
+    width: calc(100% - 54px) !important;
+    padding: 24px 20px !important;
+    box-sizing: border-box !important;
+  }
+  .journey-step-title {
+    font-size: 1.1rem !important;
+  }
+  .journey-step-number {
+    font-size: 0.8rem !important;
+    padding: 4px 10px !important;
+  }
+
+  /* Ecosystem Diagram & Target Card */
+  .announcement-title {
+    font-size: clamp(3rem, 13vw, 5rem) !important;
+    text-align: center !important;
+    align-items: center !important;
+  }
+  .stock-market-visual-wrapper {
+    margin: 30px auto 0 !important;
+    flex-basis: 100% !important;
+    max-width: 100% !important;
+    height: 220px !important;
+  }
+  .diagram-top {
+    gap: 10px;
+    justify-content: center;
+  }
+  .company-node {
+    padding: 16px 8px !important;
+    min-width: 140px;
+  }
+  .company-info h3 {
+    font-size: 1rem !important;
+  }
+  .company-info p {
+    font-size: 0.7rem !important;
+  }
+  .handshake-animated-container {
+    transform: scale(0.6) translate(-80%, -80%) !important;
+  }
+  .target-main-card {
+    padding: 24px !important;
+  }
+  .target-card-content {
+    flex-direction: column !important;
+    gap: 20px !important;
+    text-align: center !important;
+  }
+  .target-card-content h2 {
+    font-size: 2.5rem !important;
+  }
+  .target-vision-strip {
+    justify-content: center;
+    font-size: 1rem !important;
+  }
+
+  /* Timeline */
+  .timeline-container > div:first-child {
+    left: 20px !important;
+  }
+  .timeline-container > div > div:first-child {
+    margin-left: 10px !important;
+  }
+
+  /* 7. Mutual Fund Products */
+  .product-card {
+    padding: 24px !important;
+  }
+  .product-header {
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    gap: 12px;
+  }
+  
+  /* Power of 1% Rule */
+  .power-rule-subtitle {
+    font-size: clamp(2rem, 10vw, 5.5rem) !important;
+    white-space: nowrap !important;
+  }
+  .power-rule-title {
+    font-size: clamp(2.5rem, 12vw, 5.5rem) !important;
+  }
+
+  /* 8. Footer */
+  .footer-col {
+    text-align: center;
+  }
+  .footer-logo {
+    justify-content: center;
+  }
+  .footer-links {
+    align-items: center;
+  }
+  .footer-bottom {
+    flex-direction: column;
+    gap: 16px;
+    text-align: center;
+  }
+}
+
+/* Extra small devices (phones, 480px and down) */
+@media (max-width: 480px) {
+  /* Scale videos down gracefully */
+  .hero-main-video {
+    width: 100% !important;
+    max-width: 300px;
+  }
+}

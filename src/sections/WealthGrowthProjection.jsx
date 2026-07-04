@@ -251,7 +251,10 @@ const WealthGrowthProjection = () => {
               {/* X Axis Labels */}
               <motion.div className="x-axis" variants={axisVariants}>
                 {points.map(p => (
-                  <span key={p.year}>{p.year}</span>
+                  <span key={p.year}>
+                    <span className="desktop-year">{p.year}</span>
+                    <span className="mobile-year">{p.year.toString().slice(-2)}</span>
+                  </span>
                 ))}
               </motion.div>
             </div>

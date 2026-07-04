@@ -58,11 +58,11 @@ const Hero = () => {
           transition={{ duration: 0.8, ease: "easeOut" }}
           style={{ paddingRight: '20px' }}
         >
-          <h1 className="heading-xl" style={{ marginBottom: '32px', fontSize: 'clamp(4rem, 8vw, 7rem)', lineHeight: '0.9', letterSpacing: '-0.02em', textAlign: 'left' }}>
-            <span style={{ display: 'block', whiteSpace: 'nowrap' }}>We build you</span>
-            <span style={{ display: 'block' }}><PremiumHighlightText>personalized</PremiumHighlightText></span>
-            <span style={{ display: 'block' }}>investing</span>
-            <span style={{ display: 'block' }}>plans</span>
+          <h1 className="heading-xl" style={{ marginBottom: '32px', fontSize: 'clamp(3rem, 5.5vw, 5.5rem)', lineHeight: '0.9', letterSpacing: '-0.02em', textAlign: 'left' }}>
+            <span style={{ display: 'block', whiteSpace: 'nowrap' }}>WE BUILD YOU</span>
+            <span style={{ display: 'block' }}><PremiumHighlightText>PERSONALIZED</PremiumHighlightText></span>
+            <span style={{ display: 'block' }}>INVESTING</span>
+            <span style={{ display: 'block' }}>PLANS</span>
           </h1>
           
           <p className="hero-subtitle text-muted" style={{ fontSize: '1.15rem', maxWidth: '500px', marginBottom: '40px' }}>

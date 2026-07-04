@@ -31,7 +31,7 @@ const PremiumHighlightText = ({ children, delayIndex = 0, className = '', colorT
       variants={variants}
       initial="hidden"
       whileInView="visible"
-      viewport={{ once: true, margin: "-30% 0px" }}
+      viewport={{ once: true, amount: 0.2 }}
       style={{ display: 'inline-block', position: 'relative' }}
       onAnimationComplete={(definition) => {
         if (definition === 'visible') {
