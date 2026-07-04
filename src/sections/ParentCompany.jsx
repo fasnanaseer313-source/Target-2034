@@ -175,7 +175,7 @@ const ParentCompany = () => {
             <span className="dot" style={{ width: '6px', height: '6px', backgroundColor: '#fbbf24', borderRadius: '50%', display: 'inline-block' }}></span> Partnership Announcement · 2024
           </div>
           
-          <div style={{ display: 'flex', width: '100%', alignItems: 'stretch', justifyContent: 'flex-start', gap: '40px', flexWrap: 'wrap' }}>
+          <div style={{ display: 'flex', width: '100%', alignItems: 'center', justifyContent: 'space-between', gap: '40px', flexWrap: 'wrap' }}>
             <motion.h2 className="announcement-title" style={{ textAlign: 'left', margin: 0, display: 'flex', flexDirection: 'column', justifyContent: 'center' }} initial={{opacity:0}} whileInView={{opacity:1}} viewport={{once:true}}>
               <div className="text-white">TOGETHER,</div>
               <div className="text-gold">
@@ -191,7 +191,8 @@ const ParentCompany = () => {
               transition={{delay: 0.2, duration: 1.2, type: "spring", bounce: 0.4}}
               className="stock-market-visual-wrapper"
               style={{ 
-                flex: 1,
+                flex: '1 1 400px',
+                maxWidth: '480px',
                 minWidth: '260px',
                 borderRadius: '16px', 
                 overflow: 'hidden', 
@@ -200,7 +201,7 @@ const ParentCompany = () => {
                 zIndex: 10
               }}
             >
-              <img src={stockMarketVisual} alt="Stock Market Visualization" style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block', minHeight: '250px' }} />
+              <img src={stockMarketVisual} alt="Stock Market Visualization" style={{ width: '100%', height: 'auto', display: 'block' }} />
             </motion.div>
           </div>
           
