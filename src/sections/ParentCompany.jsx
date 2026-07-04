@@ -155,7 +155,7 @@ const ParentCompany = () => {
   };
 
   return (
-    <section className="section ecosystem-section bg-dark" id="about">
+    <section className="section ecosystem-section bg-dark" id="about" style={{ paddingTop: '20px' }}>
       <div className="container">
         
         {/* Header */}

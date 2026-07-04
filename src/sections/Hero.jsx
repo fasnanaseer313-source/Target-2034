@@ -58,7 +58,7 @@ const Hero = () => {
           transition={{ duration: 0.8, ease: "easeOut" }}
           style={{ paddingRight: '20px' }}
         >
-          <h1 className="heading-xl" style={{ marginBottom: '32px', fontSize: 'clamp(3rem, 5.5vw, 5.5rem)', lineHeight: '0.9', letterSpacing: '-0.02em', textAlign: 'left' }}>
+          <h1 className="heading-xl" style={{ marginBottom: '32px', fontSize: 'clamp(3rem, 5.5vw, 5.5rem)', lineHeight: '0.9', letterSpacing: '-0.02em', textAlign: 'left', fontWeight: 900 }}>
             <span style={{ display: 'block', whiteSpace: 'nowrap' }}>WE BUILD YOU</span>
             <span style={{ display: 'block' }}><PremiumHighlightText>PERSONALIZED</PremiumHighlightText></span>
             <span style={{ display: 'block' }}>INVESTING</span>

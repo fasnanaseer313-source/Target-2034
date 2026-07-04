@@ -18,10 +18,10 @@ const WealthGrowthProjection = () => {
 
   const sectionVariants = {
     hidden: { opacity: 0, y: 40 },
-    visible: { 
-      opacity: 1, 
-      y: 0, 
-      transition: { duration: 0.7, ease: [0.22, 1, 0.36, 1] } 
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: { duration: 0.7, ease: [0.22, 1, 0.36, 1] }
     }
   };
 
@@ -37,33 +37,33 @@ const WealthGrowthProjection = () => {
 
   const lineVariants = {
     hidden: { pathLength: 0 },
-    visible: { 
-      pathLength: 1, 
-      transition: { duration: 2, delay: 0.5, ease: "easeInOut" } 
+    visible: {
+      pathLength: 1,
+      transition: { duration: 2, delay: 0.5, ease: "easeInOut" }
     }
   };
 
   const areaVariants = {
     hidden: { width: "0%" },
-    visible: { 
-      width: "100%", 
-      transition: { duration: 2, delay: 0.5, ease: "easeInOut" } 
+    visible: {
+      width: "100%",
+      transition: { duration: 2, delay: 0.5, ease: "easeInOut" }
     }
   };
 
   const areaOpacityVariants = {
     hidden: { opacity: 0 },
-    visible: { 
-      opacity: 1, 
-      transition: { duration: 0.5, delay: 0.7, ease: "easeOut" } 
+    visible: {
+      opacity: 1,
+      transition: { duration: 0.5, delay: 0.7, ease: "easeOut" }
     }
   };
 
   const pillVariants = {
     hidden: { opacity: 0, y: 12, scale: 0.95 },
     visible: (custom) => ({
-      opacity: 1, 
-      y: 0, 
+      opacity: 1,
+      y: 0,
       scale: 1,
       transition: { duration: 0.5, delay: 1.1 + custom * 0.12, ease: "easeOut" }
     })
@@ -71,7 +71,7 @@ const WealthGrowthProjection = () => {
 
   const svgWidth = 800;
   const svgHeight = 300;
-  
+
   const getCoords = (xPercent, yPercent) => {
     return {
       x: (xPercent / 100) * svgWidth,
@@ -96,19 +96,20 @@ const WealthGrowthProjection = () => {
     const p0 = getCoords(points[i - 1].x, points[i - 1].y);
     const p1 = getCoords(points[i].x, points[i].y);
     const cpX1 = p0.x + (p1.x - p0.x) / 3;
-    const cpY1 = p0.y; 
+    const cpY1 = p0.y;
     const cpX2 = p1.x - (p1.x - p0.x) / 3;
-    const cpY2 = p1.y; 
+    const cpY2 = p1.y;
     pathD += ` C ${cpX1} ${cpY1}, ${cpX2} ${cpY2}, ${p1.x} ${p1.y}`;
   }
-  
+
   const fillPathD = `${pathD} L ${svgWidth} ${svgHeight} L 0 ${svgHeight} Z`;
 
   return (
-    <motion.section 
+    <motion.section
       ref={sectionRef}
-      className="section wealth-projection-section" 
+      className="section wealth-projection-section"
       id="projection"
+      style={{ paddingTop: '20px' }}
       variants={sectionVariants}
       initial="hidden"
       animate={controls}
@@ -141,7 +142,7 @@ const WealthGrowthProjection = () => {
             {/* Tooltip */}
             <AnimatePresence>
               {hoveredPoint && (
-                <motion.div 
+                <motion.div
                   initial={{ opacity: 0, y: 10, scale: 0.95 }}
                   animate={{ opacity: 1, y: 0, scale: 1 }}
                   exit={{ opacity: 0, y: 5, scale: 0.95 }}
@@ -192,51 +193,51 @@ const WealthGrowthProjection = () => {
                       <motion.rect x="0" y="0" height={svgHeight} variants={areaVariants} />
                     </clipPath>
                   </defs>
-                  
+
                   <motion.g clipPath="url(#revealClip)" variants={areaOpacityVariants}>
                     <path d={fillPathD} fill="url(#areaGradient)" />
                   </motion.g>
-                  
-                  <motion.path 
-                    d={pathD} 
-                    fill="none" 
-                    stroke="#22c55e" 
-                    strokeWidth="3" 
+
+                  <motion.path
+                    d={pathD}
+                    fill="none"
+                    stroke="#22c55e"
+                    strokeWidth="3"
                     style={{ filter: 'drop-shadow(0px 0px 8px rgba(255, 255, 255, 0.4))' }}
                     variants={lineVariants}
                   />
-                  
+
                   {/* Data Points */}
                   {points.map((p, i) => {
                     const coords = getCoords(p.x, p.y);
                     const pointVariants = {
                       hidden: { scale: 0, opacity: 0 },
-                      visible: { 
-                        scale: 1, 
-                        opacity: 1, 
-                        transition: { 
+                      visible: {
+                        scale: 1,
+                        opacity: 1,
+                        transition: {
                           type: "spring",
                           bounce: 0.4,
-                          duration: 0.5, 
-                          delay: 0.8 + (i * 0.15) 
-                        } 
+                          duration: 0.5,
+                          delay: 0.8 + (i * 0.15)
+                        }
                       }
                     };
                     return (
-                      <g key={i} 
-                         onMouseEnter={() => setHoveredPoint(p)} 
-                         onMouseLeave={() => setHoveredPoint(null)}
-                         style={{ cursor: 'pointer', outline: 'none' }}
+                      <g key={i}
+                        onMouseEnter={() => setHoveredPoint(p)}
+                        onMouseLeave={() => setHoveredPoint(null)}
+                        style={{ cursor: 'pointer', outline: 'none' }}
                       >
                         {/* Invisible larger hit area for easier hovering */}
                         <circle cx={coords.x} cy={coords.y} r="20" fill="transparent" />
-                        
-                        <motion.circle 
-                          cx={coords.x} 
-                          cy={coords.y} 
-                          r="5" 
-                          fill="#ffffff" 
-                          stroke="#22c55e" 
+
+                        <motion.circle
+                          cx={coords.x}
+                          cy={coords.y}
+                          r="5"
+                          fill="#ffffff"
+                          stroke="#22c55e"
                           strokeWidth="2.5"
                           variants={pointVariants}
                           whileHover={{ scale: 1.5 }}

@@ -101,7 +101,7 @@ const TradingModel = () => {
   };
 
   return (
-    <section className="section trading-model-light-section" id="platform" style={{ position: 'relative' }}>
+    <section className="section trading-model-light-section" id="platform" style={{ position: 'relative', paddingBottom: '20px' }}>
       <FloatingIconsBackground />
       <div className="container" style={{ position: 'relative', zIndex: 2 }}>
 
@@ -228,7 +228,7 @@ const TradingModel = () => {
         </div>
 
         {/* Section 2: Key Benefits Strip */}
-        <div className="benefits-strip-container" style={{ marginTop: '80px', paddingBottom: '40px' }}>
+        <div className="benefits-strip-container" style={{ marginTop: '60px', paddingBottom: '0px' }}>
           <motion.div 
             className="benefits-strip"
             variants={containerVariants}
