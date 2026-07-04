@@ -1,9 +1,35 @@
 import React from 'react';
 import { Mail } from 'lucide-react';
+import { useNavigate, useLocation } from 'react-router-dom';
 import './components.css';
 import logoImg from '../assets/logo.png';
 
 const Footer = () => {
+  const navigate = useNavigate();
+  const location = useLocation();
+
+  const handleNavClick = (e, path, hash) => {
+    e.preventDefault();
+    if (location.pathname === path) {
+      if (hash) {
+        const el = document.getElementById(hash.replace('#', ''));
+        if (el) el.scrollIntoView({ behavior: 'smooth' });
+      } else {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      }
+    } else {
+      navigate(path);
+      setTimeout(() => {
+        if (hash) {
+          const el = document.getElementById(hash.replace('#', ''));
+          if (el) el.scrollIntoView({ behavior: 'smooth' });
+        } else {
+          window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+      }, 100);
+    }
+  };
+
   return (
     <footer className="footer">
       <div className="container">
@@ -20,10 +46,10 @@ const Footer = () => {
           <div className="footer-col">
             <h4>Quick Links</h4>
             <ul className="footer-links">
-              <li><a href="#home">Home</a></li>
-              <li><a href="#philosophy">Investment Philosophy</a></li>
-              <li><a href="#products">Mutual Fund Products</a></li>
-              <li><a href="#faq">FAQ</a></li>
+              <li><a href="/" onClick={(e) => handleNavClick(e, '/', '')} style={{ cursor: 'pointer' }}>Home</a></li>
+              <li><a href="/#philosophy" onClick={(e) => handleNavClick(e, '/', '#philosophy')} style={{ cursor: 'pointer' }}>Investment Philosophy</a></li>
+              <li><a href="/products" onClick={(e) => handleNavClick(e, '/products', '')} style={{ cursor: 'pointer' }}>Mutual Fund Products</a></li>
+              <li><a href="/#faq" onClick={(e) => handleNavClick(e, '/', '#faq')} style={{ cursor: 'pointer' }}>FAQ</a></li>
             </ul>
           </div>
           
@@ -42,6 +68,8 @@ const Footer = () => {
               <li>India Office: CandleBee Pvt Ltd</li>
               <li>UAE Office: CandleBee Trading FZE</li>
               <li>Email: contact@target2034.com</li>
+              <li>Phone: <a href="tel:+918848288806" className="contact-link-orange">+91 88482 88806</a></li>
+              <li>WhatsApp: <a href="https://wa.me/918848288806" target="_blank" rel="noopener noreferrer" className="contact-link-orange">+91 88482 88806</a></li>
             </ul>
             <div style={{ display: 'flex', gap: '16px', marginTop: '24px' }}>
               <a href="#li" style={{ color: 'white' }}>LinkedIn</a>

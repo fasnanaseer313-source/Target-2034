@@ -222,6 +222,17 @@
   color: var(--color-gold);
 }
 
+.footer-links a.contact-link-orange {
+  color: var(--color-orange);
+  text-decoration: none;
+}
+
+.footer-links a.contact-link-orange:hover {
+  text-decoration: underline;
+  filter: brightness(1.2);
+  color: var(--color-orange);
+}
+
 .footer-bottom {
   border-top: 1px solid rgba(255,255,255,0.1);
   padding-top: 32px;

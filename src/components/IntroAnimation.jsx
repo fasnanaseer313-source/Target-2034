@@ -12,50 +12,50 @@ const IntroAnimation = ({ onComplete }) => {
 
   useEffect(() => {
     const sequence = async () => {
-      // Step 1: Logo Reveal (0s - 1s)
+      // Step 1: Logo Reveal
       await bullControls.start({
         scale: 1,
         opacity: 1,
-        transition: { duration: 1, type: "spring", bounce: 0.25 }
+        transition: { duration: 0.6, type: "spring", bounce: 0.25 }
       });
 
       // Step 2: Premium Glow
       glowControls.start({
         opacity: [0, 0.8, 0.5],
         scale: [0.8, 1.2, 1.1],
-        transition: { duration: 1.5, ease: "easeInOut" }
+        transition: { duration: 1, ease: "easeInOut" }
       });
       
-      await new Promise(r => setTimeout(r, 400));
+      await new Promise(r => setTimeout(r, 200));
 
       // Step 3 & 4: Bull Movement and Text Reveal
       bullControls.start({
         x: -110,
         scale: 0.95,
-        transition: { duration: 0.7, ease: easePremium }
+        transition: { duration: 0.4, ease: easePremium }
       });
 
       await textControls.start({
         opacity: 1,
         x: 0,
         filter: "blur(0px) drop-shadow(0px 0px 15px rgba(255,255,255,0.9)) drop-shadow(0px 0px 3px rgba(255,255,255,0.5))",
-        transition: { duration: 0.7, ease: easePremium }
+        transition: { duration: 0.4, ease: easePremium }
       });
 
       // Step 5: Underline Accent
       await lineControls.start({
         scaleX: 1,
-        transition: { duration: 0.5, ease: easePremium }
+        transition: { duration: 0.3, ease: easePremium }
       });
 
       // Step 6: Final Hold
-      await new Promise(r => setTimeout(r, 800));
+      await new Promise(r => setTimeout(r, 400));
 
       // Step 7: Transition Out
       await containerControls.start({
         opacity: 0,
         scale: 0.95,
-        transition: { duration: 0.6, ease: easePremium }
+        transition: { duration: 0.4, ease: easePremium }
       });
 
       onComplete();

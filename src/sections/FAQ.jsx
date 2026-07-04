@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ChevronDown } from 'lucide-react';
+import PremiumHighlightText from '../components/PremiumHighlightText';
 
 const FAQ = () => {
   const [activeIndex, setActiveIndex] = useState(null);
@@ -16,7 +17,9 @@ const FAQ = () => {
     <section className="section bg-dark" id="faq">
       <div className="container" style={{ maxWidth: '800px' }}>
         <div style={{ textAlign: 'center', marginBottom: '64px' }}>
-          <h2>Frequently Asked Questions</h2>
+          <h2 className="heading-lg text-white">
+            Frequently Asked <PremiumHighlightText colorTheme="gold">Questions</PremiumHighlightText>
+          </h2>
         </div>
 
         <div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>

@@ -80,7 +80,7 @@ const Products = () => {
 
                 <div style={{ display: 'flex', gap: '16px', marginTop: 'auto' }}>
                   <Button variant="secondary" style={{ flex: 1 }}>Learn More</Button>
-                  <Button variant="primary" style={{ flex: 1 }}>Apply Now</Button>
+                  <Button variant="primary" style={{ flex: 1 }} onClick={() => window.open('https://wa.me/918848288806', '_blank', 'noopener,noreferrer')}>Apply Now</Button>
                 </div>
               </PremiumCard>
             </motion.div>
