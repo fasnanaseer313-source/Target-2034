@@ -1,6 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import PremiumCard from '../components/PremiumCard';
+import PremiumHighlightText from '../components/PremiumHighlightText';
 import Button from '../components/Button';
 import { ShieldAlert, TrendingUp, Briefcase } from 'lucide-react';
 
@@ -36,7 +37,7 @@ const Products = () => {
     <div style={{ paddingTop: '100px', minHeight: '100vh' }}>
       <div className="container" style={{ paddingBottom: '100px' }}>
         <div style={{ textAlign: 'center', marginBottom: '64px' }}>
-          <h1>Our Investment <span className="text-gold">Products</span></h1>
+          <h1>Our Investment <PremiumHighlightText>Products</PremiumHighlightText></h1>
           <p className="text-grey" style={{ fontSize: '1.2rem', maxWidth: '600px', margin: '16px auto 0' }}>
             Expertly curated mutual fund portfolios designed to align with your risk appetite and the Target 2034 horizon.
           </p>

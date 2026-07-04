@@ -34,8 +34,8 @@ const Navbar = () => {
   return (
     <nav className={`navbar ${scrolled ? 'scrolled' : ''}`}>
       <div className="container navbar-container">
-        <Link to="/" className="navbar-logo" style={{ textDecoration: 'none' }}>
-          <img src={logoImg} alt="Target 2034" style={{ height: '65px', objectFit: 'contain' }} />
+        <Link to="/" className="navbar-logo" style={{ textDecoration: 'none', backgroundColor: '#fdfdfd', padding: '0px 8px', borderRadius: '10px', display: 'flex', alignItems: 'center', overflow: 'hidden' }}>
+          <img src={logoImg} alt="Target 2034" style={{ height: '75px', objectFit: 'contain', transform: 'scale(1.5)' }} />
         </Link>
         
         <div className="navbar-right">

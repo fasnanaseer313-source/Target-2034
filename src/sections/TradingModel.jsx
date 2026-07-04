@@ -3,6 +3,7 @@ import { motion } from 'framer-motion';
 import { Landmark, Shield, Target, Calendar, Wallet, BarChart3, Building2, ArrowRight, Droplets } from 'lucide-react';
 import './sections.css';
 import FloatingIconsBackground from '../components/FloatingIconsBackground';
+import PremiumHighlightText from '../components/PremiumHighlightText';
 
 const benefitsList = [
   { icon: <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>, text: "No Third party deposits required" },
@@ -79,7 +80,7 @@ const TradingModel = () => {
           <div className="power-rule-heading-container">
             <h3 className="power-rule-subtitle">THE POWER OF</h3>
             <h1 className="power-rule-title">
-              1% RULE
+              <PremiumHighlightText>1% RULE</PremiumHighlightText>
             </h1>
             <div className="pill-badge framework-badge-gold" style={{ marginTop: '24px', letterSpacing: '2px', fontSize: '0.85rem', fontWeight: '700' }}>
               CONSISTENT RISK &middot; DISCIPLINED EXECUTION &middot; POWERFUL RESULTS
@@ -101,7 +102,7 @@ const TradingModel = () => {
             <span className="dot" style={{ width: '6px', height: '6px', backgroundColor: '#eab308', borderRadius: '50%', display: 'inline-block' }}></span> THE 1% FRAMEWORK
           </div>
           <h2 className="heading-lg text-white" style={{ textTransform: 'uppercase', letterSpacing: '1px' }}>
-            THREE PILLARS OF <span className="highlight-gold-gradient">DISCIPLINE</span>
+            THREE PILLARS OF <PremiumHighlightText>DISCIPLINE</PremiumHighlightText>
           </h2>
         </div>
 
@@ -158,11 +159,11 @@ const TradingModel = () => {
         {/* Income Overview Section */}
         <div className="income-overview-light">
           <div className="model-header" style={{ marginTop: '80px', marginBottom: '40px' }}>
-            <div className="pill-badge income-overview-badge">
-              <span className="dot" style={{ width: '6px', height: '6px', backgroundColor: '#10b981', borderRadius: '50%', display: 'inline-block' }}></span> INCOME OVERVIEW
+            <div className="pill-badge income-overview-badge" style={{ backgroundColor: '#021a10', borderColor: '#064e3b', color: '#34d399' }}>
+              <span className="dot" style={{ width: '8px', height: '8px', backgroundColor: '#34d399', borderRadius: '50%', display: 'inline-block' }}></span> THE NUMBERS
             </div>
             <h2 className="heading-lg text-white" style={{ textTransform: 'uppercase', letterSpacing: '1px' }}>
-              WHAT YOU CAN <span className="highlight-green-gradient">EARN</span>
+              INCOME <PremiumHighlightText colorTheme="teal">OVERVIEW</PremiumHighlightText>
             </h2>
           </div>
           
@@ -174,43 +175,35 @@ const TradingModel = () => {
             viewport={{ once: true, margin: "-50px" }}
           >
             {/* Working Days */}
-            <motion.div className="income-card card-blue" variants={incomeCardVariants}>
-              <div className="income-icon-wrapper">
-                <Calendar size={28} color="#3b82f6" />
-              </div>
-              <div className="income-big-value text-blue">15</div>
-              <div className="income-unit">DAYS/MONTH</div>
-              <div className="income-label" style={{ color: '#93c5fd' }}>Working Days</div>
+            <motion.div className="income-card card-dark-blue" variants={incomeCardVariants}>
+              <div className="income-icon-wrapper" style={{ fontSize: '2.5rem', marginBottom: '12px' }}>🗓️</div>
+              <div className="income-unit" style={{ color: '#60a5fa', marginBottom: '12px' }}>WORKING DAYS</div>
+              <div className="income-big-value text-white" style={{ fontSize: '2rem' }}>15 DAYS</div>
+              <div className="income-label" style={{ color: '#6b7280', fontSize: '0.9rem', marginTop: '8px' }}>Per Month</div>
             </motion.div>
             
             {/* Monthly Approximate */}
-            <motion.div className="income-card card-green" variants={incomeCardVariants}>
-              <div className="income-icon-wrapper">
-                <Wallet size={28} color="#22c55e" />
-              </div>
-              <div className="income-big-value" style={{ color: '#3b82f6' }}>1.3-1.5 lkh</div>
-              <div className="income-unit">≈</div>
-              <div className="income-label" style={{ color: '#86efac' }}>Monthly Income</div>
+            <motion.div className="income-card card-dark-green" variants={incomeCardVariants}>
+              <div className="income-icon-wrapper" style={{ fontSize: '2.5rem', marginBottom: '12px' }}>💰</div>
+              <div className="income-unit" style={{ color: '#4ade80', marginBottom: '12px' }}>MONTHLY APPROX</div>
+              <div className="income-big-value text-white" style={{ fontSize: '2rem' }}>₹1,50,000</div>
+              <div className="income-label" style={{ color: '#6b7280', fontSize: '0.9rem', marginTop: '8px' }}>1.3-1.5 Lakh</div>
             </motion.div>
 
             {/* Yearly Approximate */}
-            <motion.div className="income-card card-purple" variants={incomeCardVariants}>
-              <div className="income-icon-wrapper">
-                <BarChart3 size={28} color="#a855f7" />
-              </div>
-              <div className="income-big-value text-purple">16</div>
-              <div className="income-unit">LAKH ≈</div>
-              <div className="income-label" style={{ color: '#d8b4fe' }}>Yearly Income</div>
+            <motion.div className="income-card card-dark-yellow" variants={incomeCardVariants}>
+              <div className="income-icon-wrapper" style={{ fontSize: '2.5rem', marginBottom: '12px' }}>📊</div>
+              <div className="income-unit" style={{ color: '#facc15', marginBottom: '12px' }}>YEARLY APPROX</div>
+              <div className="income-big-value text-white" style={{ fontSize: '2rem' }}>₹16,00,000</div>
+              <div className="income-label" style={{ color: '#6b7280', fontSize: '0.9rem', marginTop: '8px' }}>≈ 16 Lakh</div>
             </motion.div>
 
             {/* By 2034 */}
-            <motion.div className="income-card card-yellow" variants={incomeCardVariants}>
-              <div className="income-icon-wrapper">
-                <Building2 size={28} color="#eab308" />
-              </div>
-              <div className="income-big-value text-yellow">1.2</div>
-              <div className="income-unit">CRORE</div>
-              <div className="income-label" style={{ color: '#fde047' }}>By 2034</div>
+            <motion.div className="income-card card-dark-red" variants={incomeCardVariants}>
+              <div className="income-icon-wrapper" style={{ fontSize: '2.5rem', marginBottom: '12px' }}>🏙️</div>
+              <div className="income-unit" style={{ color: '#f87171', marginBottom: '12px' }}>BY 2034</div>
+              <div className="income-big-value text-white" style={{ fontSize: '2rem' }}>₹1,20,00,000</div>
+              <div className="income-label" style={{ color: '#6b7280', fontSize: '0.9rem', marginTop: '8px' }}>= 1.2 Crore</div>
             </motion.div>
           </motion.div>
         </div>

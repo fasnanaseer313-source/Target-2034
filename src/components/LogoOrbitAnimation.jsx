@@ -6,9 +6,7 @@ const ORBIT_RADIUS = 140; // 180px square = 127px corner diagonal, 140px ensures
 
 const ICONS_MAP = [
   { icon: '🐝', angleOffset: 0, duration: 10, direction: 1, floatOffset: 6 },
-  { icon: '💛', angleOffset: 120, duration: 8, direction: -1, floatOffset: -8 },
-  { icon: '🍯', angleOffset: 240, duration: 12, direction: 1, floatOffset: 5 },
-  { icon: '✨', angleOffset: 60, duration: 9, direction: -1, floatOffset: -5 },
+  { icon: '📈', angleOffset: 180, duration: 12, direction: -1, floatOffset: -5 },
 ];
 
 const OrbitingIcon = ({ data, isHovered, delay }) => {
@@ -36,7 +34,7 @@ const OrbitingIcon = ({ data, isHovered, delay }) => {
         }}
         transition={{
           duration: currentDuration,
-          repeat: Infinity,
+          repeat: 1, // Changed from Infinity to 1 (plays twice)
           ease: 'linear'
         }}
         style={{
@@ -71,10 +69,10 @@ const OrbitingIcon = ({ data, isHovered, delay }) => {
               scale: [1, 1.05, 1]
             }}
             transition={{
-              rotate: { duration: currentDuration, repeat: Infinity, ease: 'linear' },
-              y: { duration: 4, repeat: Infinity, ease: 'easeInOut' },
-              x: { duration: 5, repeat: Infinity, ease: 'easeInOut' },
-              scale: { duration: 3, repeat: Infinity, ease: 'easeInOut' }
+              rotate: { duration: currentDuration, repeat: 1, ease: 'linear' }, // Changed from Infinity to 1
+              y: { duration: 4, repeat: 1, ease: 'easeInOut' },
+              x: { duration: 5, repeat: 1, ease: 'easeInOut' },
+              scale: { duration: 3, repeat: 1, ease: 'easeInOut' }
             }}
           >
             {data.icon}

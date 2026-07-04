@@ -1,24 +1,146 @@
-import React, { useEffect } from 'react';
-import { motion, useAnimation } from 'framer-motion';
+import React, { useEffect, useState } from 'react';
+import { motion, useAnimation, useMotionValue, useSpring, useTransform } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 import { Handshake, Target, Eye, ShieldCheck, Flag, Star, BarChart, Check, Trophy } from 'lucide-react';
 import './sections.css';
 import LogoOrbitAnimation from '../components/LogoOrbitAnimation';
+import PremiumHighlightText from '../components/PremiumHighlightText';
 
 import missionTargetImg from '../assets/mission_target_3d.png';
 import visionFutureImg from '../assets/vision_future_3d.png';
 import valuesDiamondImg from '../assets/values_diamond_3d.png';
 import goalMountainImg from '../assets/goal_mountain_3d.png';
 
+const PremiumMissionCard = ({ title, desc, img, delayIndex, titleColor, activePulse }) => {
+  const controls = useAnimation();
+  const [ref, inView] = useInView({ threshold: 0.65, triggerOnce: true });
+
+  const x = useMotionValue(0);
+  const y = useMotionValue(0);
+
+  const mouseXSpring = useSpring(x, { stiffness: 150, damping: 15 });
+  const mouseYSpring = useSpring(y, { stiffness: 150, damping: 15 });
+
+  const rotateX = useTransform(mouseYSpring, [-0.5, 0.5], ["6deg", "-6deg"]);
+  const rotateY = useTransform(mouseXSpring, [-0.5, 0.5], ["-6deg", "6deg"]);
+
+  const handleMouseMove = (e) => {
+    const rect = e.currentTarget.getBoundingClientRect();
+    const width = rect.width;
+    const height = rect.height;
+    const mouseX = e.clientX - rect.left;
+    const mouseY = e.clientY - rect.top;
+    const xPct = mouseX / width - 0.5;
+    const yPct = mouseY / height - 0.5;
+    x.set(xPct);
+    y.set(yPct);
+  };
+
+  const handleMouseLeave = () => {
+    x.set(0);
+    y.set(0);
+  };
+
+  useEffect(() => {
+    if (inView) {
+      const sequence = async () => {
+        await controls.start('visible');
+        controls.start('floating');
+      };
+      sequence();
+    }
+  }, [inView, controls]);
+
+  const cardVariants = {
+    hidden: { y: 100, opacity: 0, scale: 0.7, rotateY: 100, filter: 'blur(12px)' },
+    visible: { 
+      y: 0, opacity: 1, scale: 1, rotateY: 0, filter: 'blur(0px)',
+      transition: { 
+        duration: 1.2, 
+        delay: delayIndex * 0.3, 
+        type: "spring",
+        stiffness: 70,
+        damping: 14
+      } 
+    },
+    floating: {
+      y: [0, -6, 0, 6, 0],
+      transition: { duration: 5 + delayIndex * 0.5, repeat: Infinity, ease: 'easeInOut' }
+    }
+  };
+
+  const iconVariants = {
+    hidden: { scale: 0.8, rotate: 0 },
+    visible: { 
+      scale: 1, rotate: [0, 8, 0],
+      transition: { duration: 0.7, delay: delayIndex * 0.15 + 0.1 } 
+    },
+    floating: {
+      y: [0, -3, 0, 3, 0],
+      transition: { duration: 4 + delayIndex * 0.5, repeat: Infinity, ease: 'easeInOut' }
+    }
+  };
+
+  const headingVariants = {
+    hidden: { opacity: 0, y: 20, letterSpacing: '4px' },
+    visible: { opacity: 1, y: 0, letterSpacing: 'normal', transition: { duration: 0.6, delay: delayIndex * 0.15 + 0.3 } }
+  };
+
+  const pVariants = {
+    hidden: { opacity: 0, y: 20 },
+    visible: { opacity: 1, y: 0, transition: { duration: 0.6, delay: delayIndex * 0.15 + 0.45 } }
+  };
+
+  return (
+    <motion.div 
+      ref={ref}
+      className={`glass-card premium-card-hover premium-mission-card ${activePulse ? 'active-pulse' : ''}`} 
+      onMouseMove={handleMouseMove}
+      onMouseLeave={handleMouseLeave}
+      style={{ rotateX, rotateY, height: '100%', perspective: 1000, transformStyle: 'preserve-3d' }}
+      variants={cardVariants}
+      initial="hidden"
+      animate={controls}
+    >
+      <div className="premium-card-border-glow" />
+
+      <motion.div className="card-image-container small-img" variants={iconVariants} initial="hidden" animate={controls} style={{ transformStyle: 'preserve-3d', transform: 'translateZ(30px)' }}>
+        <img src={img} alt={title} className="premium-3d-img" />
+      </motion.div>
+      <motion.h3 className={`card-title ${titleColor}`} variants={headingVariants} initial="hidden" animate={controls} style={{ transform: 'translateZ(20px)' }}>
+        {title}
+      </motion.h3>
+      {typeof desc === 'string' ? (
+        <motion.p className="text-muted" style={{ fontSize: '0.9rem', transform: 'translateZ(10px)' }} variants={pVariants} initial="hidden" animate={controls}>
+          {desc}
+        </motion.p>
+      ) : (
+        <motion.div className="text-muted text-center" style={{ fontSize: '0.9rem', transform: 'translateZ(10px)' }} variants={pVariants} initial="hidden" animate={controls}>
+          {desc}
+        </motion.div>
+      )}
+    </motion.div>
+  );
+};
+
 const ParentCompany = () => {
   const controls = useAnimation();
   const [ref, inView] = useInView({ threshold: 0.1, triggerOnce: true });
+  const [activePulseIndex, setActivePulseIndex] = useState(-1);
 
   useEffect(() => {
     if (inView) {
       controls.start('visible');
     }
   }, [controls, inView]);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setActivePulseIndex(Math.floor(Math.random() * 4));
+      setTimeout(() => setActivePulseIndex(-1), 1500);
+    }, 4500);
+    return () => clearInterval(interval);
+  }, []);
 
   const fadeUp = {
     hidden: { opacity: 0, y: 30 },
@@ -53,7 +175,9 @@ const ParentCompany = () => {
           
           <motion.h2 className="announcement-title" initial={{opacity:0}} whileInView={{opacity:1}} viewport={{once:true}}>
             <div className="text-white">TOGETHER,</div>
-            <div className="text-gold">BUILDING</div>
+            <div className="text-gold">
+              <PremiumHighlightText>BUILDING</PremiumHighlightText>
+            </div>
             <div className="text-white">TOMORROW</div>
           </motion.h2>
           
@@ -70,11 +194,11 @@ const ParentCompany = () => {
             
             <motion.div 
               className="company-node card-dark" 
-              style={{ borderColor: 'rgba(251,191,36,0.4)', boxShadow: '0 4px 20px rgba(0,0,0,0.3)' }}
+              style={{ borderColor: 'rgba(251,191,36,0.7)', boxShadow: '0 0 30px rgba(251,191,36,0.2), inset 0 0 20px rgba(251,191,36,0.1)', transition: 'all 0.4s ease' }}
               initial={{ opacity: 0, x: -50 }}
               animate={controls}
               variants={{ visible: { opacity: 1, x: 0, transition: { duration: 0.8 } } }}
-              whileHover={{ y: -5, boxShadow: '0 10px 40px rgba(251,191,36,0.15)' }}
+              whileHover={{ y: -10, scale: 1.02, borderColor: 'rgba(251,191,36,1)', boxShadow: '0 0 60px rgba(251,191,36,0.5), inset 0 0 30px rgba(251,191,36,0.3)' }}
             >
               <div className="country-pill pill-gold">INDIA</div>
               <LogoOrbitAnimation>
@@ -90,31 +214,35 @@ const ParentCompany = () => {
 
             <motion.div 
               className="handshake-animated-container"
-              initial={{ scale: 0 }}
+              initial={{ scale: 0, x: "-50%", y: "-50%" }}
               animate={controls}
-              variants={{ visible: { scale: 1, transition: { delay: 0.6, type: 'spring' } } }}
+              variants={{ visible: { scale: 1, x: "-50%", y: "-50%", transition: { delay: 0.6, type: 'spring' } } }}
             >
               <div className="pulse-ring pulse-ring-1"></div>
               <div className="pulse-ring pulse-ring-2"></div>
               <div className="pulse-ring pulse-ring-3"></div>
-              <span className="handshake-emoji">🤝</span>
+              <motion.span 
+                className="handshake-emoji"
+                animate={{ scale: [1, 1.15, 1] }}
+                transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
+              >
+                🤝
+              </motion.span>
             </motion.div>
 
             <motion.div 
               className="company-node card-dark" 
-              style={{ borderColor: 'rgba(16,185,129,0.4)', boxShadow: '0 4px 20px rgba(0,0,0,0.3)' }}
+              style={{ borderColor: 'rgba(16,185,129,0.7)', boxShadow: '0 0 30px rgba(16,185,129,0.2), inset 0 0 20px rgba(16,185,129,0.1)', transition: 'all 0.4s ease' }}
               initial={{ opacity: 0, x: 50 }}
               animate={controls}
               variants={{ visible: { opacity: 1, x: 0, transition: { duration: 0.8, delay: 0.3 } } }}
-              whileHover={{ y: -5, boxShadow: '0 10px 40px rgba(16,185,129,0.15)' }}
+              whileHover={{ y: -10, scale: 1.02, borderColor: 'rgba(16,185,129,1)', boxShadow: '0 0 60px rgba(16,185,129,0.5), inset 0 0 30px rgba(16,185,129,0.3)' }}
             >
               <div className="country-pill pill-green-dark">UAE</div>
               <LogoOrbitAnimation
                 icons={[
-                  { icon: '🌿', angleOffset: 45, duration: 9, direction: -1, floatOffset: 7 },
-                  { icon: '🍯', angleOffset: 160, duration: 11, direction: 1, floatOffset: -6 },
-                  { icon: '✨', angleOffset: 280, duration: 8, direction: 1, floatOffset: 5 },
-                  { icon: '💛', angleOffset: 340, duration: 10, direction: -1, floatOffset: -5 },
+                  { icon: '🐝', angleOffset: 45, duration: 9, direction: -1, floatOffset: 7 },
+                  { icon: '📈', angleOffset: 225, duration: 11, direction: 1, floatOffset: -6 },
                 ]}
               >
                 <div className="company-logo-wrapper">
@@ -145,9 +273,11 @@ const ParentCompany = () => {
 
           <motion.div 
             className="glass-card target-main-card"
+            style={{ borderColor: 'rgba(255,122,0,0.5)', boxShadow: '0 0 30px rgba(255,122,0,0.15), inset 0 0 20px rgba(255,122,0,0.05)', transition: 'all 0.4s ease' }}
             initial={{ opacity: 0, y: 50 }}
             animate={controls}
             variants={{ visible: { opacity: 1, y: 0, transition: { delay: 1.2, duration: 0.8 } } }}
+            whileHover={{ y: -10, scale: 1.02, borderColor: 'rgba(255,122,0,1)', boxShadow: '0 0 60px rgba(255,122,0,0.4), inset 0 0 30px rgba(255,122,0,0.2)' }}
           >
             <div className="target-card-content" style={{ display: 'flex', flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', gap: '40px' }}>
               <div style={{ flex: '1', display: 'flex', justifyContent: 'center' }}>
@@ -155,65 +285,70 @@ const ParentCompany = () => {
               </div>
               <div style={{ flex: '1', textAlign: 'left' }}>
                 <h3 className="text-2xl text-muted mb-2">Our New Product</h3>
-                <h2 className="text-5xl font-bold mb-6">Target <span className="text-orange">2034</span></h2>
+                <h2 className="text-5xl font-bold mb-6 text-white uppercase tracking-wider">TARGET <span style={{ color: '#ea580c' }}>2034</span></h2>
                 
-                <div className="target-vision-strip mb-6 text-xl">
-                  One <span className="text-green-500">Vision</span>. One <span className="text-red-500">Mission</span>. One Target.
+                <div className="target-vision-strip mb-6 text-xl font-bold" style={{ display: 'flex', gap: '8px', alignItems: 'center', flexWrap: 'wrap', background: 'none', padding: 0 }}>
+                  <span style={{ color: '#22c55e' }}>One Vision</span> 
+                  <span style={{ color: '#6b7280' }}>·</span> 
+                  <span style={{ color: '#ef4444' }}>One Mission</span> 
+                  <span style={{ color: '#6b7280' }}>·</span> 
+                  <span style={{ color: '#eab308' }}>One Target</span>
                 </div>
                 
                 <p className="text-muted text-lg">
-                  Building a Future of Growth, Innovation & Success.
+                  Building a Future of <span style={{ color: '#22c55e', fontWeight: 'bold' }}>Growth</span>, <span style={{ color: '#3b82f6', fontWeight: 'bold' }}>Innovation</span> & <span style={{ color: '#eab308', fontWeight: 'bold' }}>Success</span>.
                 </p>
+                
+                <div style={{ display: 'flex', gap: '12px', marginTop: '24px', flexWrap: 'wrap' }}>
+                  <span style={{ border: '1px solid rgba(34, 197, 94, 0.3)', background: 'rgba(34, 197, 94, 0.08)', color: '#22c55e', padding: '6px 20px', borderRadius: '30px', fontSize: '0.9rem', fontWeight: '800' }}>Vision</span>
+                  <span style={{ border: '1px solid rgba(239, 68, 68, 0.3)', background: 'rgba(239, 68, 68, 0.08)', color: '#ef4444', padding: '6px 20px', borderRadius: '30px', fontSize: '0.9rem', fontWeight: '800' }}>Mission</span>
+                  <span style={{ border: '1px solid rgba(234, 179, 8, 0.3)', background: 'rgba(234, 179, 8, 0.08)', color: '#eab308', padding: '6px 20px', borderRadius: '30px', fontSize: '0.9rem', fontWeight: '800' }}>Target</span>
+                </div>
               </div>
             </div>
           </motion.div>
         </div>
 
         {/* Core Values Cards */}
-        <motion.div 
+        <div 
           className="dashboard-grid bottom-grid"
-          style={{ marginTop: '40px', gap: '24px' }}
-          variants={staggerContainer}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, margin: "-100px" }}
+          style={{ marginTop: '120px', gap: '24px', perspective: '1000px', position: 'relative' }}
         >
+          <div className="premium-bg-enhancement"></div>
           
-          <motion.div className="glass-card premium-card-hover card-accent-green" variants={fadeUp} style={{ height: '100%' }}>
-            <div className="card-image-container small-img">
-              <img src={missionTargetImg} alt="Mission Target" className="premium-3d-img" />
-            </div>
-            <h3 className="card-title text-green-500">OUR MISSION</h3>
-            <p className="text-muted" style={{ fontSize: '0.9rem' }}>To empower traders and investors with innovative tools, insights and opportunities for financial growth.</p>
-          </motion.div>
-
-          <motion.div className="glass-card premium-card-hover card-accent-red" variants={fadeUp} style={{ height: '100%' }}>
-            <div className="card-image-container small-img">
-              <img src={visionFutureImg} alt="Vision Future" className="premium-3d-img" />
-            </div>
-            <h3 className="card-title text-red-500">OUR VISION</h3>
-            <p className="text-muted" style={{ fontSize: '0.9rem' }}>To become a global leader in trading excellence and financial empowerment.</p>
-          </motion.div>
-
-          <motion.div className="glass-card premium-card-hover card-accent-gold" variants={fadeUp} style={{ height: '100%' }}>
-            <div className="card-image-container small-img">
-              <img src={valuesDiamondImg} alt="Values Diamond" className="premium-3d-img" />
-            </div>
-            <h3 className="card-title text-orange">OUR VALUES</h3>
-            <div className="text-muted text-center" style={{ fontSize: '0.9rem' }}>
-              Integrity • Transparency<br/>Innovation • Commitment<br/>Excellence
-            </div>
-          </motion.div>
-
-          <motion.div className="glass-card premium-card-hover card-accent-green" variants={fadeUp} style={{ height: '100%' }}>
-            <div className="card-image-container small-img">
-              <img src={goalMountainImg} alt="Goal Mountain" className="premium-3d-img" />
-            </div>
-            <h3 className="card-title text-blue-500">OUR GOAL</h3>
-            <p className="text-muted" style={{ fontSize: '0.9rem' }}>To help clients achieve financial freedom and long-term success.</p>
-          </motion.div>
-
-        </motion.div>
+          <PremiumMissionCard 
+            title="OUR MISSION" 
+            desc="To empower traders and investors with innovative tools, insights and opportunities for financial growth." 
+            img={missionTargetImg} 
+            delayIndex={0} 
+            titleColor="text-green-500" 
+            activePulse={activePulseIndex === 0} 
+          />
+          <PremiumMissionCard 
+            title="OUR VISION" 
+            desc="To become a global leader in trading excellence and financial empowerment." 
+            img={visionFutureImg} 
+            delayIndex={1} 
+            titleColor="text-red-500" 
+            activePulse={activePulseIndex === 1} 
+          />
+          <PremiumMissionCard 
+            title="OUR VALUES" 
+            desc={<>Integrity • Transparency<br/>Innovation • Commitment<br/>Excellence</>} 
+            img={valuesDiamondImg} 
+            delayIndex={2} 
+            titleColor="text-orange" 
+            activePulse={activePulseIndex === 2} 
+          />
+          <PremiumMissionCard 
+            title="OUR GOAL" 
+            desc="To help clients achieve financial freedom and long-term success." 
+            img={goalMountainImg} 
+            delayIndex={3} 
+            titleColor="text-blue-500" 
+            activePulse={activePulseIndex === 3} 
+          />
+        </div>
 
       </div>
     </section>

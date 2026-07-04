@@ -6,37 +6,68 @@ import './sections.css';
 
 const WealthGrowthChart = () => {
   const controls = useAnimation();
-  const [ref, inView] = useInView({ threshold: 0.2, triggerOnce: true });
+  const [ref, inView] = useInView({ threshold: 0.65, triggerOnce: true });
 
   useEffect(() => {
     if (inView) {
-      controls.start('visible');
+      const sequence = async () => {
+        // Step 1: Initial Growth Animation
+        await controls.start('visible');
+        // Step 2: Continuous Floating Motion
+        controls.start('floating');
+      };
+      sequence();
     }
   }, [controls, inView]);
 
   const barVariants = {
-    hidden: { opacity: 0, height: 0 },
+    hidden: { opacity: 0, scaleY: 0, transformOrigin: 'bottom', boxShadow: '0 0px 0px rgba(163, 177, 96, 0), inset 0 0px 0px rgba(255, 255, 255, 0)' },
     visible: (custom) => ({
       opacity: 1,
-      height: custom.height,
+      scaleY: [0, 1.03, 1],
+      boxShadow: [
+        '0 0px 0px rgba(163, 177, 96, 0), inset 0 0px 0px rgba(255, 255, 255, 0)',
+        '0 -20px 50px rgba(163, 177, 96, 0.9), inset 0 3px 15px rgba(255, 255, 255, 0.9)',
+        '0 -10px 30px rgba(163, 177, 96, 0.4), inset 0 2px 10px rgba(255, 255, 255, 0.4)'
+      ],
       transition: {
-        duration: 1.2,
+        duration: 0.9,
         delay: custom.delay,
-        ease: [0.25, 0.1, 0.25, 1],
+        ease: [0.16, 1, 0.3, 1], // easeOutExpo curve
+      }
+    }),
+    floating: (custom) => ({
+      scaleY: [1, 1.03, 1],
+      boxShadow: [
+        '0 -10px 30px rgba(163, 177, 96, 0.4), inset 0 2px 10px rgba(255, 255, 255, 0.4)',
+        '0 -12px 35px rgba(163, 177, 96, 0.55), inset 0 2px 12px rgba(255, 255, 255, 0.5)',
+        '0 -10px 30px rgba(163, 177, 96, 0.4), inset 0 2px 10px rgba(255, 255, 255, 0.4)'
+      ],
+      transition: {
+        duration: 4 + custom.index * 0.8,
+        repeat: Infinity,
+        ease: 'easeInOut'
       }
     })
   };
 
   const tooltipVariants = {
-    hidden: { opacity: 0, y: 10, scale: 0.9 },
+    hidden: { opacity: 0, y: 20 },
     visible: (custom) => ({
       opacity: 1,
       y: 0,
-      scale: 1,
       transition: {
-        duration: 0.6,
-        delay: custom.delay + 0.8,
-        ease: "easeOut"
+        duration: 0.9,
+        delay: custom.delay,
+        ease: [0.16, 1, 0.3, 1],
+      }
+    }),
+    floating: (custom) => ({
+      y: [0, -8, 0],
+      transition: {
+        duration: 4 + custom.index * 0.8,
+        repeat: Infinity,
+        ease: 'easeInOut'
       }
     })
   };
@@ -47,7 +78,7 @@ const WealthGrowthChart = () => {
       opacity: 1,
       transition: {
         duration: 0.6,
-        delay: custom.delay + 0.4
+        delay: custom.delay + 0.3
       }
     })
   };
@@ -114,7 +145,7 @@ const WealthGrowthChart = () => {
             <div className="chart-column">
               <motion.div 
                 className="chart-tooltip"
-                custom={{ delay: 0 }}
+                custom={{ delay: 0, index: 0 }}
                 variants={tooltipVariants}
                 initial="hidden"
                 animate={controls}
@@ -126,10 +157,11 @@ const WealthGrowthChart = () => {
               <div className="bar-wrapper" style={{ height: '180px' }}>
                 <motion.div 
                   className="chart-bar"
-                  custom={{ height: '100%', delay: 0 }}
+                  custom={{ delay: 0, index: 0 }}
                   variants={barVariants}
                   initial="hidden"
                   animate={controls}
+                  style={{ height: '100%', width: '100%' }}
                 />
               </div>
               
@@ -148,7 +180,7 @@ const WealthGrowthChart = () => {
             <div className="chart-column">
               <motion.div 
                 className="chart-tooltip"
-                custom={{ delay: 0.4 }}
+                custom={{ delay: 0.25, index: 1 }}
                 variants={tooltipVariants}
                 initial="hidden"
                 animate={controls}
@@ -160,16 +192,17 @@ const WealthGrowthChart = () => {
               <div className="bar-wrapper" style={{ height: '320px' }}>
                 <motion.div 
                   className="chart-bar"
-                  custom={{ height: '100%', delay: 0.4 }}
+                  custom={{ delay: 0.25, index: 1 }}
                   variants={barVariants}
                   initial="hidden"
                   animate={controls}
+                  style={{ height: '100%', width: '100%' }}
                 />
               </div>
               
               <motion.div 
                 className="chart-label"
-                custom={{ delay: 0.4 }}
+                custom={{ delay: 0.25 }}
                 variants={labelVariants}
                 initial="hidden"
                 animate={controls}
@@ -182,7 +215,7 @@ const WealthGrowthChart = () => {
             <div className="chart-column">
               <motion.div 
                 className="chart-tooltip"
-                custom={{ delay: 0.8 }}
+                custom={{ delay: 0.5, index: 2 }}
                 variants={tooltipVariants}
                 initial="hidden"
                 animate={controls}
@@ -194,16 +227,17 @@ const WealthGrowthChart = () => {
               <div className="bar-wrapper" style={{ height: '480px' }}>
                 <motion.div 
                   className="chart-bar"
-                  custom={{ height: '100%', delay: 0.8 }}
+                  custom={{ delay: 0.5, index: 2 }}
                   variants={barVariants}
                   initial="hidden"
                   animate={controls}
+                  style={{ height: '100%', width: '100%' }}
                 />
               </div>
               
               <motion.div 
                 className="chart-label"
-                custom={{ delay: 0.8 }}
+                custom={{ delay: 0.5 }}
                 variants={labelVariants}
                 initial="hidden"
                 animate={controls}

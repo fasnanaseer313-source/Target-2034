@@ -1,5 +1,6 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
+import PremiumHighlightText from '../components/PremiumHighlightText';
 import './sections.css';
 import heroImg from '../assets/hero.png';
 
@@ -10,6 +11,41 @@ const Hero = () => {
 
   return (
     <section className="hero-section bg-dark">
+      {/* Seamless Ambient Light Sweep */}
+      <motion.div 
+        className="ambient-light-sweep"
+        animate={{ x: ['-100%', '200%'], opacity: [0, 0.15, 0] }}
+        transition={{ duration: 12, repeat: Infinity, ease: 'linear' }}
+        style={{ position: 'absolute', top: 0, bottom: 0, left: 0, width: '50%', background: 'linear-gradient(90deg, transparent, rgba(255,255,255,0.1), transparent)', transform: 'skewX(-20deg)', pointerEvents: 'none', zIndex: 0 }}
+      />
+      {/* Subtle Floating Particles */}
+      {[...Array(15)].map((_, i) => (
+        <motion.div
+          key={i}
+          style={{
+            position: 'absolute',
+            width: Math.random() * 3 + 1 + 'px',
+            height: Math.random() * 3 + 1 + 'px',
+            backgroundColor: 'rgba(255, 255, 255, 0.4)',
+            borderRadius: '50%',
+            top: Math.random() * 100 + '%',
+            left: Math.random() * 100 + '%',
+            zIndex: 0,
+            pointerEvents: 'none',
+            filter: 'blur(1px)'
+          }}
+          animate={{
+            y: [0, -150 - Math.random() * 100],
+            opacity: [0, Math.random() * 0.4 + 0.1, 0]
+          }}
+          transition={{
+            duration: Math.random() * 10 + 15,
+            repeat: Infinity,
+            ease: 'linear',
+            delay: Math.random() * 10
+          }}
+        />
+      ))}
       <div className="hero-bg-particles bg-grid-pattern"></div>
       <div className="ambient-light-orange" style={{ top: '10%', right: '5%' }}></div>
       <div className="container hero-container">
@@ -22,17 +58,15 @@ const Hero = () => {
           transition={{ duration: 0.8, ease: "easeOut" }}
           style={{ paddingRight: '20px' }}
         >
-          <h1 className="heading-xl" style={{ marginBottom: '32px', whiteSpace: 'nowrap' }}>
-            Engineered For<br />
-            Serious<br />
-            <span className="text-orange highlight-underline">Trader</span><br />
-            Empowered By a<br />
-            High-Performance<br />
-            Trading Community.
+          <h1 className="heading-xl" style={{ marginBottom: '32px', fontSize: 'clamp(3.5rem, 8vw, 6.5rem)' }}>
+            We build you<br />
+            <PremiumHighlightText>personalized</PremiumHighlightText><br />
+            investing<br />
+            plans
           </h1>
           
           <p className="hero-subtitle text-muted" style={{ fontSize: '1.15rem', maxWidth: '500px', marginBottom: '40px' }}>
-            Empowering investors with real-time intelligence, market structure clarity and expert-guided execution.
+            Based on your priorities, income, and risk. Backed by intelligent models. Reviewed by experts.
           </p>
           
           <div className="hero-actions">
@@ -66,7 +100,7 @@ const Hero = () => {
               loop
               muted
               playsInline
-              style={{ width: '100%', height: 'auto', borderRadius: '16px', boxShadow: '0 20px 50px rgba(0,0,0,0.5)' }}
+              style={{ width: '100%', height: 'auto' }}
             />
             
             <div className="image-glow-behind"></div>

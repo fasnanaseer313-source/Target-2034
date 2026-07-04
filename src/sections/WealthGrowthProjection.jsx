@@ -1,5 +1,6 @@
 import React, { useRef, useState, useEffect } from 'react';
 import { motion, useAnimation, useInView, AnimatePresence } from 'framer-motion';
+import PremiumHighlightText from '../components/PremiumHighlightText';
 import './sections.css';
 
 const WealthGrowthProjection = () => {
@@ -116,7 +117,7 @@ const WealthGrowthProjection = () => {
         <div className="projection-container">
           <div className="projection-header">
             <h2 className="heading-lg text-white">
-              Wealth Growth <span className="highlight-purple-green">Projection</span>
+              Wealth Growth <PremiumHighlightText colorTheme="purple-green">Projection</PremiumHighlightText>
             </h2>
             <p className="subtitle-gray">₹10 Lakh → ₹1.2 Crore • 2026 to 2034</p>
           </div>
