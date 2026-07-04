@@ -175,8 +175,8 @@ const ParentCompany = () => {
             <span className="dot" style={{ width: '6px', height: '6px', backgroundColor: '#fbbf24', borderRadius: '50%', display: 'inline-block' }}></span> Partnership Announcement · 2024
           </div>
           
-          <div style={{ display: 'flex', width: '100%', alignItems: 'flex-end', justifyContent: 'flex-start', gap: '40px', flexWrap: 'wrap' }}>
-            <motion.h2 className="announcement-title" style={{ textAlign: 'left', margin: 0 }} initial={{opacity:0}} whileInView={{opacity:1}} viewport={{once:true}}>
+          <div style={{ display: 'flex', width: '100%', alignItems: 'stretch', justifyContent: 'flex-start', gap: '40px', flexWrap: 'wrap' }}>
+            <motion.h2 className="announcement-title" style={{ textAlign: 'left', margin: 0, display: 'flex', flexDirection: 'column', justifyContent: 'center' }} initial={{opacity:0}} whileInView={{opacity:1}} viewport={{once:true}}>
               <div className="text-white">TOGETHER,</div>
               <div className="text-gold">
                 <PremiumHighlightText>BUILDING</PremiumHighlightText>
@@ -191,7 +191,8 @@ const ParentCompany = () => {
               transition={{delay: 0.2, duration: 1.2, type: "spring", bounce: 0.4}}
               className="stock-market-visual-wrapper"
               style={{ 
-                width: '260px', 
+                flex: 1,
+                minWidth: '260px',
                 borderRadius: '16px', 
                 overflow: 'hidden', 
                 boxShadow: '0 20px 40px rgba(0,0,0,0.5), 0 0 30px rgba(251,191,36,0.15)',
@@ -199,7 +200,7 @@ const ParentCompany = () => {
                 zIndex: 10
               }}
             >
-              <img src={stockMarketVisual} alt="Stock Market Visualization" style={{ width: '100%', height: 'auto', display: 'block' }} />
+              <img src={stockMarketVisual} alt="Stock Market Visualization" style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block', minHeight: '250px' }} />
             </motion.div>
           </div>
           

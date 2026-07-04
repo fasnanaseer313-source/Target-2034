@@ -80,15 +80,15 @@ const WealthGrowthProjection = () => {
   };
 
   const points = [
-    { year: 2026, x: 0, y: 8.3, label: "₹10L" },
-    { year: 2027, x: 12.5, y: 25, label: "" },
-    { year: 2028, x: 25, y: 61.6, label: "₹74L" },
-    { year: 2029, x: 37.5, y: 75, label: "" },
-    { year: 2030, x: 50, y: 85, label: "" },
-    { year: 2031, x: 62.5, y: 90, label: "₹1.08Cr" },
-    { year: 2032, x: 75, y: 94, label: "" },
-    { year: 2033, x: 87.5, y: 97, label: "" },
-    { year: 2034, x: 100, y: 100, label: "₹1.2Cr" }
+    { year: 2026, x: 0, y: 8.3, label: "₹10,00,000" },
+    { year: 2027, x: 12.5, y: 25, label: "₹18,00,000" },
+    { year: 2028, x: 25, y: 61.6, label: "₹36,00,000" },
+    { year: 2029, x: 37.5, y: 75, label: "₹54,00,000" },
+    { year: 2030, x: 50, y: 85, label: "₹72,00,000" },
+    { year: 2031, x: 62.5, y: 90, label: "₹90,00,000" },
+    { year: 2032, x: 75, y: 94, label: "₹1,08,00,000" },
+    { year: 2033, x: 87.5, y: 97, label: "₹1,26,00,000" },
+    { year: 2034, x: 100, y: 100, label: "₹1,26,00,000" }
   ];
 
   let pathD = `M ${getCoords(points[0].x, points[0].y).x} ${getCoords(points[0].x, points[0].y).y}`;
@@ -127,10 +127,10 @@ const WealthGrowthProjection = () => {
               <span className="dot"></span> 2026 • ₹10L
             </motion.div>
             <motion.div custom={1} variants={pillVariants} className="proj-pill pill-purple">
-              <span className="dot"></span> 2028 • ₹74L
+              <span className="dot"></span> 2028 • ₹36L
             </motion.div>
             <motion.div custom={2} variants={pillVariants} className="proj-pill pill-blue">
-              <span className="dot"></span> 2031 • ₹1.08Cr
+              <span className="dot"></span> 2031 • ₹90L
             </motion.div>
             <motion.div custom={3} variants={pillVariants} className="proj-pill pill-yellow">
               <span className="dot"></span> 2034 • ₹1.2Cr
@@ -155,7 +155,7 @@ const WealthGrowthProjection = () => {
                   }}
                 >
                   <div className="tooltip-year">{hoveredPoint.year}</div>
-                  <div className="tooltip-value">{hoveredPoint.label || `Projected`}</div>
+                  <div className="tooltip-value">{hoveredPoint.label}</div>
                 </motion.div>
               )}
             </AnimatePresence>
