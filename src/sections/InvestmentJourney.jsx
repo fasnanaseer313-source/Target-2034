@@ -11,35 +11,40 @@ const steps = [
     title: 'Add Funds to Your Demat Account',
     description: 'Securely transfer funds to your Demat account to begin your mutual fund investment journey.',
     animationDelay: 0,
-    iconClass: 'step-icon-wallet'
+    iconClass: 'step-icon-wallet',
+    bgImage: '/step_1_bg.png'
   },
   {
     icon: FileText,
     title: 'Share Your Demat Account Details',
     description: 'Provide your Demat account information so our investment team can begin the onboarding process.',
     animationDelay: 0.15,
-    iconClass: 'step-icon-doc'
+    iconClass: 'step-icon-doc',
+    bgImage: '/step_2_bg.png'
   },
   {
     icon: UserCheck,
     title: 'Account Handled by Our Team',
     description: 'Our experienced investment professionals manage your portfolio using carefully planned mutual fund strategies.',
     animationDelay: 0.30,
-    iconClass: 'step-icon-team'
+    iconClass: 'step-icon-team',
+    bgImage: '/step_3_bg.png'
   },
   {
     icon: Activity,
     title: 'Regular Portfolio Updates',
     description: 'Receive consistent updates and complete transparency about your investment performance.',
     animationDelay: 0.45,
-    iconClass: 'step-icon-chart'
+    iconClass: 'step-icon-chart',
+    bgImage: '/step_4_bg.png'
   },
   {
     icon: Trophy,
     title: 'Monthly Cashouts',
     description: 'Enjoy regular monthly returns while your investments continue to grow with disciplined management.',
     animationDelay: 0.60,
-    iconClass: 'step-icon-trophy'
+    iconClass: 'step-icon-trophy',
+    bgImage: '/step_5_bg.png'
   }
 ];
 
@@ -91,7 +96,15 @@ const InvestmentJourney = () => {
                   viewport={{ once: true, margin: "-100px" }}
                   transition={{ duration: 0.8, delay: step.animationDelay, ease: [0.16, 1, 0.3, 1] }}
                 >
-                  <div className="journey-step-card glass-card">
+                  <div 
+                    className="journey-step-card glass-card"
+                    style={{ 
+                      backgroundImage: `linear-gradient(rgba(17, 24, 39, 0.6), rgba(17, 24, 39, 0.6)), url(${step.bgImage})`,
+                      backgroundSize: 'cover',
+                      backgroundPosition: 'center',
+                      backgroundRepeat: 'no-repeat'
+                    }}
+                  >
                     <div className="journey-step-header">
                       <div className={`journey-step-icon-wrapper ${step.iconClass}`}>
                         <Icon className="journey-step-icon" size={32} />
