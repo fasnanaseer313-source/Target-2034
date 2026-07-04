@@ -192,8 +192,10 @@ const ParentCompany = () => {
               className="stock-market-visual-wrapper"
               style={{ 
                 flex: '1 1 400px',
-                maxWidth: '480px',
+                maxWidth: '600px',
                 minWidth: '260px',
+                height: '320px',
+                marginRight: '60px',
                 borderRadius: '16px', 
                 overflow: 'hidden', 
                 boxShadow: '0 20px 40px rgba(0,0,0,0.5), 0 0 30px rgba(251,191,36,0.15)',
@@ -201,7 +203,7 @@ const ParentCompany = () => {
                 zIndex: 10
               }}
             >
-              <img src={stockMarketVisual} alt="Stock Market Visualization" style={{ width: '100%', height: 'auto', display: 'block' }} />
+              <img src={stockMarketVisual} alt="Stock Market Visualization" style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }} />
             </motion.div>
           </div>
           

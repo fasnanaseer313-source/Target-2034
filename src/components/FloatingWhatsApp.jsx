@@ -4,7 +4,7 @@ import { motion } from 'framer-motion';
 const FloatingWhatsApp = () => {
   return (
     <motion.a
-      href="https://wa.me/1234567890" // Replace with actual number
+      href="https://wa.me/918848288806"
       target="_blank"
       rel="noopener noreferrer"
       className="floating-whatsapp"

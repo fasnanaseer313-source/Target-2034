@@ -1,6 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import PremiumCard from '../components/PremiumCard';
+import PremiumHighlightText from '../components/PremiumHighlightText';
 import { CheckCircle2, Shield, Globe, Award, Headphones, LineChart } from 'lucide-react';
 
 const WhyChooseUs = () => {
@@ -17,7 +18,9 @@ const WhyChooseUs = () => {
     <section className="section bg-navy">
       <div className="container">
         <div style={{ textAlign: 'center', marginBottom: '64px' }}>
-          <h2>Why Choose Target 2034</h2>
+          <h2 className="heading-lg text-white">
+            Why Choose <PremiumHighlightText colorTheme="gold">Target 2034</PremiumHighlightText>
+          </h2>
           <p className="text-grey" style={{ fontSize: '1.2rem' }}>Built on trust, expertise, and a commitment to your future.</p>
         </div>
 

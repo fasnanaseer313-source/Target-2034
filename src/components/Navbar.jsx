@@ -51,7 +51,7 @@ const Navbar = () => {
           >
             HOME
           </Link>
-          <a href="https://wa.me/" target="_blank" rel="noopener noreferrer" className="nav-whatsapp-btn" aria-label="WhatsApp">
+          <a href="https://wa.me/918848288806" target="_blank" rel="noopener noreferrer" className="nav-whatsapp-btn" aria-label="WhatsApp">
             <WhatsAppIcon size={26} />
           </a>
         </div>

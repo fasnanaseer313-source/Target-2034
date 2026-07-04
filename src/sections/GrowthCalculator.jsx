@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import PremiumCard from '../components/PremiumCard';
 import Button from '../components/Button';
+import PremiumHighlightText from '../components/PremiumHighlightText';
 
 const GrowthCalculator = () => {
   const [sip, setSip] = useState(10000);
@@ -22,7 +23,9 @@ const GrowthCalculator = () => {
     <section className="section bg-navy" id="calculator">
       <div className="container">
         <div style={{ textAlign: 'center', marginBottom: '64px' }}>
-          <h2>Plan Your 2034 Target</h2>
+          <h2 className="heading-lg text-white">
+            Plan Your <PremiumHighlightText colorTheme="gold">2034 Target</PremiumHighlightText>
+          </h2>
           <p style={{ color: 'rgba(255,255,255,0.7)', fontSize: '1.2rem' }}>Interactive Growth Calculator</p>
         </div>
 
@@ -96,7 +99,7 @@ const GrowthCalculator = () => {
         </div>
         
         <div style={{ textAlign: 'center', marginTop: '48px' }}>
-          <Button variant="primary">Start Your Plan Now</Button>
+          <Button variant="primary" onClick={() => window.open('https://wa.me/918848288806', '_blank', 'noopener,noreferrer')}>Start Your Plan Now</Button>
         </div>
       </div>
     </section>
