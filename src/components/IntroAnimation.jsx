@@ -38,7 +38,7 @@ const IntroAnimation = ({ onComplete }) => {
       await textControls.start({
         opacity: 1,
         x: 0,
-        filter: "blur(0px) drop-shadow(0px 0px 15px rgba(255,255,255,0.9)) drop-shadow(0px 0px 3px rgba(255,255,255,0.5))",
+        filter: "drop-shadow(0px 0px 10px rgba(255,255,255,0.6))",
         transition: { duration: 0.4, ease: easePremium }
       });
 
@@ -136,7 +136,7 @@ const IntroAnimation = ({ onComplete }) => {
         <motion.img
           src="/target-text.png"
           alt="Target2K34 Text"
-          initial={{ opacity: 0, x: 40, filter: "blur(10px) drop-shadow(0 0 0px transparent)" }}
+          initial={{ opacity: 0, x: 40 }}
           animate={textControls}
           style={{
             height: 140,
