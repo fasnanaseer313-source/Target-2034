@@ -22,17 +22,33 @@ const WhatsAppIcon = ({ size = 20 }) => (
 
 const Navbar = () => {
   const [scrolled, setScrolled] = useState(false);
+  const [isPastHero, setIsPastHero] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
       setScrolled(window.scrollY > 50);
+      
+      if (window.innerWidth <= 768) {
+        const videoElement = document.querySelector('.hero-main-video');
+        if (videoElement) {
+          const rect = videoElement.getBoundingClientRect();
+          // If the video's top is within or above the navbar area (roughly 100px)
+          setIsPastHero(rect.top < 120);
+        } else {
+          // Fallback if video isn't found
+          setIsPastHero(window.scrollY > 400);
+        }
+      } else {
+        setIsPastHero(false);
+      }
     };
     window.addEventListener('scroll', handleScroll);
+    handleScroll();
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
   return (
-    <nav className={`navbar ${scrolled ? 'scrolled' : ''}`}>
+    <nav className={`navbar ${scrolled ? 'scrolled' : ''} ${isPastHero ? 'mobile-transparent' : ''}`}>
       <div className="container navbar-container">
         <Link to="/" className="navbar-logo" style={{ textDecoration: 'none', backgroundColor: '#fdfdfd', padding: '0px 8px', borderRadius: '10px', display: 'flex', alignItems: 'center', overflow: 'hidden' }}>
           <img src={logoImg} alt="Target 2034" style={{ height: '75px', objectFit: 'contain', transform: 'scale(1.5)' }} />
