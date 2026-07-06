@@ -4,6 +4,25 @@ import { useNavigate, useLocation } from 'react-router-dom';
 import './components.css';
 import logoImg from '../assets/logo.png';
 
+const InstagramIcon = ({ size, className, stroke }) => (
+  <svg 
+    xmlns="http://www.w3.org/2000/svg" 
+    width={size} 
+    height={size} 
+    viewBox="0 0 24 24" 
+    fill="none" 
+    stroke={stroke || "currentColor"} 
+    strokeWidth="2" 
+    strokeLinecap="round" 
+    strokeLinejoin="round" 
+    className={className}
+  >
+    <rect width="20" height="20" x="2" y="2" rx="5" ry="5"/>
+    <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/>
+    <line x1="17.5" x2="17.51" y1="6.5" y2="6.5"/>
+  </svg>
+);
+
 const Footer = () => {
   const navigate = useNavigate();
   const location = useLocation();
@@ -32,6 +51,13 @@ const Footer = () => {
 
   return (
     <footer className="footer">
+      <svg width="0" height="0">
+        <linearGradient id="ig-gradient" x1="1" y1="0" x2="0" y2="1">
+          <stop offset="0%" stopColor="#833ab4" />
+          <stop offset="50%" stopColor="#fd1d1d" />
+          <stop offset="100%" stopColor="#fcb045" />
+        </linearGradient>
+      </svg>
       <div className="container">
         <div className="footer-grid">
           <div className="footer-col">
@@ -81,8 +107,22 @@ const Footer = () => {
         </div>
         
         <div className="footer-bottom">
-          <p>&copy; {new Date().getFullYear()} Target 2034. All rights reserved.</p>
-          <p>Not a trading platform. Mutual fund investments are subject to market risks.</p>
+          <div className="footer-bottom-text">
+            <p>&copy; {new Date().getFullYear()} Target 2034. All rights reserved.</p>
+            <p>Not a trading platform. Mutual fund investments are subject to market risks.</p>
+          </div>
+          
+          <a
+            href="https://www.instagram.com/intellex.web?igsh=MWpvNDQyczFxeWVxbQ=="
+            target="_blank"
+            rel="noopener noreferrer"
+            className="meet-developers-link"
+          >
+            <span>Meet the Developers</span>
+            <InstagramIcon size={24} stroke="url(#ig-gradient)" className="instagram-icon" />
+          </a>
+          
+          <div className="footer-bottom-spacer"></div>
         </div>
       </div>
     </footer>

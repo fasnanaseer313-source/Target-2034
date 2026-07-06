@@ -236,11 +236,40 @@
 .footer-bottom {
   border-top: 1px solid rgba(255,255,255,0.1);
   padding-top: 32px;
-  display: flex;
-  justify-content: space-between;
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
   align-items: center;
   color: rgba(255,255,255,0.5);
   font-size: 0.9rem;
+}
+
+.footer-bottom-text {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.meet-developers-link {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: rgba(255, 255, 255, 0.7);
+  text-decoration: none;
+  font-weight: 500;
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.meet-developers-link:hover {
+  color: var(--color-orange);
+}
+
+.meet-developers-link .instagram-icon {
+  transition: transform 0.3s ease;
+}
+
+.meet-developers-link:hover .instagram-icon {
+  transform: scale(1.1);
 }
 
 /* Floating WhatsApp Widget */
@@ -272,6 +301,12 @@
 }
 
 @media (max-width: 768px) {
+  .footer-bottom {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    gap: 24px;
+  }
   .floating-whatsapp {
     bottom: 20px;
     right: 20px;
